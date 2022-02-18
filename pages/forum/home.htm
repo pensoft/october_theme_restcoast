@@ -1,0 +1,19 @@
+url = "/forum"
+layout = "default"
+title = "Forum Channel list"
+is_hidden = 0
+
+[forumChannels]
+memberPage = "forum/member"
+channelPage = "forum/channel"
+topicPage = "forum/topic"
+includeStyles = 1
+==
+<div class="container">
+    <div class="row">
+		<div class="col-xs-12">
+			<h1>Forum</h1>
+            {% component 'forumChannels' %}
+		</div>
+    </div>
+</div>

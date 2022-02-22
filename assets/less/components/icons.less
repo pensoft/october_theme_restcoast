@@ -55,8 +55,14 @@
       .font-size(5);
     }
     &.p-primary {
-      color: @secondary-btn-color;
-
+      color: @white-color;
+      background: @yellow-color;
+      .rounded(50px);
+      padding: 0 13px;
+      .breakpoint-small-down({
+        max-width: 67px;
+        margin: 20px 0;
+      });
 
     }
     &.p-secondary {
@@ -154,13 +160,13 @@
   content: "\ea82";
 }
 .p-facebook:before {
-  content: "\e907";
+  content: "\eaeb";
 }
 .p-instagram:before {
   content: "\eaec";
 }
 .p-linkedin:before {
-  content: "\e908";
+  content: "\eaed";
 }
 .p-mail:before {
   content: "\eaee";

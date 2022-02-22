@@ -17,6 +17,16 @@ var documentHasScroll = function() {
 
 
 $(document).ready(function() {
+	/* MENU */
+	$('.navbar-nav').attr('id', 'menu'); // please don't remove this line
+	$( '<div class="calendar-top"></div>' ).insertBefore( "#calendar" );
+	$( '<div class="card-profile-top"></div>' ).insertBefore( ".card.profile.card-profile" );
+	var divs = $(".card-profiles > div");
+	for(var i = 0; i < divs.length; i+=2) {
+		divs.slice(i, i+2).wrapAll( '<div class="col-xs" />');
+	}
+
+
 	var headerNavbar = $('#headerNavbar');
 	var width100 = $('.width100');
 	var innerWidth = $('body').innerWidth();
@@ -39,12 +49,13 @@ $(document).ready(function() {
 	$('.nav.nav-pills').removeAttr('id');
 
 
-	$('.contact_info .card-body .body, .insider-info .card-body .body').each(function(){
+	$('.contact_info .card-body .body').each(function(){
 		var countParagraphs = $(this).find('p').length;
-		if(countParagraphs > 1) {
+		if(countParagraphs > 1){
 			$(this).find('p').first().append('<div class="dorsal">Read more</div>');
-			$(this).find('p:not(:first)').wrapAll("<div class='toogle-contact-paragraphs'></div>")
+			$(this).find('p:not(:first)').wrapAll( "<div class='toogle-contact-paragraphs'></div>" )
 		}
+
 	});
 
 	$('.dorsal').click(function () {
@@ -59,15 +70,44 @@ $(document).ready(function() {
 
 	});
 
-	$('<div class="col-xs-12 col-sm-3 card internal no-border" style="margin-bottom: 15px">\n' +
-		'<a class="folder-background" style="display:flex; background: url(https://promicon.eu/storage/app/media/pensoft/living-documents.svg) center center no-repeat; background-size: 100px; height: 200px" href="/internal-repository/living-documents" title="Living documents"></a>\n' +
-		'<h3 class="card-header"><a href="/internal-repository/living-documents" title="Living documents" style="color: #fff;">Living documents</a></h3>\n' +
-		'</div>').insertAfter($('.card.internal').last());
 
-	$('<div class="col-xs-12 col-sm-3 card internal no-border" style="margin-bottom: 15px">\n' +
-		'<a class="folder-background" style="display:flex; background: url(https://promicon.eu/storage/app/media/pensoft/Dissemination-report-forms.svg) center center no-repeat; background-size: 100px; height: 200px" href="/internal-documents/dissemination-report-forms" title="Dissemination report forms"></a>\n' +
-		'<h3 class="card-header"><a href="/internal-documents/dissemination-report-forms" title="Dissemination report forms" style="color: #fff;">Dissemination report forms</a></h3>\n' +
-		'</div>').insertAfter($('.card.internal').last());
+	$('.content-wrapper.news .content img').each(function(){
+		$(this).attr('id', 'myImg');
+		$(this).addClass('myImages');
+	});
+
+	$('.content-wrapper.news').after('<div id=\"myModal\" class=\"modal\">\n' +
+		'  <span class=\"close_modal\">&times;</span>\n' +
+		'  <img class=\"modal-content\" id=\"img01\">\n' +
+		'  <div id=\"caption\"></div>\n' +
+		'</div>');
+
+
+	// create references to the modal...
+	var modal = document.getElementById('myModal');
+// to all images -- note I'm using a class!
+	var images = document.getElementsByClassName('myImages');
+// the image in the modal
+	var modalImg = document.getElementById("img01");
+// and the caption in the modal
+	var captionText = document.getElementById("caption");
+
+// Go through all of the images with our custom class
+	for (var i = 0; i < images.length; i++) {
+		var img = images[i];
+		// and attach our click listener for this image.
+		img.onclick = function(evt) {
+			modal.style.display = "block";
+			modalImg.src = this.src;
+			captionText.innerHTML = this.alt;
+		}
+	}
+
+	var span = document.getElementsByClassName("close_modal")[0];
+
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
 
 });
 

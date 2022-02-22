@@ -26,7 +26,7 @@ function onStart(){
 		$file_name = $file->getLocalPath();
 
 		$ext= $file->getExtension();
-		$recordName = get('file_name') ? get('file_name') : 'PROMICON_logo.'.$ext;
+		$recordName = get('file_name') ? get('file_name') : 'REST_COAST_logo.'.$ext;
 
 if (file_exists($file_name)) {
 header('Content-Description: File Transfer');
@@ -50,7 +50,7 @@ return Redirect::to('/media-center/logo');
 ==
 <div class="container">
 	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
-	<h1 class="display-1">PROMICON Logo Pack</h1>
+	<h1 class="display-1">REST COAST Logo Pack</h1>
 	{% set records = mediaLogosList %}
 	{% set displayColumn = mediaLogosList.displayColumn %}
 	{% set noRecordsMessage = mediaLogosList.noRecordsMessage %}

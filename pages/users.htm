@@ -22,8 +22,6 @@ function onStart(){
 }
 ?>
 ==
-<div class="container">
-	<h1 class="display-1">Users</h1>
 <{% component 'session' %}div class="container">
 	{% for user in users %}
 	<div class="row middle-xs userBox">
@@ -49,6 +47,4 @@ function onStart(){
 		</div>
 	</div>
 	{% endfor %}
-</div>
-
 </div>

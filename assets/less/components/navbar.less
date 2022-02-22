@@ -1,6 +1,7 @@
 
 .navbar {
     position: relative;
+    width: 100vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -9,12 +10,7 @@
     //background-color: transparent;
     transition: background-color 0.3s;
     box-sizing: border-box;
-    background: @white-color;
-    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    background: #ffffff;
 
     &:not(.fixed){
         background-color: @navbar-bkg-color;
@@ -22,20 +18,11 @@
 
     a {
         color: @navbar-font-color;
-        font-weight: 600;
-        .breakpoint-small-down({
-          font-weight: 400;
-        });
-
     }
 
     &.fixed {
         position: fixed;
-        top: 0;
         z-index: @zindex-fixed;
-        .breakpoint-small-down({
-          padding: 10px 0;
-        });
     }
 
     &.scrolled {
@@ -44,27 +31,22 @@
 
     .navbar-brand {
       display: flex;
-      //flex-basis: 292px;
-      height: 44px;
+      flex-basis: 292px;
+      height: 161px;
       background-size: 500px;
       background-repeat: no-repeat;
       background-position: -105px -135px;
-      .breakpoint-laptop-down({
-        height: 77px;
-        background-size: 200px!important;
-        background-position: 35px 17px!important;
-      });
       .breakpoint-small-down({
-        height: 44px;
+        flex-basis: 270px;
+        background-position: -100px -128px;
         background-size: 480px;
-        background-position: 20px 1px!important;
       });
     }
 
     .navbar-nav{
       list-style-type: none;
     }
-
+ 
     .navbar-collapse {
         display: flex;
         flex-basis: 100%;
@@ -77,13 +59,13 @@
             display: flex;
             flex-basis: 100%;
             width: 100%;
-            //max-width: 737px;
+            max-width: 737px;
             flex-grow: 1;
-            padding-left: 1rem;
-            //padding-right: 1rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
             padding-top: 1rem;
             padding-bottom: 1rem;
-            justify-content: space-between;
+            justify-content: space-around;
             background-color: inherit;
             flex-direction: column;
             box-sizing: border-box;
@@ -103,12 +85,12 @@
                 text-align: center;
 
                 &>a {
-                    padding-left: 1rem;
-                    padding-right: 1rem;
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
                     padding-top: 0.6rem;
                     padding-bottom: 0.6rem;
-                    margin-left: 0.6rem;
-                    margin-right: 0.6rem;
+                    margin-left: 0.4rem;
+                    margin-right: 0.4rem;
                     display: block;
                     white-space: nowrap;
                     text-overflow: ellipsis;
@@ -137,10 +119,6 @@
                         padding-left: 0;
                     }
                 }
-
-                &.sign-in a{
-                  color: @purple-color!important;
-                }
             }
         }
     }
@@ -168,7 +146,7 @@
             width: 100%;
 
             .navbar-nav {
-                justify-content: flex-end;
+                justify-content: flex-start;
                 flex-direction: row;
                 width: 100%;
                 .font-size(1);
@@ -206,8 +184,8 @@ div.search{
     width: 100%;
     height: 44px;
     margin-bottom: 20px;
-    //margin-left: 10px;
-    //margin-right:10px;
+    margin-left: 10px;
+    margin-right:10px;
     label{
       display: none;
     }
@@ -217,12 +195,6 @@ div.search{
 
 #menuToggle{
   display: none;
-}
-
-.profile_name{
-  img{
-    width: auto!important;
-  }
 }
 
 @media (max-width:1200px) {
@@ -238,7 +210,6 @@ div.search{
     z-index: 1;
     -webkit-user-select: none;
     user-select: none;
-    align-items: flex-end;
   }
 
   #menuToggle input
@@ -259,7 +230,7 @@ div.search{
     height: 2px;
     margin-bottom: 5px;
     position: relative;
-    background: @default-color;
+    background: @green-color;
     border-radius: 3px;
     z-index: 1;
     transform-origin: 5px 0px;
@@ -283,20 +254,20 @@ div.search{
     opacity: 1;
     transform: rotate(45deg) translate(-3px, -1px);
     //background: #36383F;
-    background: @white-color;
+    background: @green-color;
     order: 3;
   }
   #menuToggle input:checked ~ span:nth-last-child(3)
   {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
-    background: @white-color;
+    background: @green-color;
   }
 
   #menuToggle input:checked ~ span:nth-last-child(2)
   {
     transform: rotate(-45deg) translate(0, -1px);
-    background: @white-color;
+    background: @green-color;
   }
 
   #menu
@@ -304,11 +275,10 @@ div.search{
     position: absolute;
     width: 100vw;
     height: calc(100vh - 7px);
-    //margin: -22px 0 0 -100vw;
-    margin: -22px -22px 0 0;
-    padding: 49px 0 0 85px;
-    background-color: @default-color;
-    color: @white-color!important;
+    margin: -35px 0 0 -100vw;
+    padding: 50px 0 0 65px;
+    background-color: #242424;
+    color: @green-color!important;
     font-size: 28px!important;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
@@ -318,17 +288,17 @@ div.search{
 
   #menu li
   {
-    padding: 35px 62px 0 0;
+    padding: 32px  42px 0 0;
     transition-delay: 2s;
     text-align: right;
   }
 
   #menu li a{
-    color: @white-color;
+    color: @green-color;
   }
 
   #menu li.sign-in a{
-    color: @purple-color!important;
+    color: @date-text-color!important;
   }
 
   #menuToggle input:checked ~ ul
@@ -337,6 +307,21 @@ div.search{
   }
 
   .hidden-xs{
+    display: none;
+  }
+
+  #menuToggle .dropdown-menu{
+    list-style-type: none!important;
+    font-size: 0.8em;
+    margin-top: 10px;
+
+    li{
+      padding-right: 0!important;
+      padding-top: 0!important;
+    }
+  }
+
+  #menuToggle .dropdown  span{
     display: none;
   }
 

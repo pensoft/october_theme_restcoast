@@ -1,6 +1,6 @@
+title = "Events"
 url = "/events/:slug?|[a-zA-Z\-0-9]"
 layout = "default"
-title = "Events"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
@@ -12,8 +12,7 @@ category = "null"
 language = "en"
 ==
 <?php
-use Pensoft\Calendar\Models\Entry;
-use Carbon\Carbon;
+use ChristophHeich\Calendar\Models\Entry;
 
 function onStart(){
 
@@ -44,21 +43,13 @@ function onStart(){
     //$this['slug'] = !(is_numeric($this->param('slug')) || $this->param('slug') == null);
     
     $this['slug'] = $this->param('slug');
-
 }
 ?>
 ==
 <div class="container">
-	<h1 class="display-1">Events</h1>
-	{% if not slug %}
-	<div class="row">
-		<div class="col-md-12 col-xs-12">
-				{% component 'calendar' %}
-		</div>
-
-	</div>
-
-	{% endif %}
+{% if not slug %}
+    {% component 'calendar' %}    
+{% else %}
 
     {% if entry %}
     <div class="fr-view">
@@ -81,9 +72,11 @@ function onStart(){
         <a class="mt-2 button" href="{{ entry.url }}" target="_blank">{{ 'To the event'|_ }}</a>
         {% endif %}
     </div>
-
+    
     {% else %}
     {% endif %}
+
+{% endif %}
 
 </div>
 <script>

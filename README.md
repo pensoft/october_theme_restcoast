@@ -1,1 +1,1 @@
-# october_theme_promicon
+# october_theme_restcoast

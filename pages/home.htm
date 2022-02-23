@@ -1,93 +1,137 @@
-title = "Large scale RESToration of COASTal ecosystems through rivers to sea connectivity"
 url = "/"
 layout = "default"
-meta_description = "homepage desc"
+title = "REST-COAST"
 is_hidden = 0
+meta_description = "homepage desc"
 seo_keywords = "keywords"
 robot_index = "index"
 robot_follow = "follow"
 
 [article_highlights]
-maxItems = 10
-title = "News and Events"
+maxItems = 3
+title = "Latest news"
 baseUrl = "/news"
-templates = "template2"
-
-[publications_list]
-baseUrl = "/news"
-templates = "template2"
-
-[jumbotron]
-jumbotron = "homepage"
-title = 0
-background = "#ffffff"
+templates = "template4"
+thumb_width = 496
+thumb_height = 361
 
 [Timeline]
 limit = 3
-upcoming = 1
-==
+upcoming = 0
+marked_for_display = 1
+templates = "template3"
 
-<!-- latest from news -->
-{% component 'jumbotron' %}
-<div class="container-fluid banner bg-secondary">
-	{% component 'article_highlights' %}
+[jumbotron vision]
+jumbotron = "vision"
+title = 1
+background = "#ffffff"
+templates = "template1"
+description_limit = 0
+
+[jumbotron mission]
+jumbotron = "mssion"
+title = 1
+background = "#ffffff"
+templates = "template1"
+description_limit = 0
+
+[jumbotron goals]
+jumbotron = "goals"
+title = 1
+background = "#ffffff"
+templates = "template1"
+description_limit = 0
+
+[jumbotron numbers]
+jumbotron = "rest-coast-numbers"
+title = 1
+background = "#ffffff"
+templates = "template1"
+description_limit = 0
+==
+<!-- 3 blocks -->
+<div class="container-fluid">
 	<div class="container">
-		{% component 'Timeline' %}
-	</div>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-xs">
-			{% component 'publications_list' %}
+		<div class="row between-md around-xs">
+			<div class="col-md-4 col-xs-12 vision">
+				{% component 'vision' %}
+			</div>
+			<div class="col-md-4 col-xs-12 mission">
+				{% component 'mission' %}
+			</div>
+			<div class="col-md-4 col-xs-12 goals">
+				{% component 'goals' %}
+			</div>
 		</div>
 	</div>
+</div>
+
+<!-- numbers -->
+{% component 'numbers' %}
+
+<!-- latest from news -->
+<div class="container-fluid bg-secondary">
+	{% component 'article_highlights' %}
+</div>
+<div class="container-fluid">
+	<div class="container">
+		<h1 class="base_heading">EVENTS</h1>
+		{% component 'Timeline' %}
+		
+	</div>
+</div>
+<div class="container-fluid bg-secondary">
+	<div class="container">
 	<!-- subscribes -->
-	<div class="row">
-		<div class="col-sm-8 col-xs-12">
+	<div class="row between-xs">
+		<div class="col-sm-5 col-xs-12">
+			<h1 class="base_heading">Latest updates</h1>
 			<div class="twitter-widget">
 			    <a class="twitter-timeline" href="https://twitter.com/RESTCOAST_H2020?ref_src=twsrc%5Etfw">Tweets by RESTCOAST_H2020</a>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 			</div>
 		</div>
-		<div class="col-sm-4 col-xs-12">
-
+		<div class="col-sm-6 col-xs-12 social-media-container">
+			<h1 class="base_heading">Follow Rest-Coast</h1>
 			<div class="subscribe-container">
-				<div class="subscribe-items d-flex justify-content-evenly flex-column">
-					<a href="/calendar" class="btn btn-primary fluid">Calendar</a>
-
-					{%if this.theme.subscribe%}
-					<a href="{{this.theme.subscribe}}" target="_blank" class="btn btn-primary fluid">Subscribe</a>
-					{%endif%}
-
-					{%if this.theme.feedback%}
-					<a href="mailto:{{this.theme.feedback}}" class="btn btn-primary fluid">Feedback</a>
-					{%endif%}
-				</div>
-				<div class="subscribe-items text-center d-flex justify-content-evenly">
+				
+				<div class="subscribe-items">
 					{% if this.theme.twitter %}
-					<a href="{{this.theme.twitter_url}}" target="_blank" class="btn p-primary pr p-twitter big"></a>
+					<a href="{{this.theme.twitter_url}}" target="_blank" class="btn p-primary pr p-twitter large"></a>
 					{% endif %}
 					{% if this.theme.facebook %}
-					<a href="{{this.theme.facebook_url}}" target="_blank" class="btn pr p-primary p-facebook big"></a>
+					<a href="{{this.theme.facebook_url}}" target="_blank" class="btn pr p-primary p-facebook large"></a>
 					{% endif %}
 					{% if this.theme.linkedin %}
-					<a href="{{this.theme.linkedin_url}}" target="_blank" class="btn pr p-primary p-linkedin big"></a>
+					<a href="{{this.theme.linkedin_url}}" target="_blank" class="btn pr p-primary p-linkedin large"></a>
 					{% endif %}
 					{% if this.theme.youtube %}
-					<a href="{{this.theme.youtube_url}}" target="_blank" class="btn pr p-primary p-youtube big"></a>
+					<a href="{{this.theme.youtube_url}}" target="_blank" class="btn pr p-primary p-youtube large"></a>
 					{% endif %}
 					{% if this.theme.instagram %}
-					<a href="{{this.theme.instagram_url}}" target="_blank" class="btn pr p-primary p-instagram big"></a>
+					<a href="{{this.theme.instagram_url}}" target="_blank" class="btn pr p-primary p-instagram large"></a>
 					{% endif %}
 					{% if this.theme.researchgate %}
-					<a href="{{this.theme.researchgate_url}}" target="_blank" class="btn pr p-primary p-researchgate big" style="width: 64px;"></a>
+					<a href="{{this.theme.researchgate_url}}" target="_blank" class="btn pr p-primary p-researchgate large" style="width: 64px;"></a>
 					{% endif %}
 				</div>
+
+				{% if (this.theme.footer_funds_flag.getPath() != null or this.theme.footer_funds_text != '') %}
+			        <div class="homepage-funding funding row middle-xs">
+			            {% if this.theme.footer_funds_flag.getPath() %}
+							<div class="col-xs-1"><img class="text mr-0 mr-lg-1" style="height:70px;" src="{{ this.theme.footer_funds_flag.getPath() }}"/></div>
+			            {% endif %}
+			            {% if this.theme.footer_funds_text %}
+							<div class="col-xs-8"><span class="align-items-center mt-md-0 mt-1">{{this.theme.footer_funds_text}}</span></div>
+			            {%endif %}
+			        </div>
+		        {% endif %}
+
 			</div>
 
 
 		</div>
 	</div>
-
+	</div>
 
 </div>

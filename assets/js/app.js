@@ -162,6 +162,11 @@ function isBreakpointLarge() {
     return window.innerWidth <= 991;
 }
 
+function showSearchForm(){
+	$('#layout-header').toggleClass('full-width');
+	$('#search').toggle();
+}
+
 function init() {
     window.addEventListener('resize', function () {
         if (isBreakpointLarge()) {

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="61" height="61" viewBox="0 0 61 61">
+  <g id="Group_14032" data-name="Group 14032" transform="translate(-1254 -3859)">
+    <g id="Group_335" data-name="Group 335" transform="translate(1254 3859)">
+      <g id="Ellipse_2661" data-name="Ellipse 2661" transform="translate(0 0)" fill="none" stroke="#fff" stroke-width="2">
+        <circle cx="30.5" cy="30.5" r="30.5" stroke="none"/>
+        <circle cx="30.5" cy="30.5" r="29.5" fill="none"/>
+      </g>
+    </g>
+    <path id="Icon_zocial-email" data-name="Icon zocial-email" d="M.072,21.957V5.806q0-.028.089-.533L10.2,13.405.19,22.518a2.264,2.264,0,0,1-.118-.561ZM1.4,4.152a1.341,1.341,0,0,1,.5-.084H28.954a1.763,1.763,0,0,1,.533.084l-10.072,8.16-1.333,1.009-2.636,2.047-2.636-2.047-1.333-1.009Zm.03,19.46,10.1-9.169,3.91,3,3.91-3,10.1,9.169a1.494,1.494,0,0,1-.5.084H1.909a1.409,1.409,0,0,1-.474-.084ZM20.689,13.405,30.7,5.274a1.592,1.592,0,0,1,.089.533V21.957a2.043,2.043,0,0,1-.089.561Z" transform="translate(1268.952 3875.162)" fill="#fff"/>
+  </g>
+</svg>

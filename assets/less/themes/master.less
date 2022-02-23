@@ -22,31 +22,43 @@ ul{
 
 ol.q {list-style-type: upper-roman; padding-left: 20px;}
 
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .title, .head{
+  font-family: Oswald;
+  color: @secondary-btn-color;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.head{
+  color: @white-color;
+}
+
 
 
 .header-image {
     overflow: hidden;
     position: relative;
-    align-items: flex-end;
-    justify-content: center;
+    align-items: center;
     display: flex;
     color: @white-color;
+  justify-content: left;
+  vertical-align: center;
 
     .header-image-bar {
         width: 100%;
-        height: 424px;
+        //height: 424px;
         background-size: cover;
         background-position: center;
-        background-position-y: 31px!important;
+        //background-position-y: 31px!important;
 
         .breakpoint-small-down({
-          background: url("../../../../storage/app/media/mobile-image.png")!important;
-          background-size: 100%!important;
-          background-position: center!important;
-          background-position-y: 80px!important;
+          //background: url("../../../../storage/app/media/mobile-image.png")!important;
+          //background-size: 100%!important;
+          //background-position: center!important;
+          //background-position-y: 80px!important;
         });
         .breakpoint-laptop-down({
-          height: 560px;
+          //height: 560px;
         });
 
     }
@@ -55,20 +67,18 @@ ol.q {list-style-type: upper-roman; padding-left: 20px;}
         &.underline {
             padding-left: 1rem;
             padding-right: 1rem;
-            padding-bottom: 50px;
-            margin-bottom: 0;
+            margin-bottom: 50px;
             font-size: 52px;
             line-height: 52px;
             color: @white-color;
             //width: 1146px;
-            text-align: center;
+            //text-align: center;
             &.home-page-header{
-              text-transform: unset;
-              font-size: 52px;
-              line-height: 62px;
+              font-size: 83px;
+              font-family: 'Oswald';
+              font-weight: 600;
               .breakpoint-small-down({
-                  font-size: 33px;
-                  line-height: 56px;
+                  font-size: 83px;
               });
               .breakpoint-huge-down({
                 width: auto!important;
@@ -76,7 +86,7 @@ ol.q {list-style-type: upper-roman; padding-left: 20px;}
             }
           .breakpoint-small-down({
               width: 85%;
-              padding-left: 20px;
+              //padding-left: 20px;
               padding-right: 20px;
               padding-bottom: 35px;
               line-height: 47px!important;
@@ -85,11 +95,19 @@ ol.q {list-style-type: upper-roman; padding-left: 20px;}
     }
 
     .jumbotron{
-      font-size: 1.5em;
-      
+      //margin-top: 120px;
+      max-width: 35%;
+      padding: 0 100px;
+
       .breakpoint-small-down({
-          font-size: 1.3em;
+          max-width: 70%;
       });
+      p{
+        font-size: 37px;
+        line-height: 54px;
+        padding-left: 20px;
+        margin-top: 10px;
+      }
     }
 
 
@@ -97,10 +115,10 @@ ol.q {list-style-type: upper-roman; padding-left: 20px;}
 
     &.home {
         .header-image-bar {
-            height: 691px;
-            .breakpoint-laptop-down({
-              height: 560px;
-            });
+            height: 100vh;
+            //.breakpoint-laptop-down({
+            //  height: 560px;
+            //});
         }
         h1 {
             &.underline {
@@ -129,10 +147,34 @@ ol.q {list-style-type: upper-roman; padding-left: 20px;}
 }
 
 #layout-footer {
-    background-color: @footer-color;
-    padding-top: @padding-base-space-home;
-    padding-bottom: @padding-base-space-home;
-    z-index: 100;
+
+    .container-fluid {
+        &.black-background {
+          background: @black-color;
+          font-size: 16px!important;
+          padding: 20px 0;
+          a{
+            color: @white-color;
+          }
+        }
+        &.dark-background {
+          background: @dark-color;
+
+          .footer-menu{
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+
+
+            a{
+              color: @primary-color!important;
+              line-height: 1.7em;
+              font-weight: 600;
+            }
+          }
+
+        }
+    }
 
     .funding {
         display: flex;
@@ -198,26 +240,43 @@ ol.q {list-style-type: upper-roman; padding-left: 20px;}
 }
 
 .twitter-widget {
-    max-height: 720px;
-    max-width: 787px;
-    margin-left: 6px;
+    max-height: 520px;
+    max-width: 710px;
+    width: 710px;
+    margin-top: 30px;
     overflow-y: scroll;
-    border: 1px solid #a5a7aa;
+    border: 1px solid #d1d1d1;
     border-radius: 5px;
 }
 
+//.social-media-container{
+//  margin-left: 30px;
+//  max-width: 50%;
+//}
 .subscribe-container {
     display: flex;
     flex-direction: column;
-    justify-content: stretch;
     box-sizing: border-box;
+    height: 550px;
+    justify-content: space-between;
+
+  .homepage-funding{
+    color: @dark-color;
+    .col-xs-1{
+      min-width: fit-content;
+      margin-right: 0px;
+    }
+  }
 }
 
-.subscribe-items + .subscribe-items {
-    padding-top: 1rem;
-}
+//.subscribe-items + .subscribe-items {
+//    padding-top: 1rem;
+//}
 .subscribe-items {
-    
+  margin-top: 30px;
+  a{
+    margin-right: 20px;
+  }
 }
 
 .content_static_list{
@@ -293,6 +352,12 @@ ol.q {list-style-type: upper-roman; padding-left: 20px;}
 }
 
 .homepage_intro .cards h2{
+}
+
+.home{
+  .col-sm-6.col-xs-12{
+    padding: 0;
+  }
 }
 
 .project_background{

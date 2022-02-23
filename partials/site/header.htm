@@ -42,7 +42,7 @@ numberOfLevels = 2
 
     </a>
 
-        <div class="navbar-collapse collapse " id="headerNavbarNav" style="display: none;">
+        <div class="navbar-collapse collapse end-xs" id="headerNavbarNav" style="display: none;">
 			{% component 'menu' %}
 			<div id="headerNavbarLogin">
 				<ul class="navbar-nav" style="padding: 0; margin: 0;">
@@ -50,16 +50,16 @@ numberOfLevels = 2
 				</ul>
 			</div>
 		</div>
-            <div id="search" class="search" >
-                <form class="input-group align-items-start" action="{{ 'search' | page }}" method="get">
-                    <input class="form-control search" name="q" type="text" autocomplete="on">
-                    <button class="btn search btn-link pr p-search big text-grey-search-btn" type="submit"></button>
-                </form>
-            </div>
-
-
+		<a class="pr p-search large search-btn" onclick="showSearchForm();"></a>
 
 </nav>
+
+<div id="search" class="search" style="display: none;">
+	<form class="input-group align-items-start" action="{{ url('search')}}" method="get">
+		<input class="form-control search_input" style="color: #000;" name="q" type="text" autocomplete="on" placeholder="Search">
+		<button class="btn btn-link pr text-grey-search-btn" type="submit"></button>
+	</form>
+</div>
 
 
 
@@ -70,7 +70,7 @@ numberOfLevels = 2
     {%else%}
         <div class="header-image-bar" style="background-image: url('{{this.theme.header_image.getPath()}}'); background-position: bottom center;"></div>
     {%endif%}
-    <div class="jumbotron px-1" data-aos="fade-up">
+    <div class="jumbotron" data-aos="fade-up">
         <h1 class="underline white  {% if page_id == 'home'%}home-page-header{% endif %}">{%if page_title%} {{page_title}} {%else%} {{site_name}} {%endif%}</h1>
         {% if page_id == 'home' and tag_line %}
             <p>{{tag_line}}</p>

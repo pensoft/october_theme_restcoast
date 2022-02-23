@@ -55,14 +55,23 @@
       .font-size(5);
     }
     &.p-primary {
-      color: @white-color;
-      background: @yellow-color;
-      .rounded(50px);
-      padding: 0 13px;
-      .breakpoint-small-down({
-        max-width: 67px;
-        margin: 20px 0;
-      });
+      //color: @white-color;
+      background: @white-color;
+      .rounded(50%);
+      width: 78px;
+      height: 78px;
+      line-height: 66px;
+      text-align: center;
+      //.breakpoint-small-down({
+      //  max-width: 67px;
+      //  margin: 20px 0;
+      //});
+      &.p-twitter{
+        color: @link-color;
+      }
+      &.p-facebook{
+        color: @button-background-color;
+      }
 
     }
     &.p-secondary {

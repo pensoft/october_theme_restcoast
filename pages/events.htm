@@ -17,32 +17,30 @@ use Pensoft\Calendar\Models\Entry;
 function onStart(){
 
     if($this->param('slug')){
-$this['entry'] =  Entry::select(
-'*',
-'title',
-'place',
-'description',
-'url',
+			$this['entry'] =  Entry::select(
+			'*',
+			'title',
+			'place',
+			'description',
+			'url',
 
-DB::raw("to_char(\"start\", 'DD') as start_day"),
-DB::raw("to_char(\"start\", 'YYYY') as start_year"),
-DB::raw("to_char(\"end\", 'DD') as end_day"),
-DB::raw("to_char(\"end\", 'YYYY') as end_year"),
-DB::raw("to_char(\"start\", 'month') as start_month"),
-DB::raw("to_char(\"end\", 'month') as end_month"),
-DB::raw("
-\"end\" is not null as has_end
-")
+			DB::raw("to_char(\"start\", 'DD') as start_day"),
+			DB::raw("to_char(\"start\", 'YYYY') as start_year"),
+			DB::raw("to_char(\"end\", 'DD') as end_day"),
+			DB::raw("to_char(\"end\", 'YYYY') as end_year"),
+			DB::raw("to_char(\"start\", 'month') as start_month"),
+			DB::raw("to_char(\"end\", 'month') as end_month"),
+			DB::raw("
+			\"end\" is not null as has_end
+			")
 
 
-)->where('slug', $this->param('slug'))->first();
-}
+			)->where('slug', $this->param('slug'))->first();
+	}
 
-//$slug = (int)$this->param('slug') ? (int)$this->param('slug') : 1;
-//$this['SelectedLanguage'] = App::getLocale();
-//$this['slug'] = !(is_numeric($this->param('slug')) || $this->param('slug') == null);
+	$this['entries'] = Entry::orderBy('start', 'desc')->paginate(20);
 
-$this['slug'] = $this->param('slug');
+		$this['slug'] = $this->param('slug');
 }
 ?>
 ==
@@ -50,13 +48,36 @@ $this['slug'] = $this->param('slug');
 	{% if not slug %}
 	<h1 class="page_heading">Events</h1>
 	<div class="tabs">
-		<a class="btn btn-primary" href="#calendar">Calendar</a>
-		<a class="btn btn-primary" href="#list">List</a>
+		<a class="btn btn-primary" href="#calendarView">Calendar</a>
+		<a class="btn btn-primary" href="#listView">List</a>
 	</div>
 	<!--tabs content	-->
 
-	<div class="row" id="all">
+	<div class="row" id="calendarView">
 		{% component 'calendar' %}
+	</div>
+	<div class="row" id="listView">
+		<div class="events_list_container">
+			{% for entry in entries %}
+			{% set url = entry.url ?  entry.url : '/entry/'~entry.id %}
+
+			<div class="event_list_item">
+				<div class="row between-xs time_and_date">
+					<div class="col-xs">{{entry.event_date}}</div>
+					<div class="col-xs end-xs">{{entry.start|date('l')}}</div>
+				</div>
+				<div class="row">
+					<!--<div class="col-xs-1">{{entry.start|date('g:i')}}</div> <div class="col-xs-11">{{entry.title}}</div>-->
+					<div class="col-xs-2">{{entry.event_time}}</div> <div class="col-xs-10"><a class="button" href="{{ entry.url }}" target="_blank">{{entry.title}}</a></div>
+				</div>
+			</div>
+
+			{% endfor %}
+		</div>
+		<div class="row container">
+			{{ entries.fragment('listView').render|raw }}
+		</div>
+
 	</div>
 	{% else %}
 

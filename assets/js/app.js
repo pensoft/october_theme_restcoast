@@ -256,6 +256,14 @@ function showSearchForm(){
 	$('#search').toggle();
 }
 
+function requestFormLibrary() {
+	$('#mylibraryForm').on('click', 'a', function () {
+		var $form = $(this).closest('form');
+		console.log($form);
+		$form.request();
+	})
+}
+
 function init() {
     window.addEventListener('resize', function () {
         if (isBreakpointLarge()) {
@@ -289,6 +297,7 @@ function init() {
             }
         }
 		appendSearchAndSocialMedia()
+		requestFormLibrary()
         // keepFooter(documentHasScroll());
 
     });

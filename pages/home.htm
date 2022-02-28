@@ -119,10 +119,10 @@ description_limit = 0
 				{% if (this.theme.footer_funds_flag.getPath() != null or this.theme.footer_funds_text != '') %}
 			        <div class="homepage-funding funding row middle-xs">
 			            {% if this.theme.footer_funds_flag.getPath() %}
-							<div class="col-xs-1"><img class="text mr-0 mr-lg-1" style="height:70px;" src="{{ this.theme.footer_funds_flag.getPath() }}"/></div>
+							<div class="col-md-2 col-xs-12"><img class="text mr-0 mr-lg-1" style="height:70px;" src="{{ this.theme.footer_funds_flag.getPath() }}"/></div>
 			            {% endif %}
 			            {% if this.theme.footer_funds_text %}
-							<div class="col-xs-8"><span class="align-items-center mt-md-0 mt-1">{{this.theme.footer_funds_text}}</span></div>
+							<div class="col-md col-xs-12"><span class="align-items-center mt-md-0 mt-1">{{this.theme.footer_funds_text}}</span></div>
 			            {%endif %}
 			        </div>
 		        {% endif %}

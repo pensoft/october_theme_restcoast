@@ -32,23 +32,23 @@ theme = "dark-bottom"
 <div class="container-fluid border-box dark-background">{% component 'cookieConsent' %}
 	<div class="container">
 		<div class="row top-xs between-xs footer-menu-container">
-			<div class="col-xs-6 col-md-2">
+			<div class="col-xs-12 col-md-2 start-md center-xs">
 				<div class="head">ABOUT</div>
 				{% component 'about_menu' %}
 			</div>
-			<div class="col-xs-6 col-md-2">
+			<div class="col-xs-12 col-md-2 start-md center-xs">
 				<div class="head">LATEST</div>
 				{% component 'latest_menu' %}
 			</div>
-			<div class="col-xs-6 col-md-2">
+			<div class="col-xs-12 col-md-2 start-md center-xs">
 				<div class="head">RESOURCES</div>
 				{% component 'resources_menu' %}
 			</div>
-			<div class="col-xs-6 col-md-2">
+			<div class="col-xs-12 col-md-2 start-md center-xs">
 				{% if (enable_social_media) %}
 				<div class="head">FOLLOW {{ this.theme.site_name }}</div>
 				<div class="social-networks">
-					<div class="icons">
+					<div class="icons mt-1">
 						{% if enable_facebook and facebook_url %}
 						<a href="{{facebook_url}}" target="_blank" class="pr p-secondary p-facebook big" target="_blank"></a>
 						{% endif %}
@@ -71,7 +71,7 @@ theme = "dark-bottom"
 			<div class="col-xs-12 col-md-2 start-md center-xs">
 				<div class="head">Contact us</div>
 				<div class="social-networks contacts col-md-2 col-xs-12 start-md center-xs">
-					<div class="icons">
+					<div class="icons mt-1">
 						<a href="{{'contact'|page}}" class="pr p-secondary p-mail big"></a>
 					</div>
 				</div>
@@ -80,8 +80,8 @@ theme = "dark-bottom"
 			{%if this.theme.subscribe%}
 			<div class="col-xs-12 col-md-2 start-md center-xs">
 				<div class="head">Stay up to date</div>
-				<div class="mt-1">
-					<a href="{{this.theme.subscribe}}" target="_blank" class="btn-secondary news-alert"><i class="pr p-subscribe"></i> News alert</a>
+				<div class="icons mt-1">
+					<a href="{{this.theme.subscribe}}" target="_blank" class="pr p-secondary p-subscribe big"></a>
 				</div>
 			</div>
 			{%endif%}

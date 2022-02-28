@@ -75,7 +75,7 @@ a.modal-link{
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
   outline: none;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .modal-backdrop {
@@ -106,7 +106,8 @@ a.modal-link{
 
 .modal-title {
   margin: 0;
-  line-height: 1.42857143
+  line-height: 1.42857143;
+  text-transform: none;
 }
 
 .modal-body {
@@ -420,7 +421,6 @@ a:hover .arrow-left{
 }
 
 .folder_icon{
-  background: none;
   border: none;
   padding: 0;
   background: url('@{slick-loader-path}folder.svg') left no-repeat;
@@ -429,13 +429,13 @@ a:hover .arrow-left{
 }
 
 .card.internal{
-  background-color: @secondary-color;
-  border-radius: 10px;
+  //background-color: @secondary-color;
   font-family: Oswald;
-  color: @heading-text-color;
-  max-width: 302px;
-  height: 269px;
-  margin: 0 9px 20px 9px!important;
+  color: @dark-color;
+  //max-width: 302px;
+  //height: 269px;
+  flex-basis: 16.6%;
+  max-width: 16.6%;
   .breakpoint-small-down({
     max-width: 95vw;
     margin: 20px auto;
@@ -443,18 +443,14 @@ a:hover .arrow-left{
 }
 
 .card.internal .card-header {
-  margin-bottom: 0;
-
-  border-bottom: 0px;
   text-align: center;
-  white-space: nowrap;
-  font-size: 1em;
+  padding: 0 20px;
 
   a{
-    padding: 10px 20px;
-    border-radius: 50px;
-    color: @heading-text-color!important;
-    display: block;
+    color: @dark-color!important;
+    text-transform: none;
+    font-size: 22px;
+
   }
 
   a:hover{
@@ -466,9 +462,119 @@ a:hover .arrow-left{
 }
 
 .folder-background{
-  border-radius: 50%!important;
+  display: flex;
+  background-size: 80px!important;
+  height: 180px!important;
+  width: 180px;
   background-color: @white-color!important;
-  width: 160px;
-  height: 160px!important;
-  margin: 20px auto;
+  border-radius: 50%;
+  margin: 25px auto;
+  border: 4px solid @link-color;
+}
+
+.internal-documents, .documents-search{
+
+  h4{
+    text-transform: none;
+    font-family: Muli;
+  }
+  .accordion-toggle{
+    border-radius: 50px;
+    border: 1px solid #C1C1C1;
+    padding: 20px !important;
+    margin: 0!important;
+    cursor: pointer;
+    width: 100%;
+    background: #E6E6E6;
+    color: #555555;
+    font-size: 20px;
+    font-weight: normal;
+    text-transform: none;
+    font-family: Oswald;
+  }
+
+  .plusminus{
+    width: 17px;
+    height: 17px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .plus{
+    background: url(../../assets/images/expand.svg) left no-repeat;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    display: inline-block;
+    top: 4px;
+    left: 1px;
+  }
+  .minus{
+    background: url(../../assets/images/colapse.svg) left no-repeat;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    display: inline-block;
+    top: 4px;
+    left: 1px;
+  }
+
+  .accordion-toggle.subfolder_photos, .accordion-toggle.subfolder_files{
+    border: none;
+    background: url('@{slick-loader-path}folder.svg') left no-repeat;
+    background-size: 33px;
+    padding-left: 42px!important;
+    border-radius: unset!important;
+    border: none;
+    border-radius: 5px;
+    padding: 0 0 0 42px !important;
+    margin: 0 0 20px 0!important;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+    //background: #ffffff;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+
+
+
+  .row.middle-xs.between-xs .search {
+      background: @white-color;
+      position: relative;
+      top: unset;
+      width: auto;
+      height: 42px;
+      /* max-width: 1600px; */
+      left: 0;
+      right: 0;
+      z-index: 11;
+
+      &.form-control{
+        display: block;
+        width: 100%;
+        height: 30px;
+        font-size: 18px;
+        color: #122642;
+        background-color: #ffffff;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        border: 1px solid #d1d1d1!important;
+        border-right: 0!important;
+        padding: 5px 10px;
+      }
+
+      .text-grey {
+        color: #495a62;
+        line-height: 42px;
+      }
+  }
+
+  .search-btn{
+      margin-right: 20px;
+      cursor: pointer;
+  }
+
 }

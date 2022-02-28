@@ -1,15 +1,32 @@
-title = "Library"
 url = "/library"
 layout = "default"
+title = "Library"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
 
 [LibraryPage]
-templates = "template4"
+templates = "template3"
+has_search = 1
 no_records_message = "No records found"
 ==
-<div class="container text-center">
-    {% component 'LibraryPage' %}
-    
+<div class="container">
+	<h1 class="page_heading">Library</h1>
+	<!--{{ form_ajax( 'onFilterRecords', { 'Filter[type]': 1}) }}-->
+	<!--<input type="hidden" name="Filter[type]" value="1">-->
+	<!--<input type="hidden" name="Filter[sort]" value="year asc">-->
+	<!--<button class="btn btn-primary" type="submit" href="#" class="btn btn-primary">Deliverables</button>-->
+	<!--{{ form_close() }}-->
+
+
+	<div class="tabs">
+		<a class=" library-type">All documents</a>
+		<a class=" library-type">Deliverables</a>
+		<a class=" library-type">{{this.theme.site_name}} publications</a>
+		<a class=" library-type">Relevant publications</a>
+	</div>
+	<!--tabs content	-->
+
+	{% component 'LibraryPage' %}
+
 </div>

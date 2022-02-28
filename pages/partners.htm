@@ -1,30 +1,65 @@
-title = "Partners"
 url = "/partners"
 layout = "default"
+title = "Partners"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
+==
+<?php
 
-[profile_records]
-show-category-title = 1
-category = 1
-maxItems = 10
+use Pensoft\Partners\Models\Partners;
+use Rainlab\Location\Models\Country;
 
-[PartnersPage]
-limit = 0
-templates = "template3"
+function onStart(){
+	$this['partners'] =  Partners::get();
+	$this['countries'] =  Country::where('is_enabled', true)->get();
+}
+
+?>
 ==
 <div class="container">
 
+	<h1 class="page_heading ml-1">Partners</h1>
+	{% if countries.count() %}
 	<div class="row">
-		<div class="col-sm-6 col-xs-12">
-			<span class="tooltiptext" id="tooltip">Bulgaria</span>
+		<div class="col-md-6 col-xs-12">
+			<div class="row countries_list">
+				{% for country in countries %}
+				<div class="col-lg-3 col-xs-6 country-item">
+					<div class="country_map">
+						<img alt="{{ country.name }}" src="{{'countries/'|media}}/{{country.name|lower|replace({' ': '_'})}}.svg">
+					</div>
+					<div class="country_label">
+						{{ country.name }}
+					</div>
+				</div>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 
+	{% endif %}
 
-{% component 'PartnersPage' %}
+	<div class="row">
+		<div class="col-xs-6">
 
+		</div>
+	</div>
+	{% if partners.count() %}
+	<div class="row partners_list">
+		{% for partner in partners %}
+		<div class="col-lg-3 col-sm-6 col-xs-12 partner-item">
+			<div class="partner_logo">
+				{% if partner.cover %}
+				<img alt="{{ partner.institution }}" src="{{partner.cover.thumb(auto,50,{'mode':'crop'})}}">
+				{% endif %}
+			</div>
+			<div class="partner_description">{{partner.content|raw}}</div>
+			<div class="partner_website"><a href="{{partner.instituion_url}}" target="_blank">Read more</a> </div>
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
 
 
 

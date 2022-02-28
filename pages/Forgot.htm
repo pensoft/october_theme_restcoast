@@ -8,20 +8,24 @@ robot_follow = "follow"
 [resetPassword]
 paramCode = "code"
 ==
-<div class="container">
-    {% if not user %}
+{% if not user %}
+<div class="container-fluid login_form_container">
+	<div class="row split_container">
+		<div class="col-md-6 col-x-0 split left">
+			<h1 class="page_heading">Password reset</h1>
+		</div>
+		<div class="col-md-6 col-xs-12 split right">
+			<h1 class="page_heading hidden-md">Password reset</h1>
+			<div class="centered">
+				{% if resetPassword.code == null %}
+				{% partial 'components/resetpassword/restore' %}
+				{% else %}
+				{% partial 'components/resetpassword/reset' %}
+				{% endif %}
+			</div>
 
-    <div class="row">
-
-        <div class="col-md-12" style="margin: 0 auto;">
-            {% if resetPassword.code == null %}
-                {% partial 'components/resetpassword/restore' %}
-            {% else %}
-            {% partial 'components/resetpassword/reset' %}
-            {% endif %}
-        </div>
-
-    </div>
-
-    {% endif %}
+		</div>
+	</div>
 </div>
+
+{% endif %}

@@ -1,6 +1,6 @@
-title = "Scientific posters"
 url = "/media-center/presentation"
 layout = "default"
+title = "Media center"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
@@ -18,14 +18,13 @@ pageNumber = "{{ :page }}"
 <?php
 use Pensoft\Media\Models\Presentations;
 use System\Models\File;
-use Redirect;
 
 function onStart(){
 	$this['mediaPresentatoinsList'] =  Presentations::get();
-	if(get('download')){
-		$file = File::find((int)get('download'));
+	if(post('download')){
+		$file = File::find((int)post('download'));
 		$file_name = $file->getLocalPath();
-		$recordName = post('file_name') ? post('file_name') : 'RESTCOAST_presentation';
+		$recordName = post('file_name') ? post('file_name') : 'PROMICON_presentation';
 		$ext= $file->getExtension();
 
 if (file_exists($file_name)) {
@@ -48,7 +47,11 @@ return Redirect::to('/media-center/flyer');
 }
 ?>
 ==
+<div class="container-fluid project-presentation-background">
+
+
 <div class="container">
+	<h1 class="display-1">Project presentation</h1>
 	<div class="row">
 		{% set records = mediaPresentatoinsList %}
 		{% set displayColumn = mediaPresentatoinsList.displayColumn %}
@@ -61,14 +64,13 @@ return Redirect::to('/media-center/flyer');
 		{# Use spaceless tag to remove spaces inside the A tag. #}
 		{% spaceless %}
 		{% if record.presentation_image %}
-		<div class="col-xs-12 col-lg-4">
+		<div class="col-xs-12 col-lg-6 center-xs">
 			<div class="story broshure_and_poster">
-				<p align="center"><a href="{{record.file.path}}" target="_blank"><img src="{{record.presentation_image.thumb(250,250,{'mode':'crop'})}}" title="{{record.name}}> </a></p>
+				<p align="center"><a href="{{record.file.path}}" target="_blank"><img src="{{record.presentation_image.thumb(812,454,{'mode':'crop'})}}" title="{{record.name}}"> </a></p>
 			</div>
 			{% if record.file %}
-			<div class="media-btn_broshure_and_poster"><a class="download btn btn-secondary fluid" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}" target="_blank">Download</a></div>
+			<a class="btn btn-primary" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}" target="_blank">Download</a>
 
-			<div class="media-size">{{record.file.extension | uppercase}} {{record.file.size }}</div>
 			{% endif %}
 		</div>
 		{% endif %}
@@ -78,4 +80,6 @@ return Redirect::to('/media-center/flyer');
 		{{ noRecordsMessage }}
 		{% endfor %}
 	</div>
+</div>
+
 </div>

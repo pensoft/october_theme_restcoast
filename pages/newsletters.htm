@@ -24,8 +24,8 @@ function onStart(){
 	if(get('download')){
 		$file = File::find((int)get('download'));
 		$file_name = $file->getLocalPath();
-		$recordName = get('file_name') ? get('file_name') : 'REST_COAST_newsletter';
-		$ext= $file->getExtension();
+$recordName = get('file_name') ? get('file_name') : 'PROMICON_newsletter';
+$ext= $file->getExtension();
 
 if (file_exists($file_name)) {
 header('Content-Description: File Transfer');
@@ -48,8 +48,9 @@ return Redirect::to('/media-center/newsletters');
 ?>
 ==
 <div class="container">
-	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
-	<h1 class="display-1">Newsletters</h1>
+	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a><br><br>
+
+	<h1 class="page_heading">Newsletters</h1>
 	<div class="row">
 		{% set records = mediaNewslettersList %}
 		{% set displayColumn = mediaNewslettersList.displayColumn %}
@@ -62,8 +63,8 @@ return Redirect::to('/media-center/newsletters');
 		{# Use spaceless tag to remove spaces inside the A tag. #}
 		{% spaceless %}
 		{% if record.newsletter_image %}
-		<div class="col-xs">
-			<div class="card-container">
+		<div class="col-md-2 col-xs-12">
+			<div class="card-container text-center">
 				<span class="card_image_container" style="background: url({{record.newsletter_image.thumb(243,243,{'mode':'crop'})}}) center center no-repeat;" title="{{record.name}}"></span>
 				<span class="card_title" style="min-height: 100px;">{{record.name}}, {{record.date |date('F Y')}}, {{record.file.size}}</span>
 				<br><a href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}" title="{{record.name}}" class="btn btn-primary">Download</a>

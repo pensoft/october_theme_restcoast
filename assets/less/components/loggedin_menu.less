@@ -1,5 +1,5 @@
 .navbar-loggedin-user{
-  background: #e0e2e0;
+  background: @default-color;
   position: fixed;
   z-index: 999;
   height: 58px;
@@ -23,7 +23,7 @@
 }
 
 .navbar-loggedin-user ul li a{
-  color: @heading-text-color;
+  color: @white-color;
   max-width: 150px;
   padding: 10px;
   .breakpoint-small-down({
@@ -60,6 +60,7 @@
 }
 
 .profile_name span{
+  color: @white-color;
   .breakpoint-large-down({
     display: none;
   })
@@ -88,12 +89,12 @@
     order: 1;
   });
 }
-
-.search{
-  .breakpoint-huge-down({
-    order: 2;
-  });
-  .breakpoint-small-down({
-    order: 3;
-  });
-}
+//
+//.search{
+//  .breakpoint-huge-down({
+//    order: 2;
+//  });
+//  .breakpoint-small-down({
+//    order: 3;
+//  });
+//}

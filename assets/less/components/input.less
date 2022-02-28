@@ -19,9 +19,9 @@
     }
 
     &.search_input {
-        background-color: @transparent !important;
         border-top-left-radius: 50px;
         border-bottom-left-radius: 50px;
+
         .border-bottom();
         .border-top();
         .border-left();
@@ -31,7 +31,8 @@
         box-sizing: border-box;
         font-size: 14px;
         .breakpoint-small-down({
-          width: 100%;
+          background: @white-color;
+          border-right: 1px solid @white-color;
         });
     }
     &.documents_search {

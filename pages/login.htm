@@ -11,16 +11,21 @@ paramCode = "code"
 forceSecure = 0
 requirePassword = 0
 ==
-<div class="container">
     {% if not user %}
-    
-        <div class="row">
-    
-            <div class="col-md-12" style="margin: 0 auto;">
-                <p align="center">This is an internal password protected environment for consortium members only. If you wish to stay up-to-date with SHOWCASE outputs, sign up for our annual <a href="https://b95d4a70.sibforms.com/serve/MUIEAMyUFc0fvY2ECBDVklqbDw7bTt9_8r1CnTMixn4WVa5aVq8cJ50_zYzcNd3EB5nM9tAOhF_t_uxwN6n0s4l5cPaJTh8MaOS-XIPtlzHwEfM_hmZd1V9z4kTwW9QO3fnD-yg49P52GfKOBmk6-DNkdtHJly-q5TWxryFJurFRVncxK4NV85QmcT_yO7XqOhNFLNOJ-uuwBTQ7" target="_blank">newsletter</a>.</p>
-                {% partial 'components/account/signin' %}
-            </div>
-    
-        </div>
+	<div class="container-fluid login_form_container">
+		<div class="row split_container">
+			<div class="col-md-6 col-x-0 split left">
+				<h1 class="page_heading">Login</h1>
+			</div>
+			<div class="col-md-6 col-xs-12 split right">
+				<h1 class="page_heading hidden-md">Login</h1>
+				<div class="centered">
+					<p>This is an internal password protected environment for consortium members only.</p>
+					{% partial 'components/account/signin' %}
+				</div>
+
+			</div>
+		</div>
+	</div>
+
     {% endif %}
-</div>

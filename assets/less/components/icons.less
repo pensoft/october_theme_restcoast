@@ -40,42 +40,66 @@
       .font-size(0.80);
     }
     &.normal {
-      font-size: 20px;
-      float: left;
-      margin-right: 5px;
-      height: 20px;
+      .font-size(1.5);
     }
     &.big {
       .font-size(2);
     }
-    &.large {
+    &.middle {
+      .font-size(2.3);
+    }
+
+    &.medium {
       .font-size(3);
+    }
+    &.large {
+      .font-size(3.5);
     }
     &.huge {
       .font-size(5);
     }
     &.p-primary {
-      //color: @white-color;
-      background: @white-color;
-      .rounded(50%);
-      width: 78px;
-      height: 78px;
-      line-height: 66px;
+      color: @button-background-color!important;
+      background-color: @white-color!important;
+      padding: 10px!important;
+      line-height: 64px;
+      width: 84px;
+      height: 84px;
       text-align: center;
-      //.breakpoint-small-down({
-      //  max-width: 67px;
-      //  margin: 20px 0;
-      //});
-      &.p-twitter{
-        color: @link-color;
-      }
-      &.p-facebook{
-        color: @button-background-color;
-      }
-
+      .rounded(50%);
     }
+    &.p-primary:hover {
+      opacity: 0.7!important;
+    }
+
+    &.p-facebook{
+      color: #4D6C9C!important;
+    }
+    &.p-twitter{
+      color: @link-color!important;
+    }
+
     &.p-secondary {
-      color: @secondary-color;
+      background: @dark-color!important;
+      color: @white-color!important;
+      border: 1px solid @white-color!important;
+      font-weight: 600;
+      padding: 5px!important;
+      .rounded(50%);
+      line-height: 1em!important;
+    }
+    &.p-secondary:hover {
+      background: @white-color!important;
+      color: @dark-color!important;
+      border: 1px solid @white-color!important;
+      line-height: 1em;
+      font-weight: 600;
+      padding: 5px!important;
+      opacity: 1!important;
+    }
+  
+    &.p-search {
+      color: #4D6C9C;
     }
     &.p-success {
       color: @success-color;
@@ -97,6 +121,13 @@
     }
     &.p-link {
     color: @primary-color;
+    }
+    &.p-subscribe {
+      font-size: 1.3em!important;
+      width: 36px!important;
+      height: 36px!important;
+      line-height: 36px!important;
+      text-align: center;
     }
 
 
@@ -148,6 +179,9 @@
   content: "\e900";
 }
 .p-location:before {
+  content: "\e90a";
+}
+.p-time:before {
   content: "\e901";
 }
 .p-gearwheel:before {
@@ -163,7 +197,7 @@
   content: "\e905";
 }
 .p-country-pl:before {
-  content: "\e906";
+  content: "\e900";
 }
 .p-search:before {
   content: "\ea82";
@@ -178,7 +212,16 @@
   content: "\eaed";
 }
 .p-mail:before {
-  content: "\eaee";
+  content: "\e900";
+}
+.p-website:before {
+  content: "\e903";
+}
+.p-organisation:before {
+  content: "\e911";
+}
+.p-phone:before {
+  content: "\e904";
 }
 .p-mendeley:before {
   content: "\eaef";
@@ -194,6 +237,15 @@
 }
 .p-youtube:before {
   content: "\eaf3";
+}
+.p-subscribe:before {
+  content: "\e913";
+}
+.p-subscribe2:before {
+  content: "\e902";
+}
+.p-mail:before {
+  content: "\e900";
 }
 .p-key:before {
   content: "\eaf4";

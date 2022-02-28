@@ -1,6 +1,6 @@
-title = "Events"
 url = "/events/:slug?|[a-zA-Z\-0-9]"
 layout = "default"
+title = "Events"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
@@ -17,74 +17,114 @@ use Pensoft\Calendar\Models\Entry;
 function onStart(){
 
     if($this->param('slug')){
-		$this['entry'] =  Entry::select(
-			'*',
-			'title',
-			'place',
-			'description',
-			'url',
+$this['entry'] =  Entry::select(
+'*',
+'title',
+'place',
+'description',
+'url',
 
-			DB::raw("to_char(\"start\", 'DD') as start_day"),
-			DB::raw("to_char(\"start\", 'YYYY') as start_year"),
-			DB::raw("to_char(\"end\", 'DD') as end_day"),
-			DB::raw("to_char(\"end\", 'YYYY') as end_year"),
-			DB::raw("to_char(\"start\", 'month') as start_month"),
-			DB::raw("to_char(\"end\", 'month') as end_month"),
-			DB::raw("
-				\"end\" is not null as has_end
-			")
-			
-			
-		)->where('slug', $this->param('slug'))->first();
-	}
-    
-    //$slug = (int)$this->param('slug') ? (int)$this->param('slug') : 1;
-	//$this['SelectedLanguage'] = App::getLocale();
-    //$this['slug'] = !(is_numeric($this->param('slug')) || $this->param('slug') == null);
-    
-    $this['slug'] = $this->param('slug');
+DB::raw("to_char(\"start\", 'DD') as start_day"),
+DB::raw("to_char(\"start\", 'YYYY') as start_year"),
+DB::raw("to_char(\"end\", 'DD') as end_day"),
+DB::raw("to_char(\"end\", 'YYYY') as end_year"),
+DB::raw("to_char(\"start\", 'month') as start_month"),
+DB::raw("to_char(\"end\", 'month') as end_month"),
+DB::raw("
+\"end\" is not null as has_end
+")
+
+
+)->where('slug', $this->param('slug'))->first();
+}
+
+//$slug = (int)$this->param('slug') ? (int)$this->param('slug') : 1;
+//$this['SelectedLanguage'] = App::getLocale();
+//$this['slug'] = !(is_numeric($this->param('slug')) || $this->param('slug') == null);
+
+$this['slug'] = $this->param('slug');
 }
 ?>
 ==
 <div class="container">
-{% if not slug %}
-    {% component 'calendar' %}    
-{% else %}
+	{% if not slug %}
+	<h1 class="page_heading">Events</h1>
+	<div class="tabs">
+		<a class="btn btn-primary" href="#calendar">Calendar</a>
+		<a class="btn btn-primary" href="#list">List</a>
+	</div>
+	<!--tabs content	-->
 
-    {% if entry %}
-    <div class="fr-view">
-        <h1>{{ entry.title }}</h1>
-        <div class="text-published mt-2">
-            {{entry.event_date}}
-            {{entry.event_time}}
-        </div>
-        <div class="text bold mt-2">{{ entry.place }}</div>
-        <div class="event-container d-flex">
+	<div class="row" id="all">
+		{% component 'calendar' %}
+	</div>
+	{% else %}
 
-            <div class="mt-2">
-                {% if entry.cover_image %}
-                    <img class="mr-2 mb-2 float-right" src="{{entry.cover_image|crop_image|resize(500, auto, {'mode':'crop'})}}" alt="entry.cover_image.title">
-                {% endif %}
-                {{ entry.description|raw }}
-            </div>
-        </div>
-        {% if entry.url %}
-        <a class="mt-2 button" href="{{ entry.url }}" target="_blank">{{ 'To the event'|_ }}</a>
-        {% endif %}
-    </div>
-    
-    {% else %}
-    {% endif %}
+	{% if entry %}
+	<div class="row newslist single-news-item">
+		{% set materials = entry.materials %}
+		{% if entry.cover_image or materials %}
+		<div class="col-xs-12 col-md-5">
+			{% if entry.cover_image %}
+			<img class="content left" src="{{entry.cover_image|crop_image|resize(673, 411, {'mode':'crop'})}}" alt="{{entry.cover_image.title}}">
+			{% endif %}
+			<div class="btn btn-primary share-btn" id="share-{{slug}}">Share</div>
 
-{% endif %}
+			{% if materials %}
+			<ul class="event_materials">
+				<h1 class="display-1">Materials</h1>
+				{% for item in materials %}
+				{% set url = item.button_file ? item.button_file|media : item.button_url %}
+				<li>
+					<h2>{{ item.title }}</h2>
+					<a class="btn btn-primary" href="{{ url }}" target="_blank">{{ item.button_title }}</a>
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
 
-</div>
-<script>
-	var documentHasScroll = function() {
-		return window.innerHeight <= document.body.offsetHeight;
-	};
-	function ready() {
-		keepFooter(documentHasScroll());
-	}
-	document.addEventListener("DOMContentLoaded", ready);
-</script>
+		</div>
+
+		<div class="col-xs-12 col-md-7">
+			{% else %}
+			<div class="col-xs-12 col-md-12">
+				{% endif %}
+
+				<div class="news-title">
+					<h1 class="single-new-title">{{ entry.title }}</h1>
+
+				</div>
+				{% if entry.event_date %}
+				<div class="event-date">
+					 {{entry.event_date}}
+					{{entry.event_time}}
+				</div>
+				{% endif %}
+
+				{% if entry.place %}
+				<div class="event-place"> {{ entry.place }}</div>
+				{% endif %}
+
+				<div class="content mt-2">
+					{{ entry.description|raw }}
+				</div>
+			</div>
+		</div>
+
+		{% else %}
+		{% endif %}
+
+		{% endif %}
+
+	</div>
+	<script>
+		createTippy('#share-{{slug}}', {content: '<div class="icons">{% if this.theme.facebook %}<a class="fb-xfbml-parse-ignore pr p-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" ></a>{% endif %}{% if this.theme.twitter %}<a class="pr p-twitter" href="https://twitter.com/intent/tweet?text={{encoded_title}}{{page_url}}" target="_blank"></a>{% endif %}{% if this.theme.linkedin %}<a class="pr p-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank"></a>{% endif %}</div>'})
+
+		var documentHasScroll = function() {
+			return window.innerHeight <= document.body.offsetHeight;
+		};
+		function ready() {
+			// keepFooter(documentHasScroll());
+		}
+		document.addEventListener("DOMContentLoaded", ready);
+	</script>

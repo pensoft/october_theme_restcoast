@@ -15,7 +15,7 @@
   background: @green-color!important;
   color: @white-color!important;
   border-radius: 30px!important;
-  border: none;
+  border: 1px solid @green-color;
 }
 
 .fc-button-group > .fc-today-button, .fc-button-group > fc-prev-button{
@@ -23,9 +23,9 @@
 }
 
 .fc-button-group > .fc-button:hover, .fc-button-group > .fc-button:not(:first-child):hover, .fc-button-primary:not(:disabled).fc-button-active{
-  background: @white-color!important;
-  color: @green-color!important;
-  border: 1px solid @green-color!important;
+  background: @link-color!important;
+  color:@white-color!important;
+  border: 1px solid @link-color!important;
 }
 
 .fc-toolbar.fc-header-toolbar{
@@ -45,6 +45,9 @@
 
 .fc-center{
   order: 1;
+  h2{
+    text-transform: none;
+  }
 }
 
 .fc-right{
@@ -62,15 +65,81 @@
   width: 80px;
 }
 
-.fc-right .fc-button:last-of-type{
+.fc-right .fc-button:nth-of-type(3){
   margin: 0 0 0 10px;
 }
 
 .fc-event{
-  background: #147064!important;
-  border-color: #147064!important;
+  background: @link-color!important;
+  border-color: @link-color!important;
+  padding: 10px!important;
+  border-radius: 10px!important;
 }
 
 .fc-day-grid-event .fc-time{
   display: none;
 }
+
+.event-date{
+  color: @yellow-color;
+  background: url(../../assets/images/calendar_blue.svg) left no-repeat;
+  padding-left: 25px;
+  background-size: 17px;
+  margin: 40px 0 10px 20px;
+}
+.event-place{
+  color: @yellow-color;
+  background: url(../../assets/images/location_blue.svg) left no-repeat;
+  padding-left: 25px;
+  background-size: 15px;
+  margin-left: 20px;
+}
+
+.tabs{
+  margin-bottom: 40px;
+  width: 100%;
+  display: block;
+  float: left;
+  .btn-primary{
+    .breakpoint-small-down({
+      margin-bottom: 20px;
+    });
+  }
+
+  a{
+    margin-right: 20px;
+    float: left;
+    width: fit-content;
+    font-weight: bold;
+    cursor: pointer;
+    .breakpoint-small-down({
+      margin-right: 0px;
+      width: 100%;
+      text-align: center;
+    });
+
+    &.active{
+      opacity: 0.6;
+    }
+  }
+
+}
+
+.events{
+  .tabs + div.row{
+    width: 100%;
+  }
+}
+
+
+.events{
+  .newslist .col-xs-12:first-child{
+    display: unset!important;
+  }
+}
+
+
+.fc-listYear-button.fc-button.fc-button-primary{
+  display: none;
+}
+

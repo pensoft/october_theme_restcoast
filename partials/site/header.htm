@@ -1,5 +1,3 @@
-[viewBag]
-
 [menu]
 start = "id-1"
 activeNode = 0
@@ -9,7 +7,7 @@ secondaryClasses = "dropdown-menu"
 numberOfLevels = 2
 
 [menu login]
-start = "id-13"
+start = "id-24"
 activeNode = "id-10"
 listItemClasses = "item"
 primaryClasses = "nav nav-pills"
@@ -22,10 +20,10 @@ numberOfLevels = 2
 		<div class="col-xs-12 col-md-9">{% component 'login' %}</div>
 		<div class="col-xs-2 end-xs  col-md-3 hidden-xs">
 			{% if user.avatar %}
-			<a href="/profile" style="color:#555555;" class="profile_name">{{ user.name }} {{ user.surname }} &nbsp; &nbsp; <img alt="{{ user.name }} {{ user.surname }}" src="{{user.avatar.getThumb(30,30, { mode : 'crop' } )}}" style="border-radius: 50%; margin-right:20px;" align="right"> </a>
+			<a href="/profile" class="profile_name">{{ user.name }} {{ user.surname }} &nbsp; &nbsp; <img alt="{{ user.name }} {{ user.surname }}" src="{{user.avatar.getThumb(30,30, { mode : 'crop' } )}}" style="border-radius: 50%; margin-right:20px;" align="right"> </a>
 			{% else %}
 
-			<a href="/profile" style="color:#555555;" class="profile_name"><span>{{ user.name }} {{ user.surname }} &nbsp; &nbsp; </span><img alt="{{ user.name }} {{ user.surname }}" src="{{ 'CMS_icons_avatar.svg'|media }}" width="30" height="30" style="margin-right:20px;" align="right"></a>
+			<a href="/profile" class="profile_name"><span>{{ user.name }} {{ user.surname }} &nbsp; &nbsp; </span><img alt="{{ user.name }} {{ user.surname }}" src="{{ 'CMS_icons_avatar_white.svg'|media }}" width="30" height="30" style="margin-right:20px;" align="right"></a>
 			{% endif %}
 		</div>
 </nav>
@@ -52,23 +50,25 @@ numberOfLevels = 2
 		</div>
 		<a class="pr p-search large search-btn" onclick="showSearchForm();"></a>
 
+		<div id="search" class="search" style="display: none;">
+			<form class="input-group align-items-start" action="{{ url('search')}}" method="get">
+				<input class="form-control search_input" style="color: #000;" name="q" type="text" autocomplete="on" placeholder="Search">
+				<button class="btn btn-link pr p-search big text-grey-search-btn" type="submit"></button>
+			</form>
+		</div>
+
 </nav>
 
-<div id="search" class="search" style="display: none;">
-	<form class="input-group align-items-start" action="{{ url('search')}}" method="get">
-		<input class="form-control search_input" style="color: #000;" name="q" type="text" autocomplete="on" placeholder="Search">
-		<button class="btn btn-link pr text-grey-search-btn" type="submit"></button>
-	</form>
-</div>
+
 
 
 
 {% if this.theme.header_image %}
 <div class="header-image {{page_id}}">
     {%if this.page.header_image %}
-        <div class="header-image-bar" style="background-image: url('{{this.page.header_image|media}}'); background-position: bottom center;"></div>
+        <div class="header-image-bar" style="background-image: url('{{this.page.header_image|media}}'); background-position: center;"></div>
     {%else%}
-        <div class="header-image-bar" style="background-image: url('{{this.theme.header_image.getPath()}}'); background-position: bottom center;"></div>
+        <div class="header-image-bar" style="background-image: url('{{this.theme.header_image.getPath()}}'); background-position: center;"></div>
     {%endif%}
     <div class="jumbotron" data-aos="fade-up">
         <h1 class="underline white  {% if page_id == 'home'%}home-page-header{% endif %}">{%if page_title%} {{page_title}} {%else%} {{site_name}} {%endif%}</h1>

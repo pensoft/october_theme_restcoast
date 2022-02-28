@@ -11,17 +11,59 @@
   color: #ffffff!important;
 }
 
-.vision h1{
-  background: url('../../assets/images/vision.svg') left no-repeat;
-  padding-left: 56px;
+.vision {
+  h1{
+    background: url('../../assets/images/vision.svg') left no-repeat;
+    padding-left: 56px;
+    .breakpoint-small-down({
+      background: url('../../assets/images/vision.svg') top center no-repeat;
+      padding-left: 0px;
+      text-align: center;
+      padding-top: 53px;
+    })
+  }
+
+  p{
+    .breakpoint-small-down({
+      text-align: center;
+    })
+  }
 }
-.mission h1{
-  background: url('../../assets/images/mission.svg') left no-repeat;
-  padding-left: 56px;
+.mission{
+  h1{
+    background: url('../../assets/images/mission.svg') left no-repeat;
+    padding-left: 56px;
+    .breakpoint-small-down({
+      background: url('../../assets/images/mission.svg') top center no-repeat;
+      padding-left: 0px;
+      text-align: center;
+      padding-top: 53px;
+    })
+  }
+
+  p{
+    .breakpoint-small-down({
+      text-align: center;
+    })
+  }
 }
-.goals h1{
-  background: url('../../assets/images/goals.svg') left no-repeat;
-  padding-left: 56px;
+.goals{
+  h1{
+    background: url('../../assets/images/goals.svg') left no-repeat;
+    padding-left: 56px;
+    .breakpoint-small-down({
+      background: url('../../assets/images/goals.svg') top center no-repeat;
+      padding-left: 0px;
+      text-align: center;
+      padding-top: 53px;
+    })
+  }
+
+  p{
+    .breakpoint-small-down({
+      text-align: center;
+    })
+  }
 }
 
 
@@ -37,6 +79,10 @@
   //margin: 0 auto;
   font-size: 1.5em;
   margin-top: 20px;
+  .breakpoint-small-down({
+    text-align: center;
+    margin: 30px auto;
+  })
 }
 
 .numbers p{
@@ -47,12 +93,19 @@
   font-size: 0.7em;
 }
 
-.num_container:nth-of-type(2) .numbers,
-.num_container:nth-of-type(3) .numbers{
-  margin: 0 auto!important;
+.num_container{
+  flex-grow: unset!important;
 }
+
+//.num_container:nth-of-type(2) .numbers,
+//.num_container:nth-of-type(3) .numbers{
+//  margin: 0 auto!important;
+//}
 .num_container:nth-of-type(4) .numbers{
   float: right;
+  .breakpoint-small-down({
+    float: none;
+  })
 }
 
 .count {
@@ -60,4 +113,15 @@
   width: 100%;
   height: 100%;
   text-align: center;
+}
+
+.about{
+  .container img{
+    width: 90%;
+    float: right;
+    .breakpoint-small-down({
+      width: 100%;
+      float: none;
+    });
+  }
 }

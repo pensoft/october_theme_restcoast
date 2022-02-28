@@ -57,8 +57,8 @@ h1,.h1, h2,.h2, h3,.h3, h4,.h4, h5,.h5, h6,.h6,.title {
     &.underline {
 
         display: inline-block;
-        padding-left: @padding-base-space;
-        padding-right: @padding-base-space;
+        //padding-left: @padding-base-space;
+        //padding-right: @padding-base-space;
         padding-bottom: @padding-base-space;
         //margin-bottom: @margin-base-space  * 3;
         // border-bottom: 1px solid #000;
@@ -75,8 +75,10 @@ h1,.h1, h2,.h2, h3,.h3, h4,.h4, h5,.h5, h6,.h6,.title {
       margin-bottom: 0;
       text-align: left;
       color: @heading-text-color;
+
       &.inner-page{
         margin-bottom: @margin-base-space!important;
+        text-transform: none;
       }
     }
 }

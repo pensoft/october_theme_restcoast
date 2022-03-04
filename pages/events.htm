@@ -48,8 +48,8 @@ function onStart(){
 	{% if not slug %}
 	<h1 class="page_heading">Events</h1>
 	<div class="tabs">
-		<a class="btn btn-primary" href="#calendarView">Calendar</a>
-		<a class="btn btn-primary" href="#listView">List</a>
+		<a class="" href="#calendarView">Calendar view</a>
+		<a class="" href="#listView">List view</a>
 	</div>
 	<!--tabs content	-->
 
@@ -63,12 +63,12 @@ function onStart(){
 
 			<div class="event_list_item">
 				<div class="row between-xs time_and_date">
-					<div class="col-xs">{{entry.event_date}}</div>
-					<div class="col-xs end-xs">{{entry.start|date('l')}}</div>
+					<div class="col-md start-md col-xs-12 center-xs">{{entry.event_date}}</div>
+					<div class="col-md end-md col-xs-12 center-xs">{{entry.start|date('l')}}</div>
 				</div>
 				<div class="row">
 					<!--<div class="col-xs-1">{{entry.start|date('g:i')}}</div> <div class="col-xs-11">{{entry.title}}</div>-->
-					<div class="col-xs-2">{{entry.event_time}}</div> <div class="col-xs-10"><a class="button" href="{{ entry.url }}" target="_blank">{{entry.title}}</a></div>
+					<div class="col-md-2 start-md col-xs-12 center-xs">{{entry.event_time}}</div> <div class="col-md-10 start-md col-xs-12 center-xs"><a class="button" href="{{ entry.url }}" target="_blank">{{entry.title}}</a></div>
 				</div>
 			</div>
 

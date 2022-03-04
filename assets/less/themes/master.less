@@ -31,6 +31,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .title, .head, .page_headi
 }
 h1, h2{
   font-size: 40px;
+  .breakpoint-small-down({
+    font-size: 30px;
+    text-align: center!important;
+  })
 }
 
 .head{
@@ -43,6 +47,7 @@ h1, h2{
     .breakpoint-small-down({
       margin-left: 0!important;
       text-align: center;
+    font-size: 46px;
     });
   }
   .breakpoint-small-down({
@@ -66,10 +71,10 @@ h1, h2{
         width: 100%;
         //height: 424px;
         background-size: cover;
-        background-position: center;
+        background-position: left center;
         //background-position-y: 31px!important;
 
-        .breakpoint-small-down({
+        .breakpoint-large-down({
           background: url("../../../../storage/app/media/Rest-Coast-mobile.jpg")!important;
           background-size: 100%!important;
           background-position: center!important;
@@ -114,11 +119,11 @@ h1, h2{
     .jumbotron{
       max-width: 35%;
       padding: 0 100px;
-
-      .breakpoint-small-down({
+      margin: auto 0;
+      .breakpoint-large-down({
         max-width: 100%;
         text-align: center;
-        padding: 0 47px;
+        padding: 0 50px;
       });
 
       p{
@@ -126,10 +131,18 @@ h1, h2{
         line-height: 54px;
         padding-left: 20px;
         margin-top: 10px;
+        .breakpoint-large-down({
+          font-size: 30px;
+          line-height: 50px;
+          padding-left: 50px;
+          padding-right: 50px;
+          margin-top: 0px;
+        });
         .breakpoint-small-down({
           font-size: 30px;
           line-height: 50px;
-          padding-left: 0px;
+          padding-left: 20px;
+          padding-right: 20px;
           margin-top: 0px;
         })
       }
@@ -140,10 +153,12 @@ h1, h2{
 
     &.home {
         .header-image-bar {
-            height: 100vh;
-            //.breakpoint-laptop-down({
-            //  height: 560px;
-            //});
+          height: calc(~"100vh - 95px");
+          margin-top: 95px;
+            .breakpoint-large-down({
+              height: 100vh;
+              margin-top: 0;
+            });
         }
         h1 {
             &.underline {
@@ -167,15 +182,14 @@ h1, h2{
 
 #layout-content {
     padding-bottom: 345px;
-    &.partners{
-      background: url(../../assets/images/map.jpg) top right no-repeat;
-      background-size: 50%;
-      .breakpoint-small-down({
-        background: url(../../assets/images/map.jpg) top right no-repeat;
-        background-size: 100%;
-        background-position-y: 142px;
-      })
-    }
+}
+
+.partners_background{
+  background: url(../../assets/images/map.jpg) top right no-repeat;
+  background-size: 50%;
+  .breakpoint-small-down({
+    background: none;
+  })
 }
 
 #layout-content:not(.home){
@@ -219,6 +233,14 @@ h1, h2{
         }
     }
 
+    .footer-menu-container{
+      .col-xs-12.col-md-2.col-sm-6{
+        .breakpoint-large-down ({
+          margin-top: 20px;
+        });
+      }
+    }
+
     .funding {
         display: flex;
         flex: 1 1 14%;
@@ -244,12 +266,17 @@ h1, h2{
 
 
     }
-
-  .icons{
-    .breakpoint-small-down ({
-      display: unset;
+    .breakpoint-large-down ({
+      height: auto;
     });
-  }
+
+    .icons{
+      width: 48px;
+      height: 48px;
+      .breakpoint-small-down ({
+        display: unset;
+      });
+    }
 
     .head{
       font-size: 20px;
@@ -302,7 +329,7 @@ h1, h2{
 .twitter-widget {
     max-height: 520px;
     max-width: 710px;
-    width: 710px;
+    width: 100%;
     margin-top: 30px;
     overflow-y: scroll;
     border: 1px solid #d1d1d1;
@@ -324,6 +351,9 @@ h1, h2{
     box-sizing: border-box;
     height: 550px;
     justify-content: space-between;
+    .breakpoint-large-down({
+      text-align: center;
+    });
     .breakpoint-small-down({
       justify-content: unset;
       height: auto;
@@ -353,6 +383,9 @@ h1, h2{
   margin-bottom: 30px;
   a{
     margin-right: 20px;
+    .breakpoint-large-down({
+    margin: 0 10px;
+    })
   }
 }
 
@@ -553,6 +586,9 @@ footer .align-items-center{
     display: block;
     position: fixed;
     bottom: 0;
+    .breakpoint-large-down ({
+      height: auto;
+    });
   }
 
   .hidden-md{
@@ -586,6 +622,82 @@ footer .align-items-center{
       right: 0;
       padding: 30px 0;
     })
+  }
+}
+
+.about_goals_page .container{
+  p{
+    padding-left: 130px;
+    min-height: 100px;
+    .breakpoint-small-down({
+      padding-left: 0;
+      padding-top: 130px;
+    text-align: center;
+    margin-top: 50px;
+    });
+    &:nth-of-type(1){
+      background: url("../../assets/images/goals/1.svg") top left no-repeat;
+      background-size: 100px;
+      .breakpoint-small-down({
+        background: url("../../assets/images/goals/1.svg") top center no-repeat;
+        background-size: 100px;
+
+      });
+    }
+    &:nth-of-type(2){
+      background: url("../../assets/images/goals/2.svg") top left no-repeat;
+      background-size: 100px;
+      .breakpoint-small-down({
+        background: url("../../assets/images/goals/2.svg") top center no-repeat;
+        background-size: 100px;
+
+      });
+    }
+    &:nth-of-type(3){
+      background: url("../../assets/images/goals/3.svg") top left no-repeat;
+      background-size: 100px;
+      .breakpoint-small-down({
+        background: url("../../assets/images/goals/3.svg") top center no-repeat;
+        background-size: 100px;
+
+      });
+    }
+    &:nth-of-type(4){
+      background: url("../../assets/images/goals/4.svg") top left no-repeat;
+      background-size: 100px;
+      .breakpoint-small-down({
+        background: url("../../assets/images/goals/4.svg") top center no-repeat;
+        background-size: 100px;
+
+      });
+    }
+    &:nth-of-type(5){
+      background: url("../../assets/images/goals/5.svg") top left no-repeat;
+      background-size: 100px;
+      .breakpoint-small-down({
+        background: url("../../assets/images/goals/5.svg") top center no-repeat;
+        background-size: 100px;
+
+      });
+    }
+    &:nth-of-type(6){
+      background: url("../../assets/images/goals/6.svg") top left no-repeat;
+      background-size: 100px;
+      .breakpoint-small-down({
+        background: url("../../assets/images/goals/6.svg") top center no-repeat;
+        background-size: 100px;
+
+      });
+    }
+    &:nth-of-type(7){
+      background: url("../../assets/images/goals/7.svg") top left no-repeat;
+      background-size: 100px;
+      .breakpoint-small-down({
+        background: url("../../assets/images/goals/7.svg") top center no-repeat;
+        background-size: 100px;
+
+      });
+    }
   }
 }
 

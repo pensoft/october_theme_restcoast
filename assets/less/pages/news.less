@@ -1,5 +1,5 @@
 
-nav{
+nav:not(.navbar){
   width: 100%;
   ul{
     list-style-type: none;
@@ -10,15 +10,25 @@ nav{
   }
 }
 
+.news{
+  .news-title{
+    min-height: 86px;
+  }
+}
 
 .news-title {
   .card-title{
     color: @dark-color;
     font-weight: normal;
     text-transform: unset;
+    font-size: 22px;
     * {
       color: @dark-color;
     }
+
+    .breakpoint-small-down({
+      font-size: 20px;
+    })
   }
 
   .single-new-title{
@@ -36,14 +46,13 @@ nav{
   .text-published{
     font-weight: normal;
     margin-left: 20px;
+    font-family: Oswald;
     //top: 54px!important;
   }
 
   .content{
     margin-left: 20px;
-    .breakpoint-small-down({
-      padding-bottom: 1200px;
-    });
+
   }
 
   .content.left{
@@ -80,7 +89,12 @@ nav{
   }
 }
 
-.newslist .col-xs-12:first-child, .news .newslist{
+.home .news-item{
+  display: flex!important;
+}
+
+.newslist .col-xs-12,
+.news .newslist{
   display: flex;
   justify-content: space-between;
   .breakpoint-small-down({
@@ -112,6 +126,7 @@ nav{
     padding: 0px;
     position: relative;
     margin-bottom: 30px;
+    display: block;
      .news_column{
        background: @white-color;
        display: block;
@@ -128,16 +143,22 @@ nav{
 
        .text-published{
          color: @link-color;
+         font-family: Oswald;
        }
 
        .news-container{
          padding: 20px 25px;
-         height: 200px;
+         display: flex;
+         flex-direction: column;
+         //height: 200px;
          .breakpoint-small-down({
           height: auto;
          })
        }
 
+       .breakpoint-small-down({
+         margin-bottom: 30px!important;
+       })
      }
 
     .news_column:hover{
@@ -157,6 +178,12 @@ nav{
     box-shadow: 0 6px 27px rgba(0, 0, 0, 0.1) !important;
 
   }
+}
+.home .newslist{
+  margin-top: 50px;
+  .breakpoint-small-down({
+    margin-top: 10px;
+  })
 }
 
 

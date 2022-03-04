@@ -27,7 +27,7 @@ function onStart(){
 	<h1 class="page_heading ml-1">Media center</h1>
 	<div class="row between-sm between-xs">
 		{% if logos.count() %}
-		<div class="col-sm-2 col-xs-12">
+		<div class="col-sm-2 col-xs-6">
 			<div class="card-container text-center">
 				<a href="{{url('media-center')}}/logo" title="Logo">
 					<span class="card_image_container" style="background: url({{'pensoft/mediacenter-logo.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/logo" title="Logo"></span>
@@ -37,7 +37,7 @@ function onStart(){
 		</div>
 		{% endif %}
 		{% if flyers.count() %}
-		<div class="col-sm-2 col-xs-12">
+		<div class="col-sm-2 col-xs-6">
 			<div class="card-container text-center">
 				<a href="{{url('media-center')}}/flyer" title="Promotional materials">
 					<span class="card_image_container" style="background: url({{'pensoft/promotional-materials.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/flyer" title="Flyer and poster"></span>
@@ -48,7 +48,7 @@ function onStart(){
 		{% endif %}
 
 		{% if pressreleases.count() %}
-		<div class="col-sm-2 col-xs-12">
+		<div class="col-sm-2 col-xs-6">
 			<div class="card-container text-center">
 				<a href="{{url('media-center')}}/press-releases" title="Press releases">
 					<span class="card_image_container" style="background: url({{'pensoft/press_releases.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/press-releases" title="Press releases"></span>
@@ -58,7 +58,7 @@ function onStart(){
 		</div>
 		{% endif %}
 		{% if videos.count() %}
-		<div class="col-sm-2 col-xs-12">
+		<div class="col-sm-2 col-xs-6">
 			<div class="card-container text-center">
 				<a href="{{url('media-center')}}/videos" title="Videos">
 					<span class="card_image_container" style="background: url({{'pensoft/videos.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/videos" title="Videos"></span>
@@ -70,7 +70,7 @@ function onStart(){
 
 
 		{% if newsletters.count() %}
-		<div class="col-sm-2 col-xs-12">
+		<div class="col-sm-2 col-xs-6">
 			<div class="card-container text-center">
 				<a href="{{url('media-center')}}/newsletters" title="Newsletters">
 					<span class="card_image_container" style="background: url({{'pensoft/newsletters.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/newsletters" title="Newsletters"></span>

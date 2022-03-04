@@ -36,9 +36,13 @@ update_selector = "#gdpr-reload"
     <script src="{{ 'assets/js/jquery-ui.js'|theme }}"></script>
     <script src="{{ 'assets/vendor/bootstrap/js/modal.js'|theme  }}"></script>
     <script type="text/javascript" src="{{ 'assets/js/slick.min.js'|theme }}"></script>
-	<link rel="stylesheet" href="{{ ['assets/css/aos.css']|theme }}">
+	<link rel="stylesheet" href="{{ 'assets/css/aos.css'|theme }}">
 	<script src="{{ 'assets/js/aos.js'|theme }}"></script>
 	<script src="{{ 'assets/js/ckeditor/ckeditor.js'|theme}}"></script>
+	{% if this.page.id == 'home' %}
+	<script src="{{ 'assets/js/bootstrap.min.js'|theme }}"></script>
+	<script src="{{ 'assets/js/anime.js'|theme }}"></script>
+	{% endif %}
 
     {% component 'metaList' %}
     {% framework extras %}
@@ -47,9 +51,6 @@ update_selector = "#gdpr-reload"
 </head>
 
 <body>
-<script>
-	AOS.init();
-</script>
 	<div class="content-wrapper {{this.page.id}}">
 		<div id="fb-root"></div>
 		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="X0nPVr3s"></script>
@@ -98,6 +99,13 @@ update_selector = "#gdpr-reload"
 	<div id="gdpr-reload">
 		{% partial 'gdpr' %}
 	</div>
+
+<script>
+	$(function() {
+		AOS.init();
+	});
+</script>
+
 </body>
 {% component 'cookieBanner' %}
 

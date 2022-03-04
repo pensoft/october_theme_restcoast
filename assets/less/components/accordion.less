@@ -60,9 +60,13 @@
 
 /*------------------------*/
 
-.work_packages h2{
+.work_packages h2, .pilots h2{
   font-size: 36px!important;
   line-height: 1.7em!important;
+  .breakpoint-small-down({
+    text-align: center!important;
+    width: 100%;
+  })
 }
 
 
@@ -104,32 +108,55 @@
   display: inline-block;
 }
 
-.work_packages{
+.work_packages, .pilots{
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.work_packages .accordion-border{
+.work_packages .accordion-border, .pilots .accordion-border{
   border: none;
   padding: 15px 20px!important;
   margin: 0 0 20px 0;
   font-size: 1em;
   cursor: pointer;
   width: 100%;
-  background: #e6e6e6;;
+  background: #e6e6e6;
   .rounded(10px);
   .breakpoint-small-down({
     width: 90%;
   });
 }
 
-.work_packages .accordion-toggle{
+.pilots h2{
+  display: none;
+}
+.pilots .container-fluid.banner .container{
+  padding-top: 0;
+}
+
+.pilots .accordion-border{
+  border: none;
+  padding: 15px 20px!important;
+  margin: 0 0 20px 0;
+  font-size: 1em;
+  cursor: pointer;
+  width: 94%;
+  background: #e6e6e6!important;
+  .rounded(10px);
+  .breakpoint-small-down({
+    width: 90%;
+    background: #e6e6e6;
+  margin-bottom: 20px!important;
+  });
+}
+
+.work_packages .accordion-toggle, .pilots .accordion-toggle{
   background: none;
   border: none;
   border-radius: unset;
   padding: 0;
-  color: @default-color;
+  color: @dark-color;
   font-size: 1em;
   font-weight: bold;
   div:first-of-type, div:nth-of-type(2){
@@ -139,20 +166,25 @@
   }
 
 }
-.work_packages .accordion-content{
+.work_packages .accordion-content, .pilots .accordion-content{
   padding-top: 20px;
+  line-height: 1.5em!important;
+  width: 100%!important;
+}
+.pilots .accordion-content{
+  padding-top: 30px;
   line-height: 1.5em!important;
 }
 
 
-.work_packages .accordion-content p{
+.work_packages .accordion-content p, .pilots .accordion-content p{
   .breakpoint-large-down({
     padding: 0!important;
     text-align: left!important;
   });
 }
 
-.work_packages .plusminus{
+.work_packages .plusminus, .pilots .plusminus{
   max-width: 35px;
   height: 35px;
   text-align: right;
@@ -164,7 +196,7 @@
     text-align: center;
     vertical-align: middle;
     color: @default-color;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: normal;
   }
 
@@ -190,6 +222,15 @@
   flex-basis: unset;
   font-size: 20px!important;
 }
+.pilots .green_bullet{
+  background: url("../../assets/images/location_pilots.svg") left no-repeat;
+  background-size: contain;
+  width: 50px!important;
+  max-width: 50px!important;
+  height: 47px;
+  line-height: 47px;
+  flex-basis: unset;
+}
 
 
 .ui-accordion-header.col-md-6.col-xs-12{
@@ -198,9 +239,16 @@
   max-width: 100%!important;
 }
 
+.pilots .ui-accordion-header.col-md-6.col-xs-12{
+  width: 50%!important;
+  flex-basis: 50%!important;
+  max-width: 50%!important;
+}
+
 #ui-id-2, #ui-id-4, #ui-id-6, #ui-id-8, #ui-id-10, #ui-id-12, #ui-id-14, #ui-id-16{
   .breakpoint-small-down({
     display: block!important;
+    width: 100%;
   })
 }
 

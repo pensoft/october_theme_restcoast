@@ -11,6 +11,13 @@
   color: #ffffff!important;
 }
 
+.we_will .container{
+  padding-bottom: 20px;
+}
+.background .container{
+  padding: 0 5px;
+}
+
 .vision {
   h1{
     background: url('../../assets/images/vision.svg') left no-repeat;
@@ -68,6 +75,9 @@
 
 
 
+.numbers_container{
+  margin-bottom: 50px;
+}
 
 .numbers {
   width: 200px;
@@ -76,6 +86,8 @@
   background-size: contain;
   padding-top: 50px;
   color: @link-color;
+  font-size: 35px;
+  font-weight: bold;
   //margin: 0 auto;
   font-size: 1.5em;
   margin-top: 20px;
@@ -95,18 +107,22 @@
 
 .num_container{
   flex-grow: unset!important;
+  .breakpoint-large-down({
+    margin: 20px 0;
+  });
 }
 
 //.num_container:nth-of-type(2) .numbers,
 //.num_container:nth-of-type(3) .numbers{
 //  margin: 0 auto!important;
 //}
-.num_container:nth-of-type(4) .numbers{
-  float: right;
-  .breakpoint-small-down({
-    float: none;
-  })
-}
+//.num_container:nth-of-type(4) .numbers{
+//  float: right;
+//
+//  .breakpoint-small-down({
+//    float: none;
+//  })
+//}
 
 .count {
   display: block;

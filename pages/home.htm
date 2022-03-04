@@ -36,7 +36,7 @@ templates = "template1"
 description_limit = 0
 
 [jumbotron goals]
-jumbotron = "goals"
+jumbotron = "goal"
 title = 1
 background = "#ffffff"
 templates = "template1"
@@ -53,13 +53,13 @@ description_limit = 0
 <div class="container-fluid">
 	<div class="container">
 		<div class="row between-md around-xs">
-			<div class="col-md-4 col-xs-12 vision">
+			<div class="col-sm-4 col-xs-12 vision">
 				{% component 'vision' %}
 			</div>
-			<div class="col-md-4 col-xs-12 mission">
+			<div class="col-sm-4 col-xs-12 mission">
 				{% component 'mission' %}
 			</div>
-			<div class="col-md-4 col-xs-12 goals">
+			<div class="col-sm-4 col-xs-12 goals">
 				{% component 'goals' %}
 			</div>
 		</div>
@@ -67,7 +67,10 @@ description_limit = 0
 </div>
 
 <!-- numbers -->
-{% component 'numbers' %}
+<div class="numbers_container">
+	{% component 'numbers' %}
+</div>
+
 
 <!-- latest from news -->
 <div class="container-fluid bg-secondary">
@@ -84,7 +87,7 @@ description_limit = 0
 	<div class="container">
 	<!-- subscribes -->
 	<div class="row between-xs">
-		<div class="col-sm-5 col-xs-12">
+		<div class="col-lg-6 col-sm-5 col-xs-12">
 			<h1 class="base_heading">Latest updates</h1>
 			<div class="twitter-widget">
 			    <a class="twitter-timeline" href="https://twitter.com/RESTCOAST_H2020?ref_src=twsrc%5Etfw">Tweets by RESTCOAST_H2020</a>
@@ -119,10 +122,10 @@ description_limit = 0
 				{% if (this.theme.footer_funds_flag.getPath() != null or this.theme.footer_funds_text != '') %}
 			        <div class="homepage-funding funding row middle-xs">
 			            {% if this.theme.footer_funds_flag.getPath() %}
-							<div class="col-md-2 col-xs-12"><img class="text mr-0 mr-lg-1" style="height:70px;" src="{{ this.theme.footer_funds_flag.getPath() }}"/></div>
+							<div class="col-md-2 start-md col-xs-12 center-xs"><img class="text mr-0 mr-lg-1" style="height:70px;" src="{{ this.theme.footer_funds_flag.getPath() }}"/></div>
 			            {% endif %}
 			            {% if this.theme.footer_funds_text %}
-							<div class="col-md col-xs-12"><span class="align-items-center mt-md-0 mt-1">{{this.theme.footer_funds_text}}</span></div>
+							<div class="col-md start-md col-xs-12 center-xs"><span class="align-items-center mt-md-0 mt-1">{{this.theme.footer_funds_text}}</span></div>
 			            {%endif %}
 			        </div>
 		        {% endif %}

@@ -47,12 +47,16 @@ nav:not(.navbar){
     font-weight: normal;
     margin-left: 20px;
     font-family: Oswald;
-    //top: 54px!important;
+    .breakpoint-small-down({
+      margin-left: 0px;
+    });
   }
 
   .content{
     margin-left: 20px;
-
+    .breakpoint-small-down({
+      margin-left: 0px;
+    });
   }
 
   .content.left{
@@ -63,6 +67,9 @@ nav:not(.navbar){
 
   .news-title{
     margin-left: 20px;
+    .breakpoint-small-down({
+      margin-left: 0px;
+    });
   }
 
   img{
@@ -91,6 +98,13 @@ nav:not(.navbar){
 
 .home .news-item{
   display: flex!important;
+  .news_column{
+    width: 100%;
+    img{
+      height: 311px;
+      object-fit: cover;
+    }
+  }
 }
 
 .newslist .col-xs-12,
@@ -164,12 +178,14 @@ nav:not(.navbar){
     .news_column:hover{
       box-shadow: none;
     }
-
+    .breakpoint-large-down({
+      display: flex;
+    });
     .breakpoint-small-down({
       flex-basis: 100%!important;
       max-width: 100%!important;
       margin-top: 30px!important;
-    })
+    });
   }
 }
 

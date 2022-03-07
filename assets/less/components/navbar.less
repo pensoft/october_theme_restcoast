@@ -220,8 +220,10 @@
   .breakpoint-large-down({
     background: none;
     position: absolute;
-    top: 91vh;
-    width: 70%;
+    //top: 91vh;
+    //width: 70%;
+    top: 770px;
+    width: 300px;
     height: 75px;
     left: 0;
     right: 0;
@@ -327,7 +329,7 @@ nav .pr.p-search.large.search-btn{
     width: 100vw;
     height: 100vh;
     margin: -35px 0 0 -100vw;
-    padding: 50px 0 0 65px;
+    padding: 50px 0 0 61px;
     background-color: @dark-color;
     color: @white-color!important;
     font-size: 28px!important;
@@ -337,6 +339,12 @@ nav .pr.p-search.large.search-btn{
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
     font-family: Oswald;
     text-align: center;
+    .breakpoint-large-down({
+      padding: 150px 0 0 61px!important;
+    });
+    .breakpoint-small-down({
+      padding: 50px 0 0 61px!important;
+    });
   }
 
   #menu li

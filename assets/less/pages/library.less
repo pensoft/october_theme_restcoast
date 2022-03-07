@@ -1,5 +1,5 @@
 .library-items{
-  .breakpoint-small-down({
+  .breakpoint-large-down({
     margin-top: 150px;
   })
 }
@@ -67,6 +67,11 @@
     position: absolute;
     top: 247px;
     right: 0px;
+    .breakpoint-large-down({
+      position: absolute;
+      top:  409px;
+      left: 0px;
+    });
     .breakpoint-small-down({
       position: absolute;
       top:  509px;
@@ -79,7 +84,7 @@
   float: left;
   width: fit-content;
 
-  .breakpoint-small-down({
+  .breakpoint-large-down({
     width: 100%;
   });
 
@@ -93,6 +98,9 @@
   .col-sm-2.col-xs{
     max-width: 100%;
     flex-basis: unset;
+    .breakpoint-large-down({
+      width: 100%;
+    });
   }
   .field{
     margin-right: 20px;
@@ -111,8 +119,8 @@
   form{
     width: 386px;
     height: 48px !important;
-    .breakpoint-small-down({
-      margin: 0 auto;
+    .breakpoint-large-down({
+      margin: 0 0 0 8px;
       width: 95%!important;
     });
   }
@@ -166,8 +174,8 @@
     background-size: 26px;
   }
 
-  .breakpoint-small-down({
-    margin: 0 auto;
+  .breakpoint-large-down({
+    margin: 0 0 0 0;
     width: 95%!important;
     display: unset;
   })

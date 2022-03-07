@@ -16,6 +16,15 @@ a {
     .text-link;
 }
 
+img{
+  width: 100%;
+  //max-width: fit-content;
+}
+nav img{
+  width: auto;
+  //max-width: fit-content;
+}
+
 ul{
   list-style-type: disc;
   padding-left: 20px;
@@ -44,15 +53,12 @@ h1, h2{
   color: @dark-color;
   font-size: 75px;
   &.ml-1{
-    .breakpoint-small-down({
-      margin-left: 0!important;
-      text-align: center;
-    font-size: 46px;
-    });
   }
   .breakpoint-small-down({
     text-align: center;
     word-break: break-word;
+    font-size: 46px;
+    margin-left: 0!important;
   });
 }
 
@@ -97,14 +103,22 @@ h1, h2{
             //width: 1146px;
             //text-align: center;
             &.home-page-header{
-              font-size: 83px;
+              font-size: 105px;
               font-family: 'Oswald';
               font-weight: 600;
+              line-height: 105px;
+
               .breakpoint-small-down({
                   font-size: 83px;
               });
               .breakpoint-huge-down({
                 width: auto!important;
+              });
+              .breakpoint-laptop-down({
+                font-size: 70px;
+                line-height: 70px;
+                margin-bottom: 10px;
+                margin-top: 20px;
               });
             }
           .breakpoint-small-down({
@@ -117,9 +131,18 @@ h1, h2{
     }
 
     .jumbotron{
-      max-width: 35%;
+      max-width: 40%;
+      //max-width: 1057px;
       padding: 0 100px;
-      margin: auto 0;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-39.5%) !important;
+      .breakpoint-laptop-down({
+        padding: 0 0px;
+        max-width: 45%;
+      });
+
       .breakpoint-large-down({
         max-width: 100%;
         text-align: center;
@@ -127,10 +150,13 @@ h1, h2{
       });
 
       p{
-        font-size: 37px;
-        line-height: 54px;
+        font-size: 48px;
+        line-height: 1.3em;
         padding-left: 20px;
         margin-top: 10px;
+        .breakpoint-laptop-down({
+          font-size: 35px;
+        });
         .breakpoint-large-down({
           font-size: 30px;
           line-height: 50px;
@@ -155,6 +181,7 @@ h1, h2{
         .header-image-bar {
           height: calc(~"100vh - 95px");
           margin-top: 95px;
+          position: relative;
             .breakpoint-large-down({
               height: 100vh;
               margin-top: 0;
@@ -699,6 +726,15 @@ footer .align-items-center{
       });
     }
   }
+}
+
+.pilots_background_container{
+  background: url("../../assets/images/pilots-map-02.png") right no-repeat;
+  background-position: right top 50px;
+  background-size: 45%;
+  .breakpoint-small-down({
+    background: none;
+  })
 }
 
 

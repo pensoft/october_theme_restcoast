@@ -39,10 +39,7 @@ update_selector = "#gdpr-reload"
 	<link rel="stylesheet" href="{{ 'assets/css/aos.css'|theme }}">
 	<script src="{{ 'assets/js/aos.js'|theme }}"></script>
 	<script src="{{ 'assets/js/ckeditor/ckeditor.js'|theme}}"></script>
-	{% if this.page.id == 'home' %}
-	<script src="{{ 'assets/js/bootstrap.min.js'|theme }}"></script>
-	<script src="{{ 'assets/js/anime.js'|theme }}"></script>
-	{% endif %}
+	
 
     {% component 'metaList' %}
     {% framework extras %}
@@ -65,7 +62,7 @@ update_selector = "#gdpr-reload"
 		</header>
 
 		<!-- Content -->
-		<section id="layout-content" class="{{this.page.id}}" {% if user %} style="margin-top: 150px;" {% endif %}>
+		<section id="layout-content" class="{{this.page.id}}" {% if user and this.page.id != 'home' %} style="margin-top: 150px;" {% endif %}>
 			{% page %}
 			{% component 'googleTracker' %}
 		</section>

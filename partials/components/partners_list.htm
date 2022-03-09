@@ -5,7 +5,7 @@
 	<div class="col-lg-3 col-sm-6 col-xs-12 partner-item">
 		<div class="partner_logo">
 			{% if partner.cover %}
-			<a href="{{partner.instituion_url}}" target="_blank"><img alt="{{ partner.institution }}" src="{{partner.cover.thumb(auto,50,{'mode':'crop'})}}"></a>
+			<a href="{{partner.instituion_url}}" target="_blank"><img alt="{{ partner.institution }}" src="{{partner.cover.thumb(auto,70,{'mode':'crop'})}}"></a>
 			{% endif %}
 		</div>
 		<div class="partner_description">{{partner.content|raw}}</div>

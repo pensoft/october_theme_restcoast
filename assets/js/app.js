@@ -47,6 +47,10 @@ $(document).ready(function() {
 		}
 	});
 
+	$('.work_packages .accordion-content').each(function( index, value ) {
+		$(value).find('a').attr( "onclick", "window.open(this.href, '_blank');" )
+	});
+
 	$('.nav.nav-pills').removeAttr('id');
 
 	var count = $("h1").text().length;

@@ -73,8 +73,9 @@ nav:not(.navbar){
   }
 
   img{
-    width: 100% !important;
+    max-width: 100% !important;
     border-radius: 10px;
+    object-fit: none;
   }
 
   h1{
@@ -103,6 +104,7 @@ nav:not(.navbar){
     img{
       height: 311px;
       object-fit: cover;
+      object-position: 0 0;
     }
   }
 }
@@ -110,7 +112,7 @@ nav:not(.navbar){
 .newslist .col-xs-12,
 .news .newslist{
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   .breakpoint-small-down({
     display: unset;
   });
@@ -140,6 +142,7 @@ nav:not(.navbar){
     padding: 0px;
     position: relative;
     margin-bottom: 30px;
+    margin-right: 30px;
     display: block;
      .news_column{
        background: @white-color;
@@ -186,6 +189,10 @@ nav:not(.navbar){
       max-width: 100%!important;
       margin-top: 30px!important;
     });
+  }
+
+  .news-item:nth-of-type(3n){
+    margin-right: 0;
   }
 }
 

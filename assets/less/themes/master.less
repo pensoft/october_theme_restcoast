@@ -212,11 +212,19 @@ h1, h2{
 }
 
 .partners_background{
-  background: url(../../assets/images/map.jpg) top right no-repeat;
-  background-size: 50%;
-  .breakpoint-small-down({
-    background: none;
-  })
+  //background: url(../../assets/images/map.jpg) top right no-repeat;
+  //background-size: 50%;
+  //.breakpoint-small-down({
+  //  background: none;
+  //})
+  position: relative;
+
+  .svg_map{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+  }
 }
 
 #layout-content:not(.home){

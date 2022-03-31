@@ -22,9 +22,12 @@ function onStart(){
 ?>
 ==
 <div class="container-fluid partners_background">
+	<div class="svg_map">
+		{% partial 'components/svg' %}
+	</div>
 	<div class="container">
-
 	<h1 class="page_heading ml-1">Partners</h1>
+	<span class="tooltiptext" id="tooltip">Bulgaria</span>
 	{% if countries.count() %}
 	<div class="row">
 		<div class="col-md-6 col-xs-12">
@@ -45,7 +48,6 @@ function onStart(){
 
 	{% endif %}
 
-		<div id="tooltip"></div>
 	{% component 'PartnersPage' %}
 
 

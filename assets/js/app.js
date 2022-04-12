@@ -51,21 +51,23 @@ $(document).ready(function() {
 		$(value).find('a').attr( "onclick", "window.open(this.href, '_blank');" )
 	});
 
+	$('.pilots .accordion-border').click(function(){
+		// $("path").removeClass('active_path');
+		// var tooltip = document.getElementById("tooltip");
+		// tooltip.classList.remove("active");
+		var title = $(this).find(".accordion-toggle .col-xs.start-xs").text();
+		var toggler = $(this).find(".accordion-toggle");
+
+		if (toggler.next(".accordion-content").is(':visible')) {
+			$("path[title='"+title+"']").removeClass('active_path');
+		} else {
+			$("path[title='"+title+"']").addClass('active_path');
+		}
+	});
+
 	$('.nav.nav-pills').removeAttr('id');
 
 	var count = $("h1").text().length;
-
-	//
-	// $('.content-wrapper.news .content img').each(function(){
-	// 	$(this).attr('id', 'myImg');
-	// 	$(this).addClass('myImages');
-	// });
-	//
-	// $('.content-wrapper.news').after('<div id=\"myModal\" class=\"modal\">\n' +
-	// 	'  <span class=\"close_modal\">&times;</span>\n' +
-	// 	'  <img class=\"modal-content\" id=\"img01\">\n' +
-	// 	'  <div id=\"caption\"></div>\n' +
-	// 	'</div>');
 
 
 	$('.tabs').each(function(){
@@ -183,7 +185,7 @@ $(document).ready(function() {
 
 // 	// create references to the modal...
 // 	var modal = document.getElementById('myModal');
-// // to all images -- note I'm using a class!
+// // to all images -- note I'm using a class!o
 // 	var images = document.getElementsByClassName('myImages');
 // // the image in the modal
 // 	var modalImg = document.getElementById("img01");
@@ -435,5 +437,55 @@ function init() {
     appendSignIn()
     appendSignOut()
 }
+
+function handlePilotsSVGMapMouseMove(event) {
+	var title = $(event.target).attr('title');
+	var tooltip = document.getElementById("tooltip");
+	if (!title) {
+		title = $(event.target).parent().attr('title');
+	}
+
+	switch (title) {
+		case 'Nahal Dalia':
+		case 'Catalan coast Ebro delta':
+		case 'Rhone Delta':
+		case 'Venice lagoon':
+		case 'Foros Bay':
+		case 'Wadden Sea':
+		case 'Sicily lagoon':
+		case 'Arcachon bay':
+		case 'Vistula lagoon':
+			break;
+		default:
+			return tooltip.classList.remove("active");
+	}
+
+	var x = event.clientX;
+	var y = event.clientY;
+
+	tooltip.style.left = (x + 20) + "px";
+	tooltip.style.top = (y - 20) + "px";
+
+	tooltip.innerHTML = $(event.target).attr('title');
+	tooltip.classList.add("active");
+
+}
+
+function onPilots(pTitle) {
+	// $("path").removeClass('active_path');
+	var tooltip = document.getElementById("tooltip");
+	tooltip.classList.remove("active");
+	$("path[title='"+pTitle+"']").addClass('active_path');
+
+	$('.accordion-border').each(function(){
+		var title = $(this).find(".accordion-toggle .col-xs.start-xs").text();
+		var toggler = $(this).find(".accordion-toggle");
+
+		if(title == pTitle && !toggler.next(".accordion-content").is(':visible')){
+			toggler.trigger( "click" );
+		}
+	});
+}
+
 
 init()

@@ -231,6 +231,11 @@ $(document).ready(function() {
 
 	$('.see_all_partners_link').hide();
 
+	$('<div class="col-xs-12 col-sm-3 card internal no-border" style="margin-bottom: 15px">\n' +
+		'<a class="folder-background" style="display:flex; background: url(https://rest-coast.eu/storage/app/media/pensoft/living-documents.svg) center center no-repeat; background-size: 100px; height: 200px" href="/internal-repository/living-documents" title="Living documents"></a>\n' +
+		'<h3 class="card-header"><a href="/internal-repository/living-documents" title="Living documents">Living documents</a></h3>\n' +
+		'</div>').insertAfter($('.card.internal').last());
+
 
 });
 

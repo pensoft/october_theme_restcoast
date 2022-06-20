@@ -410,7 +410,7 @@ function init() {
         if (isBreakpointLarge()) {
             $('#card-carousel').slick('unslick');
         } else {
-            if (typeof cardCarousel === 'function') { 
+            if (typeof cardCarousel === 'function') {
                 cardCarousel({
                     slidesToShow: 3,
                     slidesToScroll: 3,
@@ -426,7 +426,7 @@ function init() {
     });
     document.addEventListener('DOMContentLoaded', function () {
         if (!isBreakpointLarge()) {
-            if (typeof cardCarousel === 'function') { 
+            if (typeof cardCarousel === 'function') {
                 cardCarousel({
                     slidesToShow: 3,
                     slidesToScroll: 3,
@@ -495,6 +495,19 @@ function onPilots(pTitle) {
 			toggler.trigger( "click" );
 		}
 	});
+}
+
+function createCustomTippy(element, options) {
+    return new Promise(resolve => {
+        tippy(element, Object.assign({}, {
+            allowHTML: true,
+            interactive: true,
+            animation: 'scale',
+            theme: 'light',
+            trigger: 'click',
+        }, options));
+        resolve();
+    });
 }
 
 

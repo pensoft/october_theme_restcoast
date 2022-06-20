@@ -119,16 +119,7 @@ description_limit = 0
 					{% endif %}
 				</div>
 
-				{% if (this.theme.footer_funds_flag.getPath() != null or this.theme.footer_funds_text != '') %}
-			        <div class="homepage-funding funding row middle-xs">
-			            {% if this.theme.footer_funds_flag.getPath() %}
-							<div class="col-md-2 start-md col-xs-12 center-xs"><img class="text mr-0 mr-lg-1" style="height:70px;" src="{{ this.theme.footer_funds_flag.getPath() }}"/></div>
-			            {% endif %}
-			            {% if this.theme.footer_funds_text %}
-							<div class="col-md start-md col-xs-12 center-xs"><span class="align-items-center mt-md-0 mt-1">{{this.theme.footer_funds_text}}</span></div>
-			            {%endif %}
-			        </div>
-		        {% endif %}
+				
 
 			</div>
 

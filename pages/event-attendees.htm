@@ -1,0 +1,70 @@
+url = "/event-reports"
+layout = "default"
+title = "Reported Events"
+
+[session]
+security = "user"
+redirect = "home"
+==
+<?php
+use Pensoft\EventReporting\Models\EventsreportingData as Data;
+
+function onStart(){
+	$this['events'] =  Data::select('event_name', 'event_date', 'organiser', 'project_organised', 'website', 'online_hybrid_onsite', 'venue')->distinct()->orderBy('event_date')->get();
+
+}
+
+?>
+==
+
+
+{% component 'session' %}
+<div class="container">
+	<h1 class="page_heading internal">Reported Events</h1>
+
+    <div class="library-items" id="partialLibraries">
+        {% for event in events %}
+        <div class="library-item">
+            <div class="row">
+                <div class="col-md-9 col-xs-12">
+                    <h3 class="card-title">{{event.event_name}}</h3>
+                    <div class="body">
+                        <div>
+                            <span class="text-bold">Date of event:</span>
+                            <span class="text-ligth">{{event.event_date|date("d F Y") }}</span>
+                        </div>
+                        <br>
+
+                        <div>
+                            <span class="text-bold">Organiser:</span>
+                            <span class="text-ligth">{{event.organiser}}</span>
+                        </div>
+                        <div>
+                            <span class="text-bold">REST-COAST organised or relevant:</span>
+                            {% set arrayOrganised = {'1': 'organised', '2': 'relevant'} %}
+                            <span class="text-ligth">{{arrayOrganised[event.project_organised]}}</span>
+                        </div>
+                        <div>
+                            <span class="text-bold">Venue:</span>
+                            <span class="text-ligth">{{event.venue}}</span>
+                        </div>
+                        <div>
+                            <span class="text-bold">Online, hybrid or on-site:</span>
+                            {% set onlineHybridOnsite = {'1': 'online', '2': 'hybrid', '2': 'on-site'} %}
+                            <span class="text-ligth">{{onlineHybridOnsite[event.online_hybrid_onsite]}}</span>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <a href="{{event.website}}" target="_blank" class="btn btn-primary no-margin">Go to event website</a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+
+    </div>
+</div>

@@ -1,6 +1,6 @@
-url = "/event-reports"
+url = "/planned-events"
 layout = "default"
-title = "Reported Events"
+title = "Planned Events"
 
 [session]
 security = "user"
@@ -10,17 +10,29 @@ redirect = "home"
 use Pensoft\EventReporting\Models\EventsreportingData as Data;
 
 function onStart(){
-	$this['events'] =  Data::select('event_name', 'event_date', 'organiser', 'project_organised', 'website', 'online_hybrid_onsite', 'venue')->distinct()->orderBy('event_date')->get();
-
+	//$this['events'] =  Data::select('event_name', 'event_date', 'organiser', 'project_organised', 'website', 'online_hybrid_onsite', 'venue', 'slug')->distinct()->orderBy('event_date')->get();
+$this['events'] =
+Data::select(
+'event_name',
+'event_start',
+DB::raw('max(event_end) as event_end'),
+DB::raw('max(organiser) as organiser'),
+DB::raw('max(project_organised) as project_organised'),
+DB::raw('max(website) as website'),
+DB::raw('max(online_hybrid_onsite) as online_hybrid_onsite'),
+DB::raw('max(venue) as venue'),
+DB::raw('min(slug) as slug')
+)
+->whereNull('pensoft_eventreporting_data.deleted_at')
+->groupBy('event_name','event_start')
+->orderBy('event_start','asc')
+->get();
 }
-
 ?>
 ==
-
-
 {% component 'session' %}
 <div class="container">
-	<h1 class="page_heading internal">Reported Events</h1>
+    <h1 class="page_heading internal">Planned Events</h1>
 
     <div class="library-items" id="partialLibraries">
         {% for event in events %}
@@ -30,8 +42,12 @@ function onStart(){
                     <h3 class="card-title">{{event.event_name}}</h3>
                     <div class="body">
                         <div>
-                            <span class="text-bold">Date of event:</span>
-                            <span class="text-ligth">{{event.event_date|date("d F Y") }}</span>
+                            <span class="text-bold">Start date:</span>
+                            <span class="text-ligth">{{event.event_start|date("d F Y") }}</span>
+                        </div>
+                        <div>
+                            <span class="text-bold">End date:</span>
+                            <span class="text-ligth">{{event.event_end|date("d F Y") }}</span>
                         </div>
                         <br>
 
@@ -58,7 +74,8 @@ function onStart(){
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-12">
-                    <a href="{{event.website}}" target="_blank" class="btn btn-primary no-margin">Go to event website</a>
+                    {% set url = event.website ?  event.website : '/events/' ~ event.slug %}
+                    <a href="{{url}}" target="_blank" class="btn btn-primary no-margin">Go to event website</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,15 @@
+url = "/event-attendance-form"
+layout = "default"
+title = "Event attendance form"
+
+[EventAttendanceForm]
+
+[session]
+security = "user"
+redirect = "home"
+==
+{% component 'session' %}
+<div class="container">
+	<h1 class="page_heading internal">Event Attendance Form</h1>
+    {% component 'EventAttendanceForm' %}
+</div>

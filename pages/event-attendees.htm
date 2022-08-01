@@ -33,12 +33,14 @@ function onStart(){
             )
             ->whereNull('pensoft_eventreporting_data.deleted_at')
             ->groupBy('event_name','event_start')
-            ->orderBy('event_start','asc')
+            ->orderBy('event_start','desc')
             ->get();
 
     $this['attendees'] = new class {
         public function getIM($id) {
-            return Attendant::where('event_id', $id)->join('users', 'users.id', '=', 'pensoft_eventreporting_attendants.user_id')->get();
+            return Attendant::where('event_id', $id)
+->join('users', 'users.id', '=', 'pensoft_eventreporting_attendants.user_id')
+->get();
         }
     };
 
@@ -116,7 +118,10 @@ function onStart(){
                     </div>
                     <div class="col-md-3 col-xs-12">
                         {% set url = event.website ?  event.website : '/events/' ~ event.slug %}
-                        <a href="{{url}}" target="_blank" class="btn btn-primary no-margin">Go to event website</a>
+                        <a href="{{url}}" target="_blank" class="btn btn-primary" style="width: 230px;">Go to event website</a>
+                        {% if date(event.event_end) >= date() %}
+                        <a href="{{'event-attendance-form'|page}}/{{event.id}}" class="btn btn-primary mb-1 mt-1" style="width: 230px;">Add attendance</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

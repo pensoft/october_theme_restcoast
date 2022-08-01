@@ -7,12 +7,13 @@ robot_follow = "follow"
 
 [calendar]
 default = "true"
-limit = 10
+limit = "null"
 category = "null"
 language = "en"
 ==
 <?php
 use Pensoft\Calendar\Models\Entry;
+use Pensoft\Eventreporting\Models\EventsreportingData;
 
 function onStart(){
 
@@ -36,6 +37,8 @@ function onStart(){
 
 
 			)->where('slug', $this->param('slug'))->first();
+
+$this['planned_event'] =  EventsreportingData::where('slug', $this->param('slug'))->first();
 	}
 
 	$this['entries'] = Entry::orderBy('start', 'desc')->paginate(20);
@@ -131,6 +134,14 @@ function onStart(){
 				</div>
 			</div>
 		</div>
+
+        {% if user and planned_event.id %}
+        <div class="col-xs-12 col-md-7">
+            {% if date(entry.end) >= date() %}
+            <a href="{{'event-attendance-form'|page}}/{{planned_event.id}}" class="btn btn-primary mb-1 mt-1" style="width: 230px;">Add attendance</a>
+            {% endif %}
+        </div>
+        {% endif %}
 
 		{% else %}
 		{% endif %}

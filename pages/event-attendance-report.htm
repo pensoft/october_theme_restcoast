@@ -2,12 +2,11 @@ url = "/event-attendance-planner"
 layout = "default"
 title = "Event Attendance Planner"
 
+[EventReportingForm]
+
 [session]
 security = "user"
-allowedUserGroups[] = "internal-users"
 redirect = "home"
-
-[EventReportingForm]
 ==
 <?php
 function onStart(){

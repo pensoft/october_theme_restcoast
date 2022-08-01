@@ -1,4 +1,4 @@
-url = "/event-attendance-form"
+url = "/event-attendance-form/:id?|[0-9]"
 layout = "default"
 title = "Event attendance form"
 
@@ -8,8 +8,14 @@ title = "Event attendance form"
 security = "user"
 redirect = "home"
 ==
+<?php
+    function onStart(){
+        $this['id'] = (int)$this->param('id');
+    }
+?>
+==
 {% component 'session' %}
 <div class="container">
 	<h1 class="page_heading internal">Event Attendance Form</h1>
-    {% component 'EventAttendanceForm' %}
+    {% component 'EventAttendanceForm' id=id %}
 </div>

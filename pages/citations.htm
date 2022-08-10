@@ -11,7 +11,7 @@ use Pensoft\Citationtool\Models\Citation;
 use System\Models\File;
 
 function onStart(){
-	$this['citations'] =  Citation::orderBy('year', 'desc')->get();
+	$this['citations'] =  Citation::orderBy('year', 'desc')->orderBy('id', 'desc')->get();
 	if(get('download')){
 		$file = File::find((int)get('download'));
 		$file_name = $file->getLocalPath();
@@ -42,6 +42,8 @@ return Redirect::to('/citations');
 {% component 'session' %}
 <div class="container">
 	<h1 class="page_heading internal">Citations</h1>
+    <a href="{{'citations-form'|page}}" target="_blank" class="btn btn-primary no-margin">Add citation</a>
+
     {% for record in citations %}
     <div class="library-item">
         <div class="row">

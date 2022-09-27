@@ -1,6 +1,6 @@
 url = "/media-center"
 layout = "default"
-title = "Media centre"
+title = "Media center"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
@@ -24,7 +24,7 @@ function onStart(){
 ?>
 ==
 <div class="container">
-	<h1 class="page_heading ml-1">Media centre</h1>
+	<h1 class="page_heading ml-1">Media center</h1>
 	<div class="row">
 		{% if logos.count() %}
 		<div class="col-sm-2 col-xs-6">
@@ -53,6 +53,16 @@ function onStart(){
 				<a href="{{url('media-center')}}/press-releases" title="Press releases">
 					<span class="card_image_container" style="background: url({{'pensoft/press_releases.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/press-releases" title="Press releases"></span>
 					<span class="media_label">Press releases</span>
+				</a>
+			</div>
+		</div>
+		{% endif %}
+		{% if presentations.count() %}
+		<div class="col-sm-2 col-xs-6">
+			<div class="card-container text-center">
+				<a href="{{url('media-center')}}/fact-sheets" title="Pilot Site Factsheets">
+					<span class="card_image_container" style="background: url({{'pensoft/fact_sheets.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/fact-sheets" title="Pilot Site Factsheets"></span>
+					<span class="media_label">Pilot Site Factsheets</span>
 				</a>
 			</div>
 		</div>

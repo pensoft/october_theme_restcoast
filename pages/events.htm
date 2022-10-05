@@ -13,37 +13,50 @@ language = "en"
 ==
 <?php
 use Pensoft\Calendar\Models\Entry;
-use Pensoft\Eventreporting\Models\EventsreportingData;
+use Pensoft\EventReporting\Models\EventsreportingData as Data;
+use Pensoft\EventReporting\Models\EventsreportingAttendants as Attendant;
 
 function onStart(){
 
     if($this->param('slug')){
-			$this['entry'] =  Entry::select(
-			'*',
-			'title',
-			'place',
-			'description',
-			'url',
+        $this['entry'] =  Entry::select(
+        '*',
+        'title',
+        'place',
+        'description',
+        'url',
 
-			DB::raw("to_char(\"start\", 'DD') as start_day"),
-			DB::raw("to_char(\"start\", 'YYYY') as start_year"),
-			DB::raw("to_char(\"end\", 'DD') as end_day"),
-			DB::raw("to_char(\"end\", 'YYYY') as end_year"),
-			DB::raw("to_char(\"start\", 'month') as start_month"),
-			DB::raw("to_char(\"end\", 'month') as end_month"),
-			DB::raw("
-			\"end\" is not null as has_end
-			")
+        DB::raw("to_char(\"start\", 'DD') as start_day"),
+        DB::raw("to_char(\"start\", 'YYYY') as start_year"),
+        DB::raw("to_char(\"end\", 'DD') as end_day"),
+        DB::raw("to_char(\"end\", 'YYYY') as end_year"),
+        DB::raw("to_char(\"start\", 'month') as start_month"),
+        DB::raw("to_char(\"end\", 'month') as end_month"),
+        DB::raw("
+        \"end\" is not null as has_end
+        ")
 
 
-			)->where('slug', $this->param('slug'))->first();
+        )->where('slug', $this->param('slug'))->first();
 
-$this['planned_event'] =  EventsreportingData::where('slug', $this->param('slug'))->first();
-	}
 
-	$this['entries'] = Entry::orderBy('start', 'desc')->paginate(20);
+        $this['attendees'] = new class {
+            public function getIM($id) {
+            return Attendant::where('event_id', $id)
+            ->join('users', 'users.id', '=', 'pensoft_eventreporting_attendants.user_id')
+            ->get();
+            }
+        };
+        $this['internalData'] = new class {
+            public function getIM($id) {
+                return Data::where('slug', $id)->first();
+            }
+        };
+}
 
-		$this['slug'] = $this->param('slug');
+    $this['entries'] = Entry::orderBy('start', 'desc')->paginate(20);
+
+    $this['slug'] = $this->param('slug');
 }
 ?>
 ==
@@ -132,13 +145,29 @@ $this['planned_event'] =  EventsreportingData::where('slug', $this->param('slug'
 				<div class="content mt-2">
 					{{ entry.description|raw }}
 				</div>
+                {% if user %}
+                {% if attendees.getIM(entry.id).count %}
+                <div>
+                    <span class="text-bold">Attendees:</span>
+
+                    {% for profile in attendees.getIM(entry.id) %}
+                    <span class="text-ligth">{{profile.name}} {{profile.surname}}</span>
+                    {% if not loop.last %},&nbsp;{% endif %}
+                    {% endfor %}
+
+
+                </div>
+                {% endif %}
+
+                {% endif %}
 			</div>
 		</div>
 
-        {% if user and planned_event.id %}
+        {% if user  %}
         <div class="col-xs-12 col-md-7">
-            {% if date(entry.end) >= date() %}
-            <a href="{{'event-attendance-form'|page}}/{{planned_event.id}}" class="btn btn-primary mb-1 mt-1" style="width: 230px;">Add attendance</a>
+            <a href="{{'event-attendance-form'|page}}/{{entry.id}}" class="btn btn-primary mb-1 mt-1" style="width: 230px;  font-size: unset;">Add attendance</a>
+            {% if internalData.getIM(entry.slug).id %}
+            <a href="{{'event-attendance-report'|page}}" class="btn btn-primary mb-1 mt-1">Edit</a>
             {% endif %}
         </div>
         {% endif %}

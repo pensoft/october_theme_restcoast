@@ -35,7 +35,7 @@ $(document).ready(function() {
 	width100.width(innerWidth);
 
 
-	$('body').on('click', '.work_packages .accordion-toggle, .pilots .accordion-toggle', function () {
+	$('body').on('click', '.work_packages .accordion-toggle, .pilots .accordion-toggle, .messages .accordion-toggle', function () {
 		if ($(this).next(".accordion-content").is(':visible')) {
 			$(this).next(".accordion-content").slideUp(300);
 			$(this).children().find(".plusminus").text('+');
@@ -47,7 +47,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.work_packages .accordion-content, .pilots .accordion-content').each(function( index, value ) {
+	$('.work_packages .accordion-content, .pilots .accordion-content, .messages .accordion-toggle').each(function( index, value ) {
 		$(value).find('a').attr( "onclick", "window.open(this.href, '_blank');" )
 	});
 

@@ -10,6 +10,7 @@ default = "true"
 limit = "null"
 category = "null"
 language = "en"
+redirect_to_detailed_page = "false"
 ==
 <?php
 use Pensoft\Calendar\Models\Entry;
@@ -142,12 +143,18 @@ function onStart(){
 				<div class="event-place"> {{ entry.place }}</div>
 				{% endif %}
 
-				<div class="content mt-2">
+				<div class="content mt-2 mb-2">
 					{{ entry.description|raw }}
 				</div>
+                {% if internalData.getIM(entry.slug).organiser %}
+                <div class="content">
+                    <span class="text-bold">Organiser:</span>
+                    <span class="text-ligth">{{internalData.getIM(entry.slug).organiser}}</span>
+                </div>
+                {% endif %}
                 {% if user %}
                 {% if attendees.getIM(entry.id).count %}
-                <div>
+                <div class="content">
                     <span class="text-bold">Attendees:</span>
 
                     {% for profile in attendees.getIM(entry.id) %}
@@ -159,6 +166,11 @@ function onStart(){
                 </div>
                 {% endif %}
 
+                {% endif %}
+
+
+                {% if entry.url %}
+                <a href="{{entry.url}}" class="btn btn-primary mb-1 mt-1" target="_blank">Go to event website</a>
                 {% endif %}
 			</div>
 		</div>

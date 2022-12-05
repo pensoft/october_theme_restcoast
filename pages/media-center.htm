@@ -12,6 +12,7 @@ use Pensoft\Media\Models\Newsletters;
 use Pensoft\Media\Models\Presentations;
 use Pensoft\Media\Models\Pressreleases;
 use Pensoft\Media\Models\Videos;
+use Pensoft\Media\Models\Graphic;
 
 function onStart(){
 	$this['logos'] =  MediaLogos::get();
@@ -20,6 +21,7 @@ function onStart(){
 	$this['presentations'] =  Presentations::get();
 	$this['pressreleases'] =  Pressreleases::get();
 	$this['videos'] =  Videos::get();
+	$this['graphics'] =  Graphic::get();
 }
 ?>
 ==
@@ -85,6 +87,19 @@ function onStart(){
 				<a href="{{url('media-center')}}/newsletters" title="Newsletters">
 					<span class="card_image_container" style="background: url({{'pensoft/newsletters.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/newsletters" title="Newsletters"></span>
 					<span class="media_label">Newsletters</span>
+				</a>
+			</div>
+		</div>
+		{% endif %}
+
+
+
+		{% if graphics.count() %}
+		<div class="col-sm-2 col-xs-6">
+			<div class="card-container text-center">
+				<a href="{{url('media-center')}}/policy-briefs" title="Policy briefs">
+					<span class="card_image_container" style="background: url({{'pensoft/press_releases.svg'|media}}) center center no-repeat;" href="{{url('media-center')}}/policy-briefs" title="Policy briefs"></span>
+					<span class="media_label">Policy briefs</span>
 				</a>
 			</div>
 		</div>

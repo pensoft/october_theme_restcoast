@@ -10,7 +10,7 @@ default = "true"
 limit = "null"
 category = "null"
 language = "en"
-redirect_to_detailed_page = "false"
+redirect_to_detailed_page = 1
 ==
 <?php
 use Pensoft\Calendar\Models\Entry;
@@ -80,12 +80,12 @@ function onStart(){
 
 			<div class="event_list_item">
 				<div class="row between-xs time_and_date">
-					<div class="col-md start-md col-xs-12 center-xs">{{entry.event_date}}</div>
-					<div class="col-md end-md col-xs-12 center-xs">{{entry.start|date('l')}}</div>
-				</div>
-				<div class="row">
+					<div class="col-md-2 start-md col-xs-12 center-xs">{{entry.event_date}}</div>
+					<div class="col-md-8 start-md col-xs-12 center-xs"><a class="button" href="{{ url }}" target="_blank" style="font-weight: normal; font-family: muli;">{{entry.title}}</a></div>
+					<div class="col-md-2 end-md col-xs-12 center-xs">{{entry.start|date('l')}}</div>
+				
 					<!--<div class="col-xs-1">{{entry.start|date('g:i')}}</div> <div class="col-xs-11">{{entry.title}}</div>-->
-					<div class="col-md-2 start-md col-xs-12 center-xs">{{entry.event_time}}</div> <div class="col-md-10 start-md col-xs-12 center-xs"><a class="button" href="{{ url }}" target="_blank">{{entry.title}}</a></div>
+					
 				</div>
 			</div>
 

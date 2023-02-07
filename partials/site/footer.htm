@@ -44,7 +44,7 @@ theme = "dark-bottom"
 				<div class="head">RESOURCES</div>
 				{% component 'resources_menu' %}
 			</div>
-			<div class="col-xs-12 col-md-2 start-md center-xs col-sm-6 start-sm">
+			<div class="col-xs-12 col-md-3 start-md center-xs col-sm-6 start-sm">
 				{% if (enable_social_media) %}
 				<div class="head">FOLLOW {{ this.theme.site_name }}</div>
 				<div class="social-networks">
@@ -68,7 +68,7 @@ theme = "dark-bottom"
 				</div>
 				{% endif %}
 			</div>
-			<div class="col-xs-12 col-md-2 start-md center-xs col-sm-6 start-sm">
+			<div class="col-xs-12 col-md start-md center-xs col-sm-6 start-sm">
 				<div class="head">Contact us</div>
 				<div class="social-networks contacts col-md-2 col-xs-12 start-md center-xs">
 					<div class="icons mt-1">
@@ -78,8 +78,8 @@ theme = "dark-bottom"
 			</div>
 
 			{%if this.theme.subscribe%}
-			<div class="col-xs-12 col-md-2 start-md center-xs col-sm-6 start-sm">
-				<div class="head">Stay up to date</div>
+			<div class="col-xs-12 col-md start-md center-xs col-sm-6 start-sm">
+				<div class="head" style="white-space:nowrap; overflow: hidden;">Stay up to date</div>
 				<div class="icons mt-1">
 					<a href="{{this.theme.subscribe}}" target="_blank" class="pr p-secondary p-subscribe big"></a>
 				</div>

@@ -65,14 +65,12 @@ function onStart(){
 	{% if not slug %}
 	<h1 class="page_heading">Events</h1>
 	<div class="tabs">
-		<a class="" href="#calendarView">Calendar view</a>
 		<a class="" href="#listView">List view</a>
+		<a class="" href="#calendarView">Calendar view</a>
 	</div>
 	<!--tabs content	-->
 
-	<div class="row" id="calendarView">
-		{% component 'calendar' %}
-	</div>
+	
 	<div class="row" id="listView">
 		<div class="events_list_container">
 			{% for entry in entries %}
@@ -95,6 +93,9 @@ function onStart(){
 			{{ entries.fragment('listView').render|raw }}
 		</div>
 
+	</div>
+	<div class="row" id="calendarView">
+		{% component 'calendar' %}
 	</div>
 	{% else %}
 
@@ -135,7 +136,6 @@ function onStart(){
 				{% if entry.event_date %}
 				<div class="event-date">
 					 {{entry.event_date}}
-					{{entry.event_time}}
 				</div>
 				{% endif %}
 

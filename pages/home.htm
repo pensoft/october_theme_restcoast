@@ -85,19 +85,28 @@ description_limit = 0
 </div>
 <div class="container-fluid bg-secondary">
 	<div class="container">
-	<!-- subscribes -->
-	<div class="row between-xs">
-		<div class="col-lg-6 col-sm-5 col-xs-12">
+	<div class="row d-flex justify-content-evenly">
+		<div class="col-sm-5 col-xs-12">
 			<h1 class="base_heading">Latest updates</h1>
-			<div class="twitter-widget">
-			    <a class="twitter-timeline" href="https://twitter.com/RESTCOAST_H2020?ref_src=twsrc%5Etfw">Tweets by RESTCOAST_H2020</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			{% if this.theme.facebook %}
+			<div class="fb-page" 
+				data-href="{{this.theme.facebook_url}}" 
+				data-tabs="timeline" 
+				data-width="500" 
+				data-height="300" 
+				data-small-header="false" 
+				data-adapt-container-width="true"
+				data-hide-cover="false" 
+				data-show-facepile="false">
+				<blockquote cite="{{this.theme.facebook_url}}" class="fb-xfbml-parse-ignore">
+					<a href="{{this.theme.facebook_url}}">{{this.theme.name}}</a>
+				</blockquote>
 			</div>
+			{% endif %}
 		</div>
-		<div class="col-sm-6 col-xs-12 social-media-container">
+		<div class="col-sm-3 col-xs-12 social-media-container">
 			<h1 class="base_heading">Follow Rest-Coast</h1>
 			<div class="subscribe-container">
-				
 				<div class="subscribe-items">
 					{% if this.theme.twitter %}
 					<a href="{{this.theme.twitter_url}}" target="_blank" class="btn p-primary pr p-twitter large"></a>
@@ -118,14 +127,8 @@ description_limit = 0
 					<a href="{{this.theme.researchgate_url}}" target="_blank" class="btn pr p-primary p-researchgate large" style="width: 64px;"></a>
 					{% endif %}
 				</div>
-
-				
-
 			</div>
-
-
 		</div>
 	</div>
 	</div>
-
 </div>

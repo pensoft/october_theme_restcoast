@@ -11,6 +11,11 @@ templates = "template3"
 thumb_width = 506
 thumb_height = 311
 no_records_message = "Stay tuned for upcoming news!"
+
+[related_articles]
+limit = 9
+thumb_width = 474
+thumb_height = 291
 ==
 <?php
 use Pensoft\Articles\Models\Article;
@@ -107,6 +112,14 @@ $this['related'] = $related;
 			</div>
 		</div>
 	</div>
+	{% if related.count > 0 %}
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-xs-12"><h1 class="single-new-title">Related articles</h1></div>
+        <div class="col-xs-12">
+            {% component 'related_articles' %}
+        </div>
+    </div>
+    {% endif %}
 	<script>
         createCustomTippy('#share-{{article.slug}}', {content: '<div class="icons">{% if this.theme.facebook %}<a class="fb-xfbml-parse-ignore pr p-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" ></a>{% endif %}{% if this.theme.twitter %}<a class="pr p-twitter small" href="https://twitter.com/intent/tweet?text={{encoded_title}}{{page_url}}" target="_blank"></a>{% endif %}{% if this.theme.linkedin %}<a class="pr p-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank"></a>{% endif %}</div>'})
 	</script>

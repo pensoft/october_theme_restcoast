@@ -11,6 +11,11 @@ templates = "template3"
 thumb_width = 506
 thumb_height = 311
 no_records_message = "Stay tuned for upcoming news!"
+
+[related_articles]
+limit = 9
+thumb_width = 474
+thumb_height = 291
 ==
 <?php
 use Pensoft\Articles\Models\Article;
@@ -28,7 +33,7 @@ if($this['is_detail_page'] and $this['allow_share']){
 $this['page_url'] = $this->pageUrl('');
 $this['encoded_title'] = urlencode($this['article']['title']);
 $this['slug'] = $this['article']['slug'];
-\BennoThommo\Meta\Meta::set('twitter:card', 'summary');
+\BennoThommo\Meta\Meta::set('twitter:card', 'summary_large_image');
 \BennoThommo\Meta\Meta::set('twitter:title', $this['article']['title']);
 \BennoThommo\Meta\Meta::set('twitter:description', str_limit(Html::strip($this['article']['content']), 255));
 \BennoThommo\Meta\Meta::set('og:title', $this['article']['title']);
@@ -36,7 +41,7 @@ $this['slug'] = $this['article']['slug'];
 \BennoThommo\Meta\Meta::set('og:type', 'article');
 \BennoThommo\Meta\Meta::set('og:url', $this->pageUrl(''));
 if($this['article']['cover']){
-\BennoThommo\Meta\Meta::set('twitter:image', $this['article']['cover']->getThumb(300, 300, ['mode' => 'crop']));
+	\BennoThommo\Meta\Meta::set('twitter:image', $this['article']['cover']->getThumb(600, null, ['mode' => 'auto']));
 
 \BennoThommo\Meta\Meta::set('og:image', $this['article']['cover']->getThumb(600, 314, ['mode' => 'crop']));
 \BennoThommo\Meta\Meta::set('og:image:width', 600);
@@ -91,6 +96,7 @@ $this['related'] = $related;
 			{% if article.allow_share == 'yes' %}
 				<div class="btn btn-primary share-btn" id="share-{{article.slug}}">Share</div>
 			{% endif %}
+
 		</div>
 
 		<div class="col-xs-12 col-md-7">
@@ -105,8 +111,21 @@ $this['related'] = $related;
 			<div class="content">
 				{{article.content|raw}}
 			</div>
+
+
+
 		</div>
 	</div>
+
+    {% if related.count > 0 %}
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-xs-12"><h1 class="single-new-title">Related articles</h1></div>
+        <div class="col-xs-12">
+            {% component 'related_articles' %}
+        </div>
+    </div>
+    {% endif %}
+
 	<script>
         createCustomTippy('#share-{{article.slug}}', {content: '<div class="icons">{% if this.theme.facebook %}<a class="fb-xfbml-parse-ignore pr p-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" ></a>{% endif %}{% if this.theme.twitter %}<a class="pr p-twitter small" href="https://twitter.com/intent/tweet?text={{encoded_title}}{{page_url}}" target="_blank"></a>{% endif %}{% if this.theme.linkedin %}<a class="pr p-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank"></a>{% endif %}</div>'})
 	</script>

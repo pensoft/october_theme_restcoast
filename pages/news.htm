@@ -18,6 +18,7 @@ thumb_width = 474
 thumb_height = 291
 ==
 <?php
+use Pensoft\Articles\Models\Category;
 use Pensoft\Articles\Models\Article;
 
 function urlencode($string){
@@ -25,6 +26,37 @@ function urlencode($string){
 }
 function onStart()
 {
+	$this['article'] = Pensoft\Articles\Models\Article::where('slug', $this->param('id'))->first();
+    $this['categories'] = Category::orderBy('sort_order')->orderBy('created_at', 'desc')->get();
+	
+    $categoryId = input('categoryId', 'all');
+
+    if ($categoryId !== 'all' && !is_numeric($categoryId)) {
+        return redirect('news');
+    }
+	
+    $this['categoryId'] = $categoryId;
+
+    if ($categoryId === 'all') {
+        $records = Article::news()->where('published_at', '<=', 'now')
+                                  ->where('published', 'true')
+                                  ->orderBy('published_at', 'DESC')
+                                  ->paginate(12);
+    } else {
+        $records = Article::news()->whereHas('categories', function ($query) use ($categoryId) {
+                     $query->where('id', $categoryId);
+                 })->where('published_at', '<=', 'now')
+                   ->where('published', 'true')
+                   ->orderBy('published_at', 'DESC')
+                   ->paginate(12);
+    }
+
+    if ($categoryId !== 'all') {
+        $records->appends(['categoryId' => $categoryId]);
+    }
+
+    $this['records'] = $records;
+
     $this['article'] = Pensoft\Articles\Models\Article::where('slug', $this->param('id'))->first();
 if($this['article']){
 $this['is_detail_page'] = $this['article'] ? true : false;
@@ -144,12 +176,27 @@ $this['related'] = $related;
 	<script>
         createCustomTippy('#share-{{article.slug}}', {content: '<div class="icons">{% if this.theme.facebook %}<a class="fb-xfbml-parse-ignore pr p-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" ></a>{% endif %}{% if this.theme.twitter %}<a class="pr p-twitter small" href="http://twitter.com/share?text={{article.title}}&url={{page_url}}" target="_blank"></a>{% endif %}{% if this.theme.linkedin %}<a class="pr p-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank"></a>{% endif %}</div>'})
 	</script>
+	
 	{% else %}
 	<h1 class="page_heading mb-2" style="margin-left: 5px;">News</h1>
-	<div class="row">
-		<div class="col-xs">
-			{% component 'list' %}
+
+	<div class="category-tabs-container mb-2">
+		{% if categories.count > 0 %}
+		<div class="row category-tabs" id="category-tabs">
+			<a href="{{ 'news'|page }}" class="{{ 'all' == categoryId ? 'active' : '' }}">All News</a>
+			{% for category in categories %}
+			<a href="{{ 'news'|page }}?categoryId={{ category.id }}" class="{{ category.id == categoryId ? 'active' : '' }}">{{ category.name }}</a>
+			{% endfor %}
 		</div>
+		{% endif %}
 	</div>
+	<div class="newslist-records" id="newslist-records">
+		{% partial 'components/newslist-records' %}
+	</div>
+	            
+	<div class="row container">
+		{{ records.render|raw }}
+	</div>
+
 	{% endif %}
 </div>

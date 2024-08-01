@@ -13,7 +13,7 @@
             </a>
             {% endif %}
             <div class="news-container col-xs-12">
-                <div class="text-published">{{record.published_at}}</div>
+                <div class="text-published">{{record.pretty_published_at}}</div>
                 <div class="news-title">
                     <h3 class="card-title"><a href="{{'news'|page}}/{{record.slug}}">{{ record.title|length > 99 ? record.title|slice(0, 99) ~ '...' : record.title  }}</a></h3>
                 </div>

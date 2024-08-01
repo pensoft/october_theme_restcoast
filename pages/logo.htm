@@ -1,6 +1,6 @@
-title = "Logo"
-url = "/media-center/logo"
+url = "/media-center/brand-kit"
 layout = "default"
+title = "Brand Kit"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
@@ -52,7 +52,7 @@ return Redirect::to('/media-center/logo');
 
 	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a><br><br>
 
-	<h1 class="page_heading">REST-COAST Logo Pack</h1>
+	<h1 class="page_heading">Brand Kit</h1>
 
 
 
@@ -76,27 +76,37 @@ return Redirect::to('/media-center/logo');
 		{% if record.file_jpg %}
 		<div class="col-md-2 col-xs-12">
 			<div class="card-container text-center">
-				<span class="card_image_container" style="background: url({{'pensoft/file-jpg.svg'|media}}) center center no-repeat; " title="Logo"></span>
+				<span class="card_image_container" style="background: url({{'pensoft/file-jpg.svg'|media}}) center center no-repeat; " title="Brand kit"></span>
 				<span class="card_title">JPG, {{record.file_jpg.size}}</span><br>
-				<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_jpg.id}}&file_name={{record.file_jpg.file_name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
+				<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_jpg.id}}&file_name={{record.file_jpg.file_name|replace({' ': '_'})}}" title="Brand kit" class="btn btn-primary">Download</a>
 			</div>
 		</div>
 		{% endif %}
 		{% if record.file_png %}
 		<div class="col-md-2 col-xs-12">
 			<div class="card-container text-center">
-				<span class="card_image_container" style="background: url({{'pensoft/file-png.svg'|media}}) center center no-repeat;" title="Logo"></span>
+				<span class="card_image_container" style="background: url({{'pensoft/file-png.svg'|media}}) center center no-repeat;" title="Brand kit"></span>
 				<span class="card_title">PNG, {{record.file_png.size}}</span><br>
-				<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_png.id}}&file_name={{record.file_png.file_name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
+				<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_png.id}}&file_name={{record.file_png.file_name|replace({' ': '_'})}}" title="Brand kit" class="btn btn-primary">Download</a>
 			</div>
 		</div>
 		{% endif %}
 		{% if record.file_eps %}
 		<div class="col-md-2 col-xs-12">
 			<div class="card-container text-center">
-				<span class="card_image_container" style="background: url({{'pensoft/file-eps.svg'|media}}) center center no-repeat;" title="Logo"></span>
+				<span class="card_image_container" style="background: url({{'pensoft/file-eps.svg'|media}}) center center no-repeat;" title="Brand kit"></span>
 				<span class="card_title">SVG, vector, {{record.file_eps.size}}</span><br>
-				<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_eps.id}}&file_name={{record.file_eps.file_name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
+				<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_eps.id}}&file_name={{record.file_eps.file_name|replace({' ': '_'})}}" title="Brand kit" class="btn btn-primary">Download</a>
+			</div>
+		</div>
+		{% endif %}
+		
+		{% if record.file_pdf %}
+		<div class="col-md-2 col-xs-12">
+			<div class="card-container text-center">
+				
+				<span class="card_title">{{record.name}}</span><br>
+				<br><a href="{{record.file_pdf.path}}" target="_blank" title="Brand kit" class="btn btn-primary">Download</a>
 			</div>
 		</div>
 		{% endif %}

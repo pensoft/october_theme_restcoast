@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="63" height="67" viewBox="0 0 63 67">
+  <g id="Group_14207" data-name="Group 14207" transform="translate(4216 4135)">
+    <g id="Group_14023" data-name="Group 14023" transform="translate(-5293 -4617)">
+      <g id="Group_14022" data-name="Group 14022" transform="translate(173 13)">
+        <g id="Group_13908" data-name="Group 13908" transform="translate(904 469)">
+          <g id="Group_13907" data-name="Group 13907" transform="translate(0)">
+            <rect id="Rectangle_2437" data-name="Rectangle 2437" width="63" height="67" rx="4" fill="#476899"/>
+          </g>
+        </g>
+        <line id="Line_157" data-name="Line 157" x2="25.555" transform="translate(922.332 484.221)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+        <line id="Line_1522" data-name="Line 1522" x2="25.555" transform="translate(922.332 521.11)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+        <path id="Icon_ionic-ios-pin" data-name="Icon ionic-ios-pin" d="M16.881,3.375c-4.972,0-9.006,3.746-9.006,8.362,0,6.5,9.006,17.655,9.006,17.655s9.006-11.151,9.006-17.655C25.887,7.121,21.853,3.375,16.881,3.375Zm0,11.939a2.933,2.933,0,1,1,2.933-2.933A2.933,2.933,0,0,1,16.881,15.314Z" transform="translate(918.229 488.343)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

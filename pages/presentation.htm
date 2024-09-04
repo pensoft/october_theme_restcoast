@@ -42,7 +42,7 @@ flush();
 readfile($file_name);
 exit();
 }
-return Redirect::to('/media-center/flyer');
+return Redirect::to('/media-center/fact-sheets');
 }
 }
 ?>
@@ -66,12 +66,23 @@ return Redirect::to('/media-center/flyer');
                 <span class="card_title">{{record.name}}</span><br>
                 <span class="card_image_container" style="background: url({{record.presentation_image.thumb(220, 220,{'mode':'crop'})}}) center center no-repeat;" title="{{record.name}}"></span>
 
-                <br><a href="{{ record.file.path }}#{{record.file.file_name}}" target="_blank" title="{{record.name}}" class="btn btn-primary">Download</a>
+                {% if record.file_lang_versions %}
+				<div class="row lang-row center-xs">
+					{% for language_item in record.file_lang_versions %}
+					<div class="col-md-6 col-xs-12">
+						<a href="{{ language_item.path }}#{{language_item.file_name}}" title="{{language_item.file_name|replace({' ': '_'})}}" class="btn btn-download" target="_blank">{{ language_item.description }}</a>
+					</div>
+					{% endfor %}
+				</div>
+				{% else %}
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="{{ record.file.path }}#{{record.file.file_name}}" target="_blank" title="{{record.name}}" class="btn btn-download">Download</a>
+					</div>					
+				</div>
+				{% endif %}
             </div>
         </div>
-
-
-
         {% endspaceless %}
         {% else %}
         {{ noRecordsMessage }}

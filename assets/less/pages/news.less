@@ -102,6 +102,10 @@ nav:not(.navbar){
 
 .home .news-item{
   display: flex!important;
+  flex-basis: 32%!important;
+  max-width: 32%!important;
+  display: flex;
+  justify-content: center;
   .news_column{
     width: 100%;
     img{
@@ -141,8 +145,6 @@ nav:not(.navbar){
 
 
   .news-item{
-    flex-basis: 30%!important;
-    max-width: 30%!important;
     padding: 0px;
     position: relative;
     margin-bottom: 30px;
@@ -152,7 +154,7 @@ nav:not(.navbar){
        background: @white-color;
        display: block;
        .rounded(10px);
-       box-shadow: 0 6px 27px rgba(0, 0, 0, 0.3);
+       filter: drop-shadow(0 0 30px rgba(9, 147, 200, 0.15));
        img{
          width: 100% !important;
        }
@@ -214,7 +216,10 @@ nav:not(.navbar){
   })
 }
 
-
+.news .news-item{
+  flex-basis: 30%!important;
+  max-width: 30%!important;
+}
 
 .news-img-top{
   .rounded-tl(10px);

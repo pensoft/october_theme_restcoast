@@ -56,25 +56,24 @@ numberOfLevels = 2
 				<button class="btn btn-link pr p-search big text-grey-search-btn" type="submit"></button>
 			</form>
 		</div>
-
 </nav>
-
-
-
 
 
 {% if this.theme.header_image %}
 <div class="header-image {{page_id}}">
     {%if this.page.header_image %}
-        <div class="header-image-bar" style="background-image: url('{{this.page.header_image|media}}'); background-position: left center;"></div>
+        <div class="header-image-bar full-zoom" style="background-image: url('{{this.page.header_image|media}}'); background-position: left center;"></div>
     {%else%}
         <div class="header-image-bar" style="background-image: url('{{this.theme.header_image.getPath()}}'); background-position: left center;"></div>
     {%endif%}
-    <div class="jumbotron" data-aos="fade-up">
-        <h1 class="underline white  {% if page_id == 'home'%}home-page-header{% endif %}">{%if page_title%} {{page_title}} {%else%} {{site_name}} {%endif%}</h1>
-        {% if page_id == 'home' and tag_line %}
-            <p>{{tag_line}}</p>
-        {% endif %}
+    <div class="jumbotron">
+		<div class="blur-header" data-aos="slide-right" data-aos-duration="1500" data-aos-delay="500" data-aos-offset="-200">
+			<h1 data-aos="slide-right" data-aos-duration="1700" data-aos-delay="500" data-aos-offset="-200" class="underline white  {% if page_id == 'home'%}home-page-header{% endif %}">{%if page_title%} {{page_title}} {%else%} {{site_name}} {%endif%}</h1>
+			{% if page_id == 'home' and tag_line %}
+				<p data-aos="slide-right" data-aos-duration="2500" data-aos-delay="500" data-aos-offset="-200">{{tag_line}}</p>
+			{% endif %}			
+		</div>
+
     </div>
 </div>
 {% endif %}
@@ -86,3 +85,4 @@ numberOfLevels = 2
 {% else %}
     <script>$(document).trigger('signin')</script>
 {% endif %}
+

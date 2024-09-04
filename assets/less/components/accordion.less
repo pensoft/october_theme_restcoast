@@ -452,5 +452,181 @@
     }
 }
 
+.pilots-container{
+  .accordion-toggle .start-xs{
+    color: #102441 !important;
+    font-size: 24px !important;
+    font-family: 'Oswald', sans-serif !important;
+    font-weight: 400 !important;
+    line-height: 1.3em !important;
+  }
 
+  .pilot-content{
+    padding: 0 28px;
 
+    .pilot-title{
+      font-family: 'Muli', sans-serif !important;
+      color: #102441 !important;
+      font-weight: bold !important;
+      margin-bottom: 16px !important;
+    }
+
+    p, li {
+      font-family: 'Muli', sans-serif !important;
+      color: #2F2F2F !important;
+      font-weight: 400 !important;
+      font-size: 16px !important;
+      line-height: 1.5em !important;
+    }
+
+    .quick-facts{
+      em{
+        color: #102441;
+        font-weight: bold;
+      }
+      ul{
+        display: block;
+      }
+      li{
+        display: list-item;
+      }
+      ul, li{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      p{
+        margin-bottom: 16px !important;
+      }
+      margin: 20px 0;
+    }
+  }
+
+  .plus::before{
+    color: #476899;
+  }
+
+  .green_bullet{
+    background: url("../../assets/images/navy-pin.svg") left no-repeat;
+  }
+
+  .image-row{
+    .col-md-4{
+      margin-left: 0;
+      padding-left: 0;
+    }
+    img{
+      border-radius: 20px;
+    }
+  }
+
+  .pilot-progress{
+    position: relative;
+    .map{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 65px;
+      height: 75px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      object-fit: cover;
+  
+      &.venice-map{
+        background-image: url("../../assets/images/italy-venice.svg");
+        width: 65px;
+        height: 75px;
+      }
+
+      &.foros-map{
+        background-image: url("../../assets/images/foros.svg");
+        width: 65px;
+        height: 75px;
+      }
+
+      &.nahal-map{
+        background-image: url("../../assets/images/nahal.svg");
+        width: 65px;
+        height: 75px;
+      }
+
+      &.delta-map{
+        background-image: url("../../assets/images/delta.svg");
+        width: 65px;
+        height: 75px;
+      }
+
+      &.vistula-map{
+        background-image: url("../../assets/images/vistula.svg");
+        width: 65px;
+        height: 75px;
+      }
+
+      &.wadden-sea-map{
+        background-image: url("../../assets/images/wadden-sea.svg");
+        width: 65px;
+        height: 75px;
+      }
+
+      &.ebro-delta-map{
+        background-image: url("../../assets/images/ebro-delta.svg");
+        width: 65px;
+        height: 75px;
+      }
+
+      &.sicily-map{
+        background-image: url("../../assets/images/sicily.svg");
+        width: 65px;
+        height: 75px;
+      }
+
+      &.arcachon-bay-map{
+        background-image: url("../../assets/images/arcachon-bay.svg");
+        width: 65px;
+        height: 75px;
+      }
+    }
+  }
+
+  .species-icons {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 53px;
+      height: 47px;
+      margin-right: 24px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      object-fit: cover;
+  
+      &.seagrass {
+        background-image: url("../../assets/images/seagrass.svg");
+        width: 20px;
+        height: 23px;
+      }
+  
+      &.bird {
+        background-image: url("../../assets/images/bird.svg");
+        width: 25px;
+        height: 23px;
+      }
+  
+      &.fish {
+        background-image: url("../../assets/images/fish.svg");
+        width: 30px;
+        height: 18px;
+      }
+      
+      &.turtle {
+        background-image: url("../../assets/images/turtule.svg");
+        width: 30px;
+        height: 18px;
+      }      
+    }
+  }
+  
+}

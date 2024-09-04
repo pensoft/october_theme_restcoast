@@ -23,21 +23,21 @@ templates = "template3"
 
 [jumbotron vision]
 jumbotron = "vision"
-title = 1
+title = 0
 background = "#ffffff"
 templates = "template1"
 description_limit = 0
 
 [jumbotron mission]
 jumbotron = "mssion"
-title = 1
+title = 0
 background = "#ffffff"
 templates = "template1"
 description_limit = 0
 
 [jumbotron goals]
 jumbotron = "goal"
-title = 1
+title = 0
 background = "#ffffff"
 templates = "template1"
 description_limit = 0
@@ -49,26 +49,90 @@ background = "#ffffff"
 templates = "template1"
 description_limit = 0
 ==
+
 <!-- 3 blocks -->
-<div class="container-fluid">
+<div class="container-fluid intro-blocks">
 	<div class="container">
-		<div class="row between-md around-xs">
-			<div class="col-sm-4 col-xs-12 vision">
-				{% component 'vision' %}
+		<div class="row">
+			<div class="col-md-4 col-xs-12 vision">
+				<div class="head">
+					<div class="title">
+						<h1>vision</h1>
+					</div>
+				</div>
+				<div class="content">
+					<p>
+						REST-COAST will demonstrate that large-scale coastal restoration is not only possible but vital for our adaptation to climate change.
+					</p>
+				</div>
 			</div>
-			<div class="col-sm-4 col-xs-12 mission">
-				{% component 'mission' %}
+
+			<div class="col-md-4 col-xs-12 mission">
+				<div class="head">
+					<div class="title">
+						<h1>mission</h1>
+					</div>
+				</div>
+				<div class="content">
+					<p>
+						Reducing risks and providing gains in biodiversity, ecosystem service delivery (such as agri- and aquaculture, flood protection and tourism) by using coastal ecosystems potential to provide low-carbon adaptation.
+					</p>
+				</div>
 			</div>
-			<div class="col-sm-4 col-xs-12 goals">
-				{% component 'goals' %}
+
+			<div class="col-md-4 col-xs-12 goal">
+				<div class="head">
+					<div class="title">
+						<h1>goal</h1>
+					</div>
+				</div>
+				<div class="content">
+					<p>
+						Through engaging in communication activities, REST-COAST will increase the commitment of citizens, stakeholders and policymakers towards long-term maintenance of coastal restoration.
+					</p>
+				</div>
 			</div>
-		</div>
+		</div>	
 	</div>
 </div>
 
 <!-- numbers -->
-<div class="numbers_container">
-	{% component 'numbers' %}
+<div class="container">
+	<h1 class="base_heading">REST-COAST IN NUMBERS</h1>
+	<div class="numbers_container mt-2">
+		<div class="row numbers-row justify-content-between text-center">
+			<div class="col-md col-sm-6 col-xs-12 num_container">
+				<div class="numbers">
+					<span class="count">37</span>
+					<p class="numbers_label">Project partners</p>
+				</div>
+			</div>
+			<div class="col-md col-sm-6 col-xs-12 num_container">
+				<div class="numbers">
+					<span class="count">11</span>
+					<p class="numbers_label">Countries</p>
+				</div>
+			</div>
+			<div class="col-md col-sm-6 col-xs-12 num_container">
+				<div class="numbers">
+					<span class="count">9</span>
+					<p class="numbers_label">Pilot sites</p>
+				</div>
+			</div>
+			<div class="col-md col-sm-6 col-xs-12 num_container">
+				<div class="numbers">
+					<span class="count">4.5</span>
+					<p class="numbers_label">Years duration</p>
+				</div>
+			</div>
+			<div class="col-md col-sm-6 col-xs-12 num_container">
+				<div class="numbers">
+					<span class="count">17.8</span>
+					<p class="numbers_label">Financial contribution of the EU (million €)</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 
@@ -83,52 +147,64 @@ description_limit = 0
 		
 	</div>
 </div>
-<div class="container-fluid bg-secondary">
+
+<div class="container-fluid bg-secondary socials-and-subscribe">
 	<div class="container">
-	<div class="row d-flex justify-content-evenly">
-		<div class="col-sm-5 col-xs-12">
-			<h1 class="base_heading">Latest updates</h1>
-			{% if this.theme.facebook %}
-			<div class="fb-page" 
-				data-href="{{this.theme.facebook_url}}" 
-				data-tabs="timeline" 
-				data-width="500" 
-				data-height="300" 
-				data-small-header="false" 
-				data-adapt-container-width="true"
-				data-hide-cover="false" 
-				data-show-facepile="false">
-				<blockquote cite="{{this.theme.facebook_url}}" class="fb-xfbml-parse-ignore">
-					<a href="{{this.theme.facebook_url}}">{{this.theme.name}}</a>
-				</blockquote>
-			</div>
-			{% endif %}
-		</div>
-		<div class="col-sm-3 col-xs-12 social-media-container">
-			<h1 class="base_heading">Follow Rest-Coast</h1>
-			<div class="subscribe-container">
-				<div class="subscribe-items">
-					{% if this.theme.twitter %}
-					<a href="{{this.theme.twitter_url}}" target="_blank" class="btn p-primary pr p-twitter large"></a>
-					{% endif %}
+		<div class="row d-flex justify-content-evenly">
+			<div class="col-sm-3 col-xs-12">
+				<h1 class="base_heading">Latest updates</h1>
+				<div class="fb-content">
 					{% if this.theme.facebook %}
-					<a href="{{this.theme.facebook_url}}" target="_blank" class="btn pr p-primary p-facebook large"></a>
-					{% endif %}
-					{% if this.theme.linkedin %}
-					<a href="{{this.theme.linkedin_url}}" target="_blank" class="btn pr p-primary p-linkedin large"></a>
-					{% endif %}
-					{% if this.theme.youtube %}
-					<a href="{{this.theme.youtube_url}}" target="_blank" class="btn pr p-primary p-youtube large"></a>
-					{% endif %}
-					{% if this.theme.instagram %}
-					<a href="{{this.theme.instagram_url}}" target="_blank" class="btn pr p-primary p-instagram large"></a>
-					{% endif %}
-					{% if this.theme.researchgate %}
-					<a href="{{this.theme.researchgate_url}}" target="_blank" class="btn pr p-primary p-researchgate large" style="width: 64px;"></a>
-					{% endif %}
+					<div class="fb-page" 
+						data-href="{{this.theme.facebook_url}}" 
+						data-tabs="timeline" 
+						data-width="500" 
+						data-height="364" 
+						data-small-header="false" 
+						data-adapt-container-width="true"
+						data-hide-cover="false" 
+						data-show-facepile="false">
+						<blockquote cite="{{this.theme.facebook_url}}" class="fb-xfbml-parse-ignore">
+							<a href="{{this.theme.facebook_url}}">{{this.theme.name}}</a>
+						</blockquote>
+					</div>
+					{% endif %}					
 				</div>
 			</div>
+			<div class="col-sm-5 col-xs-12 social-media-container">
+				<h1 class="base_heading">Follow Rest-Coast</h1>
+				<div class="subscribe-container">
+					<video autoplay loop muted playsinline>
+						<source src="{{ 'social-video-cover.mp4'|media }}" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<div class="subscribe-items">
+						{% if this.theme.twitter %}
+						<a href="{{this.theme.twitter_url}}" target="_blank" class="btn p-primary pr p-twitter medium"></a>
+						{% endif %}
+						{% if this.theme.facebook %}
+						<a href="{{this.theme.facebook_url}}" target="_blank" class="btn pr p-primary p-facebook medium"></a>
+						{% endif %}
+						{% if this.theme.linkedin %}
+						<a href="{{this.theme.linkedin_url}}" target="_blank" class="btn pr p-primary p-linkedin medium"></a>
+						{% endif %}
+						{% if this.theme.youtube %}
+						<a href="{{this.theme.youtube_url}}" target="_blank" class="btn pr p-primary p-youtube medium"></a>
+						{% endif %}
+						{% if this.theme.instagram %}
+						<a href="{{this.theme.instagram_url}}" target="_blank" class="btn pr p-primary ig-new"></a>
+						{% endif %}
+						{% if this.theme.researchgate %}
+						<a href="{{this.theme.researchgate_url}}" target="_blank" class="btn pr p-primary p-researchgate medium" style="width: 64px;"></a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			
 		</div>
-	</div>
+
+		<div class="col-xs-12 d-flex justify-content-center">
+			<a href="" class="btn btn-primary btn-subscribe">Subscribe to our newsletter</a>
+		</div>
 	</div>
 </div>

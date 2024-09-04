@@ -1,3 +1,11 @@
+.media-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
 .media-btn_broshure_and_poster{
   .breakpoint-small-down({
     margin: 10px 0!important;
@@ -27,14 +35,197 @@
   border-radius: 50%;
 }
 
-.media_label{
-  font-family: Oswald;
-  color: @dark-color;
-  font-size: 22px;
-  font-weight: 600;
+.media-menu{
+  width: 80%;
+}
+// Override the { card.less } styles for media menu
+.media-menu .card_image_container{
+  display: flex;
+  background-size: 80px!important;
+  height: 180px;
+  width: 180px;
+  background-color: #D3EFF8 !important;
+  border-radius: 50%;
+  margin: 25px auto;
+  border: none;
+  &:hover{
+    background-color: @link-color!important;
+  }
+  .breakpoint-small-down({
+    width: 150px!important;
+    height: 150px!important;
+    background-size: 60px!important;
+  })
+}
+
+// Fact Sheet
+.presentation {
+  .lang-row{
+    margin-top: 30px;
+    position: relative;
+    &:before{
+      content: '';
+      position: absolute;
+      background: url("../../assets/images/arrow-download.svg") center no-repeat;
+      background-size: contain;
+      width: 28px;
+      height: 28px;
+      top: -22px;
+    }
+  }
+  // .btn-download {
+  //     font-size: 18px;
+  //     line-height: 1.6em;
+  //     font-weight: 600;
+  //     margin-bottom: 10px;
+  //     font-family: 'Oswald', sans-serif;
+  //     color: #47BEE2;
+  //     padding: 10px 20px;
+  //     min-width: 100px;
+  //     white-space: nowrap;
+  //     overflow: hidden;
+  //     text-overflow: ellipsis;
+  //     border-radius: 4px;
+  //     border: none;
+  //     background: none;
+  //     transition: background 0.3s ease, color 0.3s ease;
+  //     position: relative;
+  //     z-index: 1;
+      
+  //     &:before {
+  //         content: '';
+  //         position: absolute;
+  //         bottom: 0;
+  //         left: 50%;
+  //         width: 100%;
+  //         height: 5px;
+  //         background: #476899;
+  //         transform: translateX(-50%);
+  //         transition: height 0.3s ease, width 0.3s ease;
+  //         border-radius: 25px;
+  //         z-index: -1;
+  //     }
+
+  //     &:hover {
+  //         background: #476899;
+  //         color: #fff;
+  //         border-radius: 25px;
+
+  //         &:before {
+  //             height: 100%;
+  //             width: 100%;
+  //             bottom: 0;
+  //             left: 0;
+  //         }
+  //     }
+  // }
 }
 
 
+
+// Flyer
+.flyer-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  .lang-row{
+    width: 100%;
+  }
+  a{
+    word-break: keep-all;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6em;
+    font-family: 'Oswald', sans-serif;
+    .breakpoint-large-down({
+      margin-bottom: 20px;
+    });
+  }
+  .breakpoint-large-down({
+    margin-bottom: 80px;
+  });
+}
+
+.flyer .card_image_container{
+  background-size: cover!important;
+  height: 600px !important;
+  width: 400px !important;
+  border-radius: 0% !important;
+  .breakpoint-large-down({
+    width: 100% !important;
+    height: 400px !important;
+  });
+}
+
+.media_label{
+  text-transform: uppercase;
+  font-family: Oswald;
+  color: #4D6C9C;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.brand-kit-section{
+  .card-container{
+    position: relative;
+    a{
+      position: absolute;
+      left: -22px;
+      .breakpoint-large-down({
+        position: unset;
+      });
+    }
+  }
+}
+.brand-kit-section {
+
+  .card_image_container {
+      height: 200px;
+      width: 200px;
+      background-color: #B1E3F3 !important;
+      transition: background-color 0.3s ease-in-out
+  }
+
+  .outer-circle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #D3EFF8;
+      border-radius: 50%;
+      width: 280px;
+      height: 280px;
+      margin: 0 auto;
+      transition: background-color 0.3s ease-in-out;
+
+      .breakpoint-small-down({
+          width: 150px;
+          height: 150px;
+      });
+  }
+
+  .media_label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      font-size: 26px;
+      transition: color 0.3s ease-in-out;
+  }
+
+  /* Hover Effects */
+  &:hover .outer-circle {
+      background-color: #102441;
+  }
+  &:hover .card_image_container {
+      background-color: #102441 !important;
+  }
+  &:hover .media_label {
+      color: #47BEE2; /* Change text color on hover */
+  }
+}
 
 .back-to{
   color: @link-color;
@@ -43,6 +234,54 @@
 .press-releases .link a{
   margin-right: 20px;
 }
+
+.brand-kit{
+  .card_image_container{
+    background-size: contain !important;
+    height: 304px !important;
+    width: 100% !important;
+    border-radius: 0% !important;
+    .breakpoint-large-down({
+      width: 100% !important;
+      // height: 200px !important;
+    });
+  }
+}
+
+.media-videos{
+  .video-card{
+    width: 560px;
+    .breakpoint-large-down({
+      width: 100%;
+    });
+    .video-title{
+      font-color: #2F2F2F;
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      line-height: 1.6em;
+    }
+  }
+  .video-category-tabs{
+    a{
+      cursor: pointer;
+      text-align: left;
+      font-size: 18px;
+      line-height: 33px;
+      font-family: 'Muli';
+      color: #47BEE2;
+      padding: 0;
+      background: none;
+      border: none;
+      &:hover, &.active{
+        padding: 0  ;
+        border: none;
+        background: none;
+        opacity: 0.45;
+      }
+    }
+  }
+}
+
 //.back-to::before{
 //  content: "";
 //  background: url(../../assets/images/Icons/arrow.svg) no-repeat;

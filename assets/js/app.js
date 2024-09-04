@@ -162,10 +162,11 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
+    $('.base_heading').attr('data-aos', 'fade-up');
 	$('.numbers').attr('data-aos', 'fade-up');
-	$('.mission .container').attr('data-aos', 'fade-up');
-	$('.vision .container').attr('data-aos', 'fade-up');
-	$('.goals .container').attr('data-aos', 'fade-up');
+	$('.mission').attr('data-aos', 'fade-up');
+	$('.vision').attr('data-aos', 'fade-up');
+	$('.goal').attr('data-aos', 'fade-up');
 	$('.card-img-top').attr('data-aos', 'fade-up');
 	$('.logo-container').attr('data-aos', 'fade-up');
 	$('.subscribe-items a').attr('data-aos', 'fade-up');
@@ -174,20 +175,25 @@ $(document).ready(function() {
 	$('h2.underline').attr('data-aos', 'fade-up');
 	$('.news_column').attr('data-aos', 'fade-up');
 	$('.timeline-item').attr('data-aos', 'fade-up');
-
-	// about page
-
+    $('.timeline.vertical').attr('data-aos', 'fade-up');
+    $('.btn-subscribe').attr('data-aos', 'fade-up');
+    $('.fb-content').attr('data-aos', 'fade-up');
 	$('.about img').attr('data-aos', 'fade-up');
-
+    $('.head').attr('data-aos', 'fade-up');
+    $('ul>li').attr('data-aos', 'fade-up');
+    
 	$('.country_map').attr('data-aos', 'fade-up');
 	$('.partner-item').attr('data-aos', 'fade-up');
+
+    $('.about_goals_page p').attr('data-aos', 'fade-up');
+    $('.work_packages .key_1').attr('data-aos', 'fade-up');
+    $('.events_list_container .event_list_item').attr('data-aos', 'fade-up');
 
 	// media
 	$('.flyer_image_container img').attr('data-aos', 'fade-up');
 	$('.broshure_and_poster img').attr('data-aos', 'fade-up');
 	$('.card_image_container').attr('data-aos', 'fade-up');
 	$('.coordinator_image').attr('data-aos', 'fade-up');
-
 
 // 	// create references to the modal...
 // 	var modal = document.getElementById('myModal');
@@ -214,7 +220,6 @@ $(document).ready(function() {
 // 	span.onclick = function() {
 // 		modal.style.display = "none";
 // 	}
-
 	$('.partners .partner_description, .partners .list-item-body').each(function(){
 		var countParagraphs = $(this).find('p').length;
 		if(countParagraphs > 1) {

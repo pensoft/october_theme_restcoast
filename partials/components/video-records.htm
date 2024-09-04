@@ -1,0 +1,49 @@
+<!-- <div class="container">
+    <div class="row">
+        {% set records = records %}
+        {% set displayColumn = records.displayColumn %}
+        {% set noRecordsMessage = records.noRecordsMessage %}
+        {% set detailsPage = records.detailsPage %}
+        {% set detailsKeyColumn = records.detailsKeyColumn %}
+        {% set detailsUrlParameter = records.detailsUrlParameter %}
+
+        {% for record in records %}
+        {# Use spaceless tag to remove spaces inside the A tag. #}
+        {% spaceless %}
+        
+        <div class="col-md-6 col-xs-12">
+            <div class="video-card">
+                <p class="video-title">{{record.name}}</p>
+                {% if record.file %}
+                <video controls="" width="100%"><source src="{{record.file.path}}" type="video/mp4"></video>
+
+                <p>Attachment: {{record.file.file_name}}, {{record.file.size}}</p>
+
+                <p><a class=" btn btn-primary" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}">Download</a></p>
+
+                {% endif %}
+
+                {% if record.youtube_url %}
+                <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" src="{{record.youtube_url}}" width="100%" height="320"></iframe>
+
+                <p>&nbsp;</p>
+                {% endif %}
+
+                {% if record.vimeo_url %}
+                <iframe width="100%" height="320" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        src="{{record.vimeo_url}}">
+                </iframe>
+                <p>&nbsp;</p>
+                {% endif %}
+            </div>
+        </div>
+</div>
+
+    {% endspaceless %}
+    {% else %}
+    {{ noRecordsMessage }}
+    {% endfor %}
+    <script>
+        initAccordeon('accordion-documents');
+    </script>
+</div> -->

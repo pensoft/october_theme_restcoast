@@ -40,7 +40,7 @@ function onStart(){
 		{% for record in records %}
 		{# Use spaceless tag to remove spaces inside the A tag. #}
 		{% spaceless %}
-		<div class="col-xs">
+		<div class="col-md-6 col-xs-12">
 			<div class="card-container library-item">
 				<span class="card_title">{{record.name}}</span><br><br>
 				<span class=""> {{record.date |date('F Y')}}</span> <br><br>

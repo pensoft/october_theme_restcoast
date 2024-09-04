@@ -19,22 +19,24 @@ collapsible = "false"
 heightStyle = "auto"
 iconsHeader = "ui-icon-triangle-1-e"
 iconsHeaderActive = "ui-icon-triangle-1-s"
-templates = "template4"
+templates = "template3"
 
 
 ==
 {% component 'siteSearchInclude' %}
-<div class="container pilots_background_container">
-    <h1 class="page_heading ml-1 mb-4">Pilots</h1>
-    <div class="row top-xs">
-        <div class="col-md-6 col-xs-12">
-        {% component 'accordion' %}
+<div class="container-fluid pilots-container">
+    <div class="container pilots_background_container">
+        <h1 class="page_heading ml-1 mb-4">Pilots</h1>
+        <div class="row top-xs">
+            <div class="col-xs-12">
+            {% component 'accordion' %}
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div class="pilots_svg_map_container">
+                    <span class="tooltiptext" id="tooltip">Bulgaria</span>
+                    {% partial 'components/pilots_map' %}
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 col-xs-12">
-			<div class="pilots_svg_map_container">
-				<span class="tooltiptext" id="tooltip">Bulgaria</span>
-				{% partial 'components/pilots_map' %}
-			</div>
-        </div>
-    </div>
+    </div>    
 </div>

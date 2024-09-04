@@ -62,8 +62,6 @@ h1, h2{
   });
 }
 
-
-
 .header-image {
     overflow: hidden;
     position: relative;
@@ -73,6 +71,16 @@ h1, h2{
     justify-content: left;
     vertical-align: center;
 
+    .blur-header{
+      padding: 60px 80px !important;
+      background-color: rgba(255, 255, 255, 0.1); /* White color with 50% opacity */
+      backdrop-filter: blur(30px) !important;
+      border-radius: 29px !important;
+      .breakpoint-large-down({
+        padding: 0 !important;
+      });
+    }
+    
     .header-image-bar {
         width: 100%;
         //height: 424px;
@@ -131,9 +139,9 @@ h1, h2{
     }
 
     .jumbotron{
-      max-width: 40%;
+      max-width: 50%;
       //max-width: 1057px;
-      padding: 0 100px;
+      padding: 0;
       margin: 0;
       position: absolute;
       top: 50%;
@@ -295,6 +303,52 @@ h1, h2{
     }
     .social-networks {
         flex: 1 0 auto;
+        a.pr{
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 42px !important;
+          height: 42px !important;
+          padding: 0 !important;
+          font-size: 26px !important;
+        }
+        .p-mail::before{
+          padding: 0 8px !important;
+          font-size: 16px !important;
+        }
+        .p-twitter::before{
+          font-size: 22px !important;
+        }
+        .ig-new{
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 46px !important;
+          height: 46px !important; 
+          background-color: transparent !important;
+          border-radius: 50%;
+          border: 1px solid @white-color;
+          &:after{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            content: '';
+            background: url(../../assets/images/new-ig-icon.svg) center center no-repeat;
+            background-size: contain;
+            width: 22px;
+            height: 22px;
+            // padding: 9px 0;
+          }
+          &:hover{
+            background-color: @white-color !important;
+            &:after{
+              background: url(../../assets/images/ig-new-hover.svg) center center no-repeat;
+            }
+          }
+        }
         .breakpoint-small-down ({
           margin: 0 auto;
         });
@@ -309,7 +363,9 @@ h1, h2{
       // width: 48px;
       height: 48px;
       .breakpoint-small-down ({
-        display: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       });
     }
 
@@ -328,6 +384,7 @@ h1, h2{
     border: solid #f8f9fa;
     border-width: @border-line-width * 2;
 }
+
 .highlight {
     background-color: #f8f9fa;
     padding: @padding-base-space;
@@ -347,6 +404,7 @@ h1, h2{
         }
     }
 }
+
 .container-fluid {
     &.banner {
         margin-top: @margin-base-space-home * 3;
@@ -355,6 +413,7 @@ h1, h2{
         padding-right: 0px;
     }
 }
+
 .share {
     display: flex;
     align-items: center;
@@ -374,55 +433,89 @@ h1, h2{
   });
 }
 
-.social-media-container{
-  .breakpoint-small-down({
-    text-align: center;
-    margin-top: 40px;
-  })
+.socials-and-subscribe .base_heading{
+  margin-bottom: 20px;
 }
+
+.fb-content{
+  .breakpoint-large-down({
+    margin-bottom: 60px;
+  });
+}
+
+.btn-subscribe{
+  margin-top: 80px;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.4em;
+  background-color: #47BEE2;
+  border: none;
+  padding: 20px 50px;
+  word-break: keep-all;
+  &:hover{
+    padding: 20px 50px;
+    background-color: #4D6C9C;
+  }
+}
+
 .subscribe-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  video{
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .subscribe-items{
+    z-index: 2;
+    padding: 40px;
+    background: linear-gradient(270deg, rgba(99, 133, 175, 0.8) 0%, rgba(16, 36, 54, 1) 100%);
+    border-radius: 19px;
     display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    height: 550px;
-    justify-content: space-between;
-    .breakpoint-large-down({
-      text-align: center;
-    });
-    .breakpoint-small-down({
-      justify-content: unset;
-      height: auto;
-    });
+    align-items: center;
+    justify-content: center;
+    position: absolute;
 
-  .homepage-funding{
-    color: @dark-color;
-
-    //.col-xs-1{
-    //  min-width: fit-content;
-    //  margin-right: 0px;
-    //}
-    .col-xs-12{
-      .breakpoint-small-down({
-        margin-bottom: 20px;
-      });
+    .ig-new{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:after{
+        position: absolute;
+        content: '';
+        background: url(../../assets/images/new-ig-icon.svg) center center no-repeat;
+        background-size: contain;
+        width: 23px;
+        height: 23px;
+      }
     }
 
-  }
-}
-
-//.subscribe-items + .subscribe-items {
-//    padding-top: 1rem;
-//}
-.subscribe-items {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  a{
-    margin-right: 20px;
-    margin-bottom: 20px;
+    // Override the social media buttons styles
+    a {
+      margin-right: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: @white-color !important;
+      background-color: unset !important;
+      border: 1px solid @white-color !important;
+      line-height: 1.4em !important;
+      width: 52px !important;
+      height: 52px !important;
+      font-size: 26px !important;
+    }
     .breakpoint-large-down({
-    margin: 0 10px;
-    })
+      padding: 40px 10px;
+    });
   }
+
 }
 
 .content_static_list{
@@ -784,13 +877,11 @@ footer .align-items-center{
   });     
 }
 
+.pilots-container{
+  background: transparent linear-gradient(360deg, #4D6C9C 0%, #E6E6E6 100%) 0% 0% no-repeat padding-box;
+}
+
 .pilots_background_container{
-  //background: url("../../assets/images/pilots-map-02.png") right no-repeat;
-  //background-position: right top 50px;
-  //background-size: 45%;
-  //.breakpoint-small-down({
-  //  background: none;
-  //})
   position: relative;
   .pilots_svg_map_container{
     position: absolute;
@@ -802,7 +893,6 @@ footer .align-items-center{
       display: none;
     })
   }
-
 }
 
 .thank_you_success{
@@ -828,7 +918,31 @@ footer .align-items-center{
     }
 }
 
-
-
-
-
+/* Home zoom animation */
+.home{
+  .header-image-bar {
+    height: calc(~"100vh - 110px");
+    margin-top: 110px;
+    position: relative;
+    top: 0;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    animation: scale 40s linear infinite;
+      .breakpoint-large-down({
+        height: 100vh;
+        margin-top: 0;
+        animation: none;
+      });
+  }
+  
+  @keyframes scale {
+    50% {
+      -webkit-transform:scale(1.2);
+      -moz-transform:scale(1.2);
+      -ms-transform:scale(1.2);
+      -o-transform:scale(1.2);
+      transform:scale(1.2);
+    }
+  }
+}

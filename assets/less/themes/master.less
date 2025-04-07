@@ -80,7 +80,7 @@ h1, h2{
         padding: 0 !important;
       });
     }
-    
+
     .header-image-bar {
         width: 100%;
         //height: 424px;
@@ -303,6 +303,26 @@ h1, h2{
     }
     .social-networks {
         flex: 1 0 auto;
+
+        .button_rio{
+            background: #5dbfe4 url(../../assets/images/RIO-logo-white.svg) center no-repeat;
+            background-size: 72px;
+            background-position-x: center;
+            color: white;
+            text-align: center;
+            padding: 2px 0px 2px 0px;
+            font-size: 15px;
+            border-radius: 20px;
+            margin-top: 26px;
+            display: inline-block;
+            width: 95px;
+            &:hover{
+                background: #4d6c9c url(../../assets/images/RIO-logo-white.svg) center no-repeat;
+                background-size: 72px;
+                background-position-x: center;
+            }
+        }
+
         a.pr{
           position: relative;
           display: flex;
@@ -326,7 +346,7 @@ h1, h2{
           justify-content: center;
           align-items: center;
           width: 46px !important;
-          height: 46px !important; 
+          height: 46px !important;
           background-color: transparent !important;
           border-radius: 50%;
           border: 1px solid @white-color;
@@ -368,6 +388,8 @@ h1, h2{
         justify-content: center;
         align-items: center;
       });
+
+
     }
 
     .head{
@@ -868,14 +890,14 @@ footer .align-items-center{
           display: flex;
           align-items: center;
           justify-content: center;
-      });            
+      });
   }
   .breakpoint-large-down({
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-  });     
+  });
 }
 
 .pilots-container{
@@ -936,7 +958,7 @@ footer .align-items-center{
         animation: none;
       });
   }
-  
+
   @keyframes scale {
     50% {
       -webkit-transform:scale(1.2);

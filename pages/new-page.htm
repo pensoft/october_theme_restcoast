@@ -1,0 +1,19 @@
+url = "/privacy-policy-mobilapp"
+layout = "default"
+title = "Privacy policy mobile app"
+
+[siteSearchInclude]
+
+[jumbotron]
+jumbotron = "privacy-policy-mobile-app"
+background = "#ffffff"
+templates = "template1"
+description_limit = 0
+==
+{% component 'siteSearchInclude' %}
+   <div class="container">
+   <h1 class="page_heading ml-1">Privacy Policy mobile app</h1>
+    {% component 'jumbotron' %}
+   </div>
+
+   <script src="https://matomo.pensoft.net/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=auto&showIntro=1"></script>

@@ -49,46 +49,52 @@ return Redirect::to('/media-center/flyer');
 ?>
 ==
 <div class="container flyer">
-	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a><br><br>
-	<h1 class="page_heading">Promotional materials</h1>
-	<div class="row">
-		{% set records = mediaFlyersList %}
-		{% set displayColumn = mediaFlyersList.displayColumn %}
-		{% set noRecordsMessage = mediaFlyersList.noRecordsMessage %}
-		{% set detailsPage = mediaFlyersList.detailsPage %}
-		{% set detailsKeyColumn = mediaFlyersList.detailsKeyColumn %}
-		{% set detailsUrlParameter = mediaFlyersList.detailsUrlParameter %}
+    <nav aria-label="Breadcrumb">
+        <a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
+    </nav>
+    <br><br>
 
-		{% for record in records %}
-		{# Use spaceless tag to remove spaces inside the A tag. #}
-		{% spaceless %}
-		{% if record.flyer_image %}
-		<div class="col-lg-4 col-sm-4 col-xs-12">
-			<div class="flyer-card">
-				<span class="card_image_container" style="background: url({{record.flyer_image.path}}) center center no-repeat;" title="{{record.name}}"></span>
-				<br>
-				{% if record.file_lang_versions %}
-				<div class="row lang-row between-xs">
-					{% for language_item in record.file_lang_versions %}
-					<div class="col-md-6 col-xs-12">
-						<a href="{{ ''| page }}?{{queries}}&download={{language_item.id}}&file_name={{language_item.file_name|replace({' ': '_'})}}" title="{{language_item.file_name|replace({' ': '_'})}}" class="btn btn-primary">{{language_item.description}}</a>
-					</div>
-					{% endfor %}
-				</div>
-				{% else %}
-				<div class="row">
-					<div class="col-xs-12">
-						<a href="{{ record.file.path }}#{{record.file.file_name}}" target="_blank" title="{{record.name}}" class="btn btn-primary">Download</a>
-					</div>					
-				</div>
-				{% endif %}
-			</div>
-		</div>
-		{% endif %}
+    <h1 class="page_heading">Promotional materials</h1>
 
-		{% endspaceless %}
-		{% else %}
-		{{ noRecordsMessage }}
-		{% endfor %}
-	</div>
+    <section class="row" aria-label="Promotional materials list">
+        {% set records = mediaFlyersList %}
+        {% set displayColumn = mediaFlyersList.displayColumn %}
+        {% set noRecordsMessage = mediaFlyersList.noRecordsMessage %}
+        {% set detailsPage = mediaFlyersList.detailsPage %}
+        {% set detailsKeyColumn = mediaFlyersList.detailsKeyColumn %}
+        {% set detailsUrlParameter = mediaFlyersList.detailsUrlParameter %}
+
+        {% for record in records %}
+        {# Use spaceless tag to remove spaces inside the A tag. #}
+        {% spaceless %}
+        {% if record.flyer_image %}
+        <article class="col-lg-4 col-sm-4 col-xs-12">
+            <div class="flyer-card">
+                <h2 class="sr-only">{{record.name}}</h2>
+                <div class="card_image_container" style="background: url({{record.flyer_image.path}}) center center no-repeat;" role="img" aria-label="{{record.name}} preview image"></div>
+                <br>
+                {% if record.file_lang_versions %}
+                <div class="row lang-row between-xs">
+                    {% for language_item in record.file_lang_versions %}
+                    <div class="col-md-6 col-xs-12">
+                        <a href="{{ ''| page }}?{{queries}}&download={{language_item.id}}&file_name={{language_item.file_name|replace({' ': '_'})}}" class="btn btn-primary" download aria-label="Download {{record.name}} in {{language_item.description}}">{{language_item.description}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{{ record.file.path }}#{{record.file.file_name}}" target="_blank" class="btn btn-primary" rel="noopener" download aria-label="Download {{record.name}}">Download</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </article>
+        {% endif %}
+
+        {% endspaceless %}
+        {% else %}
+        <p>{{ noRecordsMessage }}</p>
+        {% endfor %}
+    </section>
 </div>

@@ -265,6 +265,12 @@ h1, h2{
             padding: 0;
             margin: 20px 0;
 
+              li{
+                  margin: 0;
+                  display: block;
+                  width: 100%;
+              }
+
 
             a{
               color: @primary-color!important;
@@ -968,4 +974,18 @@ footer .align-items-center{
       transform:scale(1.2);
     }
   }
+}
+
+
+/* Screen reader only text - visually hidden but accessible to screen readers */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }

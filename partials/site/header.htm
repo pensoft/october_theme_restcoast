@@ -15,74 +15,77 @@ secondaryClasses = "dropdown-menu"
 numberOfLevels = 2
 ==
 {% if user %}
-<nav class="fixed navbar-loggedin-user ">
-	<div class="navbar-collapse collapse row middle-xs">
-		<div class="col-xs-12 col-md-9">{% component 'login' %}</div>
-		<div class="col-xs-2 end-xs  col-md-3 hidden-xs">
-			{% if user.avatar %}
-			<a href="/profile" class="profile_name"><span>{{ user.name }} {{ user.surname }} &nbsp; &nbsp; </span><img alt="{{ user.name }} {{ user.surname }}" src="{{user.avatar.getThumb(30,30, { mode : 'crop' } )}}" style="border-radius: 50%; margin-right:20px;" align="right"> </a>
-			{% else %}
-
-			<a href="/profile" class="profile_name"><span>{{ user.name }} {{ user.surname }} &nbsp; &nbsp; </span><img alt="{{ user.name }} {{ user.surname }}" src="{{ 'CMS_icons_avatar_white.svg'|media }}" width="30" height="30" style="margin-right:20px;" align="right"></a>
-			{% endif %}
-		</div>
-</nav>
+<header>
+    <nav class="fixed navbar-loggedin-user" aria-label="User account navigation">
+        <div class="navbar-collapse collapse row middle-xs">
+            <div class="col-xs-12 col-md-9">{% component 'login' %}</div>
+            <div class="col-xs-2 end-xs  col-md-3 hidden-xs">
+                {% if user.avatar %}
+                <a href="/profile" class="profile_name" aria-label="View profile for {{ user.name }} {{ user.surname }}"><span>{{ user.name }} {{ user.surname }} &nbsp; &nbsp; </span><img alt="" src="{{user.avatar.getThumb(30,30, { mode : 'crop' } )}}" style="border-radius: 50%; margin-right:20px;" align="right" role="presentation"> </a>
+                {% else %}
+                <a href="/profile" class="profile_name" aria-label="View profile for {{ user.name }} {{ user.surname }}"><span>{{ user.name }} {{ user.surname }} &nbsp; &nbsp; </span><img alt="" src="{{ 'CMS_icons_avatar_white.svg'|media }}" width="30" height="30" style="margin-right:20px;" align="right" role="presentation"></a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>
 {% endif %}
-<nav class="pr-1 pl-1 navbar fixed " id="headernavbar" {% if user %} style="margin-top:69px;"{% endif %}>
-	<div id="menuToggle">
-		<input type="checkbox" />
-		<span></span>
-		<span></span>
-		<span></span>
-		{% component 'menu' %}
-	</div>
-	<a href="{{'home'|page}}" class="navbar-brand" style="background-image: url('{{ this.theme.site_logo.getPath() }}'); background-position: center; background-size: contain;">
 
-    </a>
+<header>
+    <nav class="pr-1 pl-1 navbar fixed" id="headernavbar" {% if user %} style="margin-top:69px;"{% endif %} aria-label="Main navigation">
+        <div id="menuToggle">
+            <input type="checkbox" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false" />
+            <span></span>
+            <span></span>
+            <span></span>
+            {% component 'menu' %}
+        </div>
+
+        <a href="{{'home'|page}}" class="navbar-brand" style="background-image: url('{{ this.theme.site_logo.getPath() }}'); background-position: center; background-size: contain;" aria-label="Home">
+        </a>
 
         <div class="navbar-collapse collapse end-xs" id="headerNavbarNav" style="display: none;">
-			{% component 'menu' %}
-			<div id="headerNavbarLogin">
-				<ul class="navbar-nav" style="padding: 0; margin: 0;">
+            {% component 'menu' %}
+            <div id="headerNavbarLogin">
+                <ul class="navbar-nav" style="padding: 0; margin: 0;">
+                </ul>
+            </div>
+        </div>
 
-				</ul>
-			</div>
-		</div>
-		<a class="pr p-search large search-btn" onclick="showSearchForm();"></a>
+        <a class="pr p-search large search-btn" onclick="showSearchForm();" aria-label="Open search" role="button" tabindex="0"></a>
 
-		<div id="search" class="search" style="display: none;">
-			<form class="input-group align-items-start" action="{{ url('search')}}" method="get">
-				<input class="form-control search_input" style="color: #000;" name="q" type="text" autocomplete="on" placeholder="Search">
-				<button class="btn btn-link pr p-search big text-grey-search-btn" type="submit"></button>
-			</form>
-		</div>
-</nav>
-
+        <section id="search" class="search" style="display: none;" aria-label="Search">
+            <form class="input-group align-items-start" action="{{ url('search')}}" method="get" role="search">
+                <label for="searchInput" class="sr-only">Search</label>
+                <input id="searchInput" class="form-control search_input" style="color: #000;" name="q" type="text" autocomplete="on" placeholder="Search" aria-label="Search">
+                <button class="btn btn-link pr p-search big text-grey-search-btn" type="submit" aria-label="Submit search"></button>
+            </form>
+        </section>
+    </nav>
+</header>
 
 {% if this.theme.header_image %}
-<div class="header-image {{page_id}}">
+<section class="header-image {{page_id}}" aria-label="Page header">
     {%if this.page.header_image %}
-        <div class="header-image-bar full-zoom" style="background-image: url('{{this.page.header_image|media}}'); background-position: left center;"></div>
+    <div class="header-image-bar full-zoom" style="background-image: url('{{this.page.header_image|media}}'); background-position: left center;" role="img" aria-label="Header background image"></div>
     {%else%}
-        <div class="header-image-bar" style="background-image: url('{{this.theme.header_image.getPath()}}'); background-position: left center;"></div>
+    <div class="header-image-bar" style="background-image: url('{{this.theme.header_image.getPath()}}'); background-position: left center;" role="img" aria-label="Header background image"></div>
     {%endif%}
     <div class="jumbotron">
-		<div class="blur-header" data-aos="slide-right" data-aos-duration="1500" data-aos-delay="500" data-aos-offset="-200">
-			<h1 data-aos="slide-right" data-aos-duration="1700" data-aos-delay="500" data-aos-offset="-200" class="underline white  {% if page_id == 'home'%}home-page-header{% endif %}">{%if page_title%} {{page_title}} {%else%} {{site_name}} {%endif%}</h1>
-			{% if page_id == 'home' and tag_line %}
-				<p data-aos="slide-right" data-aos-duration="2500" data-aos-delay="500" data-aos-offset="-200">{{tag_line}}</p>
-			{% endif %}			
-		</div>
-
+        <div class="blur-header" data-aos="slide-right" data-aos-duration="1500" data-aos-delay="500" data-aos-offset="-200">
+            <h1 data-aos="slide-right" data-aos-duration="1700" data-aos-delay="500" data-aos-offset="-200" class="underline white  {% if page_id == 'home'%}home-page-header{% endif %}">{%if page_title%} {{page_title}} {%else%} {{site_name}} {%endif%}</h1>
+            {% if page_id == 'home' and tag_line %}
+            <p data-aos="slide-right" data-aos-duration="2500" data-aos-delay="500" data-aos-offset="-200">{{tag_line}}</p>
+            {% endif %}
+        </div>
     </div>
-</div>
+</section>
 {% endif %}
 
-
 {% if user %}
-    <script>$(document).trigger('profile')</script>
-    <script>$(document).trigger('signout')</script>
+<script>$(document).trigger('profile')</script>
+<script>$(document).trigger('signout')</script>
 {% else %}
-    <script>$(document).trigger('signin')</script>
+<script>$(document).trigger('signin')</script>
 {% endif %}
 

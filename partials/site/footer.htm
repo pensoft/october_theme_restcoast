@@ -29,82 +29,82 @@ learnMore = "Opt-out here"
 link = "/privacy-policy#cookies"
 theme = "dark-bottom"
 ==
-<div class="container-fluid border-box dark-background">{% component 'cookieConsent' %}
-	<div class="container">
-		<div class="row top-xs between-xs footer-menu-container">
-			<div class="col-xs-12 col-md-2 start-md center-xs col-sm-6 start-sm">
-				<div class="head">ABOUT</div>
-				{% component 'about_menu' %}
-			</div>
-			<div class="col-xs-12 col-md-2 start-md center-xs col-sm-6 start-sm">
-				<div class="head">LATEST</div>
-				{% component 'latest_menu' %}
-			</div>
-			<div class="col-xs-12 col-md-2 start-md center-xs col-sm-6 start-sm">
-				<div class="head">RESOURCES</div>
-				{% component 'resources_menu' %}
-			</div>
-			<div class="col-xs-12 col-md-3 start-md center-xs col-sm-6 start-sm">
-				{% if (enable_social_media) %}
-				<div class="head">FOLLOW {{ this.theme.site_name }}</div>
-				<div class="social-networks">
-					<div class="icons mt-1">
-						{% if enable_facebook and facebook_url %}
-						<a href="{{facebook_url}}" target="_blank" class="pr p-secondary p-facebook big" target="_blank"></a>
-						{% endif %}
-						{% if enable_twitter and twitter_url %}
-						<a href="{{twitter_url}}" target="_blank" class="pr p-secondary p-twitter big d-flex align-items-center" target="_blank"></a>
-						{% endif %}
-						{% if enable_linkedin and linkedin_url %}
-						<a  href="{{linkedin_url}}" target="_blank" class="pr p-secondary p-linkedin big" target="_blank"></a>
-						{% endif %}
-						{% if enable_youtube and youtube_url %}
-						<a  href="{{youtube_url}}" target="_blank" class="pr p-secondary p-youtube big" target="_blank"></a>
-						{% endif %}
-						{% if enable_instagram and instagram_url %}
-						<a href="{{this.theme.instagram_url}}" target="_blank" class="btn pr p-primary ig-new"></a>
-						{% endif %}
-					</div>
-                    <a class="button_rio" href="https://riojournal.com/topical_collection/211/" target="_blank">&nbsp;</a>
-				</div>
-				{% endif %}
-			</div>
-			<div class="col-xs-12 col-md start-md center-xs col-sm-6 start-sm">
-				<div class="head">Contact us</div>
-				<div class="social-networks contacts col-md-2 col-xs-12 start-md center-xs">
-					<div class="icons mt-1">
-						<a href="{{'contact'|page}}" class="pr p-secondary p-mail big"></a>
-					</div>
-				</div>
-			</div>
+<footer class="container-fluid border-box dark-background">
+    {% component 'cookieConsent' %}
+    <div class="container">
+        <div class="row top-xs between-xs footer-menu-container">
+            <nav class="col-xs-12 col-md-2 start-md center-xs col-sm-6 start-sm" aria-label="About">
+                <h2 class="head">ABOUT</h2>
+                {% component 'about_menu' %}
+            </nav>
+            <nav class="col-xs-12 col-md-2 start-md center-xs col-sm-6 start-sm" aria-label="Latest">
+                <h2 class="head">LATEST</h2>
+                {% component 'latest_menu' %}
+            </nav>
+            <nav class="col-xs-12 col-md-2 start-md center-xs col-sm-6 start-sm" aria-label="Resources">
+                <h2 class="head">RESOURCES</h2>
+                {% component 'resources_menu' %}
+            </nav>
+            <section class="col-xs-12 col-md-3 start-md center-xs col-sm-6 start-sm" aria-label="Social media">
+                {% if (enable_social_media) %}
+                <h2 class="head">FOLLOW {{ this.theme.site_name }}</h2>
+                <div class="social-networks">
+                    <div class="icons mt-1">
+                        {% if enable_facebook and facebook_url %}
+                        <a href="{{facebook_url}}" target="_blank" class="pr p-secondary p-facebook big" aria-label="Follow us on Facebook"></a>
+                        {% endif %}
+                        {% if enable_twitter and twitter_url %}
+                        <a href="{{twitter_url}}" target="_blank" class="pr p-secondary p-twitter big d-flex align-items-center" aria-label="Follow us on Twitter"></a>
+                        {% endif %}
+                        {% if enable_linkedin and linkedin_url %}
+                        <a href="{{linkedin_url}}" target="_blank" class="pr p-secondary p-linkedin big" aria-label="Follow us on LinkedIn"></a>
+                        {% endif %}
+                        {% if enable_youtube and youtube_url %}
+                        <a href="{{youtube_url}}" target="_blank" class="pr p-secondary p-youtube big" aria-label="Follow us on YouTube"></a>
+                        {% endif %}
+                        {% if enable_instagram and instagram_url %}
+                        <a href="{{this.theme.instagram_url}}" target="_blank" class="btn pr p-primary ig-new" aria-label="Follow us on Instagram"></a>
+                        {% endif %}
+                    </div>
+                    <a class="button_rio" href="https://riojournal.com/topical_collection/211/" target="_blank" aria-label="Visit RIO Journal topical collection">&nbsp;</a>
+                </div>
+                {% endif %}
+            </section>
+            <section class="col-xs-12 col-md start-md center-xs col-sm-6 start-sm" aria-label="Contact">
+                <h2 class="head">Contact us</h2>
+                <div class="social-networks contacts col-md-2 col-xs-12 start-md center-xs">
+                    <div class="icons mt-1">
+                        <a href="{{'contact'|page}}" class="pr p-secondary p-mail big" aria-label="Send us an email"></a>
+                    </div>
+                </div>
+            </section>
 
-			{%if this.theme.subscribe%}
-			<div class="col-xs-12 col-md start-md center-xs col-sm-6 start-sm">
-				<div class="head" style="white-space:nowrap; overflow: hidden;">Stay up to date</div>
-				<div class="icons mt-1">
-					<a href="{{this.theme.subscribe}}" target="_blank" class="pr p-secondary p-subscribe big"></a>
+            {%if this.theme.subscribe%}
+            <section class="col-xs-12 col-md start-md center-xs col-sm-6 start-sm" aria-label="Newsletter">
+                <h2 class="head" style="white-space:nowrap; overflow: hidden;">Stay up to date</h2>
+                <div class="icons mt-1">
+                    <a href="{{this.theme.subscribe}}" target="_blank" class="pr p-secondary p-subscribe big" aria-label="Subscribe to our newsletter"></a>
+                </div>
+            </section>
+            {%endif%}
 
-				</div>
-			</div>
-			{%endif%}
+        </div>
+    </div>
 
-		</div>
-	</div>
-
-</div>
-<div class="container-fluid border-box black-background">
-	<div class="row nowrap text-light d-flex justify-content-between align-items-center flex-column flex-lg-row dark-background">
-		{% if (footer_funds_flag != null or footer_funds_text != '') %}
-		<div class="funding flex-column my-1 my-lg-0 flex-lg-row px-1 align-items-center col-sm col-xs-12">
-			{% if footer_funds_flag %}
-			<img class="text mr-0 mr-lg-1" style="height:50px;" src="{{ footer_funds_flag }}"/>
-			{% endif %}
-			{% if footer_funds_text %}
-			<span class="align-items-center mt-sm-0 mt-1">{{footer_funds_text}}</span>
-			{%endif %}
-		</div>
-		{% endif %}
-		<div class="col-sm-2 col-xs-12 center-xs"><a style="flex:0 0 auto;" href="/privacy-policy">Privacy Policy</a></div>
-		<div class="col-sm-3 col-xs-12 end-sm center-xs"><div class="powered-by my-1 my-lg-0 px-1 align-items-center end-sm center-xs"><span class="mr-1">Designed and powered by <a href="https://pensoft.net/" target="_blank">Pensoft</a></span></div></div>
-	</div>
-</div>
+</footer>
+<section class="container-fluid border-box black-background" aria-label="Footer information">
+    <div class="row nowrap text-light d-flex justify-content-between align-items-center flex-column flex-lg-row dark-background">
+        {% if (footer_funds_flag != null or footer_funds_text != '') %}
+        <div class="funding flex-column my-1 my-lg-0 flex-lg-row px-1 align-items-center col-sm col-xs-12">
+            {% if footer_funds_flag %}
+            <img class="text mr-0 mr-lg-1" style="height:50px;" src="{{ footer_funds_flag }}" alt="Funding organization logo"/>
+            {% endif %}
+            {% if footer_funds_text %}
+            <span class="align-items-center mt-sm-0 mt-1">{{footer_funds_text}}</span>
+            {%endif %}
+        </div>
+        {% endif %}
+        <div class="col-sm-2 col-xs-12 center-xs"><a style="flex:0 0 auto;" href="/privacy-policy">Privacy Policy</a></div>
+        <div class="col-sm-3 col-xs-12 end-sm center-xs"><div class="powered-by my-1 my-lg-0 px-1 align-items-center end-sm center-xs"><span class="mr-1">Designed and powered by <a href="https://pensoft.net/" target="_blank" rel="noopener">Pensoft</a></span></div></div>
+    </div>
+</section>

@@ -24,19 +24,19 @@ templates = "template3"
 
 ==
 {% component 'siteSearchInclude' %}
-<div class="container-fluid pilots-container">
+<section class="container-fluid pilots-container" aria-label="Pilot sites">
     <div class="container pilots_background_container">
         <h1 class="page_heading ml-1 mb-4">Pilots</h1>
         <div class="row top-xs">
-            <div class="col-xs-12">
-            {% component 'accordion' %}
-            </div>
+            <section class="col-xs-12" aria-label="Pilot site information">
+                {% component 'accordion' %}
+            </section>
             <div class="col-md-6 col-xs-12">
-                <div class="pilots_svg_map_container">
-                    <span class="tooltiptext" id="tooltip">Bulgaria</span>
+                <div class="pilots_svg_map_container" role="img" aria-label="Interactive map of pilot sites">
+                    <span class="tooltiptext" id="tooltip" role="tooltip" aria-live="polite">Bulgaria</span>
                     {% partial 'components/pilots_map' %}
                 </div>
             </div>
         </div>
-    </div>    
-</div>
+    </div>
+</section>

@@ -62,118 +62,123 @@ function onStart(){
 ?>
 ==
 <div class="container">
-	{% if not slug %}
-	<h1 class="page_heading">Events</h1>
-	<div class="tabs">
-		<a class="" href="#listView">List view</a>
-		<a class="" href="#calendarView">Calendar view</a>
-	</div>
-	<!--tabs content	-->
+    {% if not slug %}
+    <section aria-label="Events">
+        <h1 class="page_heading">Events</h1>
+        <nav class="tabs" role="tablist" aria-label="Event view options">
+            <a class="" href="#listView" role="tab" aria-controls="listView" aria-selected="true">List view</a>
+            <a class="" href="#calendarView" role="tab" aria-controls="calendarView" aria-selected="false">Calendar view</a>
+        </nav>
+        <!--tabs content	-->
 
-	
-	<div class="row" id="listView">
-		<div class="events_list_container">
-			{% for entry in entries %}
-			{% set url = entry.url ?  entry.url : '/events/' ~ entry.slug %}
 
-			<div class="event_list_item">
-				<div class="row between-xs time_and_date">
-					<div class="col-md-2 start-md col-xs-12 center-xs">{{entry.event_date}}</div>
-					<div class="col-md-8 start-md col-xs-12 center-xs"><a class="button" href="{{ url }}" target="_blank" style="font-weight: normal; font-family: muli;">{{entry.title}}</a></div>
-					<div class="col-md-2 end-md col-xs-12 center-xs">{{entry.start|date('l')}}</div>
-				
-					<!--<div class="col-xs-1">{{entry.start|date('g:i')}}</div> <div class="col-xs-11">{{entry.title}}</div>-->
-					
-				</div>
-			</div>
+        <div class="row" id="listView" role="tabpanel" aria-labelledby="listView">
+            <div class="events_list_container">
+                {% for entry in entries %}
+                {% set url = entry.url ?  entry.url : '/events/' ~ entry.slug %}
 
-			{% endfor %}
-		</div>
-		<div class="row container">
-			{{ entries.fragment('listView').render|raw }}
-		</div>
+                <article class="event_list_item">
+                    <div class="row between-xs time_and_date">
+                        <div class="col-md-2 start-md col-xs-12 center-xs">
+                            <time datetime="{{entry.start|date('Y-m-d')}}">{{entry.event_date}}</time>
+                        </div>
+                        <div class="col-md-8 start-md col-xs-12 center-xs">
+                            <a class="button" href="{{ url }}" {% if entry.url %}target="_blank" rel="noopener"{% endif %} style="font-weight: normal; font-family: muli;">{{entry.title}}</a>
+                        </div>
+                        <div class="col-md-2 end-md col-xs-12 center-xs">{{entry.start|date('l')}}</div>
+                    </div>
+                </article>
 
-	</div>
-	<div class="row" id="calendarView">
-		{% component 'calendar' %}
-	</div>
-	{% else %}
+                {% endfor %}
+            </div>
+            <nav class="row container" aria-label="Pagination">
+                {{ entries.fragment('listView').render|raw }}
+            </nav>
 
-	{% if entry %}
-	<div class="row newslist single-news-item">
-		{% set materials = entry.materials %}
-		{% if entry.cover_image or materials %}
-		<div class="col-xs-12 col-md-5">
-			{% if entry.cover_image %}
-			<img class="content left" src="{{entry.cover_image|crop_image|resize(673, 411, {'mode':'crop'})}}" alt="{{entry.cover_image.title}}">
-			{% endif %}
-			<div class="btn btn-primary share-btn" id="share-{{slug}}">Share</div>
+        </div>
+        <div class="row" id="calendarView" role="tabpanel" aria-labelledby="calendarView">
+            {% component 'calendar' %}
+        </div>
+    </section>
+    {% else %}
 
-			{% if materials %}
-			<ul class="event_materials">
-				<h1 class="display-1">Materials</h1>
-				{% for item in materials %}
-				{% set url = item.button_file ? item.button_file|media : item.button_url %}
-				<li>
-					<h2>{{ item.title }}</h2>
-					<a class="btn btn-primary" href="{{ url }}" target="_blank">{{ item.button_title }}</a>
-				</li>
-				{% endfor %}
-			</ul>
-			{% endif %}
+    {% if entry %}
+    <article class="row newslist single-news-item">
+        {% set materials = entry.materials %}
+        {% if entry.cover_image or materials %}
+        <div class="col-xs-12 col-md-5">
+            {% if entry.cover_image %}
+            <img class="content left" src="{{entry.cover_image|crop_image|resize(673, 411, {'mode':'crop'})}}" alt="{{entry.cover_image.title}}">
+            {% endif %}
+            <button class="btn btn-primary share-btn" id="share-{{slug}}" aria-label="Share this event">Share</button>
 
-		</div>
+            {% if materials %}
+            <section class="event_materials" aria-label="Event materials">
+                <h2 class="display-1">Materials</h2>
+                <ul>
+                    {% for item in materials %}
+                    {% set url = item.button_file ? item.button_file|media : item.button_url %}
+                    <li>
+                        <h3>{{ item.title }}</h3>
+                        <a class="btn btn-primary" href="{{ url }}" target="_blank" rel="noopener" aria-label="{{ item.button_title }} (opens in new tab)">{{ item.button_title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
 
-		<div class="col-xs-12 col-md-7">
-			{% else %}
-			<div class="col-xs-12 col-md-12">
-				{% endif %}
+        </div>
 
-				<div class="news-title">
-					<h1 class="single-new-title">{{ entry.title }}</h1>
+        <div class="col-xs-12 col-md-7">
+            {% else %}
+            <div class="col-xs-12 col-md-12">
+                {% endif %}
 
-				</div>
-				{% if entry.event_date %}
-				<div class="event-date">
-					 {{entry.event_date}}
-				</div>
-				{% endif %}
+                <header class="news-title">
+                    <h1 class="single-new-title">{{ entry.title }}</h1>
+                </header>
 
-				{% if entry.place %}
-				<div class="event-place"> {{ entry.place }}</div>
-				{% endif %}
+                {% if entry.event_date %}
+                <div class="event-date">
+                    <time datetime="{{entry.start|date('Y-m-d')}}">{{entry.event_date}}</time>
+                </div>
+                {% endif %}
 
-				<div class="content mt-2 mb-2">
-					{{ entry.description|raw }}
-				</div>
+                {% if entry.place %}
+                <div class="event-place" aria-label="Event location"> {{ entry.place }}</div>
+                {% endif %}
+
+                <section class="content mt-2 mb-2" aria-label="Event description">
+                    {{ entry.description|raw }}
+                </section>
+
                 {% if internalData.getIM(entry.slug).organiser %}
                 <div class="content">
                     <span class="text-bold">Organiser:</span>
                     <span class="text-ligth">{{internalData.getIM(entry.slug).organiser}}</span>
                 </div>
                 {% endif %}
+
                 {% if user %}
                 {% if attendees.getIM(entry.id).count %}
-                <div class="content">
+                <section class="content" aria-label="Event attendees">
                     <span class="text-bold">Attendees:</span>
 
                     {% for profile in attendees.getIM(entry.id) %}
                     <span class="text-ligth">{{profile.name}} {{profile.surname}}</span>
                     {% if not loop.last %},&nbsp;{% endif %}
                     {% endfor %}
-
-
-                </div>
+                </section>
                 {% endif %}
 
                 {% endif %}
 
 
                 {% if entry.url %}
-                <a href="{{entry.url}}" class="btn btn-primary mb-1 mt-1" target="_blank">Go to event website</a>
+                <a href="{{entry.url}}" class="btn btn-primary mb-1 mt-1" target="_blank" rel="noopener" aria-label="Go to event website (opens in new tab)">Go to event website</a>
                 {% endif %}
-			</div>
-		</div>
+            </div>
+        </div>
 
         {% if user  %}
         <div class="col-xs-12 col-md-7">
@@ -184,14 +189,16 @@ function onStart(){
         </div>
         {% endif %}
 
-		{% else %}
-		{% endif %}
+    </article>
+    {% else %}
+    {% endif %}
 
-		{% endif %}
+    {% endif %}
 
-	</div>
+</div>
+
 	<script>
-		createTippy('#share-{{slug}}', {content: '<div class="icons">{% if this.theme.facebook %}<a class="fb-xfbml-parse-ignore pr p-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" ></a>{% endif %}{% if this.theme.twitter %}<a class="pr p-twitter" href="https://twitter.com/intent/tweet?text={{encoded_title}}{{page_url}}" target="_blank"></a>{% endif %}{% if this.theme.linkedin %}<a class="pr p-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank"></a>{% endif %}</div>'})
+		createTippy('#share-{{slug}}', {content: '<div class="icons" role="group" aria-label="Share on social media">{% if this.theme.facebook %}<a class="fb-xfbml-parse-ignore pr p-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" ></a>{% endif %}{% if this.theme.twitter %}<a class="pr p-twitter" href="https://twitter.com/intent/tweet?text={{encoded_title}}{{page_url}}" target="_blank"></a>{% endif %}{% if this.theme.linkedin %}<a class="pr p-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank"></a>{% endif %}</div>'})
 
 		var documentHasScroll = function() {
 			return window.innerHeight <= document.body.offsetHeight;

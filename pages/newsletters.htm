@@ -48,36 +48,41 @@ return Redirect::to('/media-center/newsletters');
 ?>
 ==
 <div class="container">
-	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a><br><br>
+    <nav aria-label="Breadcrumb">
+        <a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
+    </nav>
+    <br><br>
 
-	<h1 class="page_heading">Newsletters</h1>
-	<div class="row">
-		{% set records = mediaNewslettersList %}
-		{% set displayColumn = mediaNewslettersList.displayColumn %}
-		{% set noRecordsMessage = mediaNewslettersList.noRecordsMessage %}
-		{% set detailsPage = mediaNewslettersList.detailsPage %}
-		{% set detailsKeyColumn = mediaNewslettersList.detailsKeyColumn %}
-		{% set detailsUrlParameter = mediaNewslettersList.detailsUrlParameter %}
+    <h1 class="page_heading">Newsletters</h1>
 
-		{% for record in records %}
-		{# Use spaceless tag to remove spaces inside the A tag. #}
-		{% spaceless %}
-		{% if record.newsletter_image %}
-		<div class="col-md-4 col-xs-12">
-			<div class="card-container text-center">
-				<span class="card_image_container" style="background: url({{record.newsletter_image.thumb(220,220,{'mode':'crop'})}}) center center no-repeat;" title="{{record.name}}"></span>
-				<span class="card_title" style="min-height: 100px;">{{record.name}}, {{record.date |date('F Y')}}</span>
-				{# <a class="link btn btn-primary mb-1" href="{{record.url}}" target="_blank">Read the newsletter</a> #}
-				{# <br><br><a href="{{ record.file.path }}#{{record.file.file_name}}" target="_blank" title="{{record.name}}" class="btn btn-primary">Download</a> #}
-				<br><br><a href="{{ record.url}}" target="_blank" title="{{record.name}}" class="btn btn-primary">Read the newsletter</a>
-			</div>
-		</div>
+    <section class="row" aria-label="Newsletters list">
+        {% set records = mediaNewslettersList %}
+        {% set displayColumn = mediaNewslettersList.displayColumn %}
+        {% set noRecordsMessage = mediaNewslettersList.noRecordsMessage %}
+        {% set detailsPage = mediaNewslettersList.detailsPage %}
+        {% set detailsKeyColumn = mediaNewslettersList.detailsKeyColumn %}
+        {% set detailsUrlParameter = mediaNewslettersList.detailsUrlParameter %}
 
-		{% endif %}
+        {% for record in records %}
+        {# Use spaceless tag to remove spaces inside the A tag. #}
+        {% spaceless %}
+        {% if record.newsletter_image %}
+        <article class="col-md-4 col-xs-12">
+            <div class="card-container text-center">
+                <div class="card_image_container" style="background: url({{record.newsletter_image.thumb(220,220,{'mode':'crop'})}}) center center no-repeat;" role="img" aria-label="{{record.name}} cover image"></div>
+                <h2 class="card_title" style="min-height: 100px;">{{record.name}}, <time datetime="{{record.date|date('Y-m')}}">{{record.date |date('F Y')}}</time></h2>
+                {# <a class="link btn btn-primary mb-1" href="{{record.url}}" target="_blank">Read the newsletter</a> #}
+                {# <br><br><a href="{{ record.file.path }}#{{record.file.file_name}}" target="_blank" title="{{record.name}}" class="btn btn-primary">Download</a> #}
+                <br><br>
+                <a href="{{ record.url}}" target="_blank" class="btn btn-primary" rel="noopener" aria-label="Read {{record.name}} newsletter (opens in new tab)">Read the newsletter</a>
+            </div>
+        </article>
 
-		{% endspaceless %}
-		{% else %}
-		{{ noRecordsMessage }}
-		{% endfor %}
-	</div>
+        {% endif %}
+
+        {% endspaceless %}
+        {% else %}
+        <p>{{ noRecordsMessage }}</p>
+        {% endfor %}
+    </section>
 </div>

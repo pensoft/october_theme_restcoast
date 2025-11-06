@@ -48,9 +48,14 @@ return Redirect::to('/media-center/fact-sheets');
 ?>
 ==
 <div class="container presentation">
-    <a href="/media-center" class="back-to"> &#10094; Back to Media center</a><br><br>
+    <nav aria-label="Breadcrumb">
+        <a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
+    </nav>
+    <br><br>
+
     <h1 class="page_heading">Pilot Site Factsheets</h1>
-    <div class="row">
+
+    <section class="row" aria-label="Pilot site factsheets list">
         {% set records = mediaPresentatoinsList %}
         {% set displayColumn = mediaPresentatoinsList.displayColumn %}
         {% set noRecordsMessage = mediaPresentatoinsList.noRecordsMessage %}
@@ -61,31 +66,32 @@ return Redirect::to('/media-center/fact-sheets');
         {% for record in records %}
         {# Use spaceless tag to remove spaces inside the A tag. #}
         {% spaceless %}
-        <div class="col-md-2 col-xs-12">
+        <article class="col-md-2 col-xs-12">
             <div class="card-container text-center">
-                <span class="card_title">{{record.name}}</span><br>
-                <span class="card_image_container" style="background: url({{record.presentation_image.thumb(220, 220,{'mode':'crop'})}}) center center no-repeat;" title="{{record.name}}"></span>
+                <h2 class="card_title">{{record.name}}</h2>
+                <br>
+                <div class="card_image_container" style="background: url({{record.presentation_image.thumb(220, 220,{'mode':'crop'})}}) center center no-repeat;" role="img" aria-label="{{record.name}} preview image"></div>
 
                 {% if record.file_lang_versions %}
-				<div class="row lang-row center-xs">
-					{% for language_item in record.file_lang_versions %}
-					<div class="col-md-6 col-xs-12">
-						<a href="{{ language_item.path }}#{{language_item.file_name}}" title="{{language_item.file_name|replace({' ': '_'})}}" class="btn btn-download" target="_blank">{{ language_item.description }}</a>
-					</div>
-					{% endfor %}
-				</div>
-				{% else %}
-				<div class="row">
-					<div class="col-xs-12">
-						<a href="{{ record.file.path }}#{{record.file.file_name}}" target="_blank" title="{{record.name}}" class="btn btn-download">English</a>
-					</div>					
-				</div>
-				{% endif %}
+                <div class="row lang-row center-xs">
+                    {% for language_item in record.file_lang_versions %}
+                    <div class="col-md-6 col-xs-12">
+                        <a href="{{ language_item.path }}#{{language_item.file_name}}" class="btn btn-download" target="_blank" rel="noopener" download aria-label="Download {{record.name}} in {{ language_item.description }}">{{ language_item.description }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{{ record.file.path }}#{{record.file.file_name}}" target="_blank" class="btn btn-download" rel="noopener" download aria-label="Download {{record.name}} in English">English</a>
+                    </div>
+                </div>
+                {% endif %}
             </div>
-        </div>
+        </article>
         {% endspaceless %}
         {% else %}
-        {{ noRecordsMessage }}
+        <p>{{ noRecordsMessage }}</p>
         {% endfor %}
-    </div>
+    </section>
 </div>

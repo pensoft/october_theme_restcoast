@@ -40,32 +40,36 @@ return Redirect::to('/media-center/logo');
 ?>
 ==
 <div class="container brand-kit">
-	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a><br><br>
+    <nav aria-label="Breadcrumb">
+        <a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
+    </nav>
+    <br><br>
 
-	<h1 class="page_heading">Brand Kit</h1>
-	<div class="row card-container-row mb-4 start-xs">
+    <h1 class="page_heading">Brand Kit</h1>
 
+    <section class="row card-container-row mb-4 start-xs" aria-label="Brand kit downloads">
 
-			{% for record in records %}
-				{% if record.file_pdf %}
-				<div class="col-md-6 col-xs-12">
-					<div class="card-container text-center">
-						<span class="card_image_container" style="background: url({{record.logo_image.path}}) center center no-repeat;" title="{{record.name}}"></span>
-						<br><a href="{{record.file_pdf.path}}" target="_blank" title="Brand kit" class="btn btn-primary">Download {{record.name}}</a>
-					</div>
-				</div>
-				{% elseif record.file_zip %}
-				<div class="col-md-6 col-xs-12">
-					<div class="card-container text-center">
-						<span class="card_image_container" style="background: url({{record.logo_image.path}}) center center no-repeat;" title="{{record.name}}"></span>
-						<br><a href="{{record.file_zip.path}}" target="_blank" title="Brand kit" class="btn btn-primary">Download {{record.name}}</a>
-					</div>
-				</div>
-				{% else %}
-				<div></div>
-				{% endif %}
-			{% endfor %}
-	</div>
-
+        {% for record in records %}
+        {% if record.file_pdf %}
+        <article class="col-md-6 col-xs-12">
+            <div class="card-container text-center">
+                <h2 class="sr-only">{{record.name}}</h2>
+                <div class="card_image_container" style="background: url({{record.logo_image.path}}) center center no-repeat;" role="img" aria-label="{{record.name}} logo preview"></div>
+                <br>
+                <a href="{{record.file_pdf.path}}" target="_blank" class="btn btn-primary" rel="noopener" download aria-label="Download {{record.name}} PDF">Download {{record.name}}</a>
+            </div>
+        </article>
+        {% elseif record.file_zip %}
+        <article class="col-md-6 col-xs-12">
+            <div class="card-container text-center">
+                <h2 class="sr-only">{{record.name}}</h2>
+                <div class="card_image_container" style="background: url({{record.logo_image.path}}) center center no-repeat;" role="img" aria-label="{{record.name}} logo preview"></div>
+                <br>
+                <a href="{{record.file_zip.path}}" target="_blank" class="btn btn-primary" rel="noopener" download aria-label="Download {{record.name}} ZIP file">Download {{record.name}}</a>
+            </div>
+        </article>
+        {% endif %}
+        {% endfor %}
+    </section>
 
 </div>

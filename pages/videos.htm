@@ -63,52 +63,57 @@ return Redirect::to('/media-center/videos');
 ==
 
 <div class="container media-videos">
-	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a><br><br>
-	<h1 class="page_heading">Videos</h1>
-	<div class="container">
-		<div class="category-tabs-container mb-2">
-			{% if categories.count > 0 %}
-			<div class="row video-category-tabs" id="category-tabs">
-                <a href="{{ 'media-center/videos'|page }}?categoryId=all" class="{{ 'all' == categoryId ? 'active' : '' }}">All Videos</a>
-				{% for category in categories %}
-				<a href="{{ 'media-center/videos'|page }}?categoryId={{ category.id }}" class="{{ category.id == categoryId ? 'active' : '' }}">
-					{{ category.name }}
-				</a>
-				{% endfor %}
-			</div>
-			{% endif %}
-		</div>				
-		<div class="video-records" id="video-records">
-			<div class="row">
-				{% for record in records %}
-				<div class="col-md-6 col-xs-12">
-					<div class="video-card">
-						<p class="video-title">{{record.name}}</p>
-						{% if record.file %}
-						<video controls="" width="100%"><source src="{{record.file.path}}" type="video/mp4"></video>
-		
-						<p>Attachment: {{record.file.file_name}}, {{record.file.size}}</p>
-		
-						<p><a class=" btn btn-primary" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}">Download</a></p>
-		
-						{% endif %}
-		
-						{% if record.youtube_url %}
-						<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" src="{{record.youtube_url}}" width="100%" height="320"></iframe>
-		
-						<p>&nbsp;</p>
-						{% endif %}
-		
-						{% if record.vimeo_url %}
-						<iframe width="100%" height="320" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-								src="{{record.vimeo_url}}">
-						</iframe>
-						<p>&nbsp;</p>
-						{% endif %}
-					</div>
-				</div>
-				{% endfor 	%}
-			</div>
-		</div>
-	</div>
+    <nav aria-label="Breadcrumb">
+        <a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
+    </nav>
+    <br><br>
+
+    <h1 class="page_heading">Videos</h1>
+
+    <div class="container">
+        <div class="category-tabs-container mb-2">
+            {% if categories.count > 0 %}
+            <nav class="row video-category-tabs" id="category-tabs" aria-label="Video categories">
+                <a href="{{ 'media-center/videos'|page }}?categoryId=all" class="{{ 'all' == categoryId ? 'active' : '' }}" {% if 'all' == categoryId %}aria-current="page"{% endif %}>All Videos</a>
+                {% for category in categories %}
+                <a href="{{ 'media-center/videos'|page }}?categoryId={{ category.id }}" class="{{ category.id == categoryId ? 'active' : '' }}" {% if category.id == categoryId %}aria-current="page"{% endif %}>
+                    {{ category.name }}
+                </a>
+                {% endfor %}
+            </nav>
+            {% endif %}
+        </div>
+
+        <section class="video-records" id="video-records" aria-label="Video list">
+            <div class="row">
+                {% for record in records %}
+                <article class="col-md-6 col-xs-12">
+                    <div class="video-card">
+                        <h2 class="video-title">{{record.name}}</h2>
+
+                        {% if record.file %}
+                        <video controls width="100%" aria-label="{{record.name}}">
+                            <source src="{{record.file.path}}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+
+                        <p>Attachment: {{record.file.file_name}}, {{record.file.size}}</p>
+
+                        <p><a class="btn btn-primary" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}" download aria-label="Download {{record.name}}">Download</a></p>
+
+                        {% endif %}
+
+                        {% if record.youtube_url %}
+                        <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0" src="{{record.youtube_url}}" width="100%" height="320" title="{{record.name}} - YouTube video"></iframe>
+                        {% endif %}
+
+                        {% if record.vimeo_url %}
+                        <iframe width="100%" height="320" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" src="{{record.vimeo_url}}" title="{{record.name}} - Vimeo video"></iframe>
+                        {% endif %}
+                    </div>
+                </article>
+                {% endfor  %}
+            </div>
+        </section>
+    </div>
 </div>

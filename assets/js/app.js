@@ -80,7 +80,7 @@ $(document).ready(function() {
 		// If no match is found, use the first link as the initial active tab.
 		$active = $($links.filter("[href=\'"+location.hash+"\']")[0] || $links[0]);
 
-        if($(this).parent().parent().hasClass('events')){
+        if($(this).parent().parent().parent().hasClass('events')){
             $active.addClass('active');
         }
 
@@ -181,7 +181,7 @@ $(document).ready(function() {
 	$('.about img').attr('data-aos', 'fade-up');
     $('.head').attr('data-aos', 'fade-up');
     $('ul>li').attr('data-aos', 'fade-up');
-    
+
 	$('.country_map').attr('data-aos', 'fade-up');
 	$('.partner-item').attr('data-aos', 'fade-up');
 

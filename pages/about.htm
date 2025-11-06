@@ -51,27 +51,29 @@ description_limit = 0
     <h1 class="page_heading ml-1">About</h1>
     <div class="row middle-xs">
         <div class="col-md-6 col-xs-12">
-             <div class="we_will">
+            <section class="we_will" aria-label="Project overview">
                 {% component 'jumbotron2' %}
-             </div>
-             <div class="background">
+            </section>
+            <section class="background" aria-label="Background information">
                 {% component 'background' %}
-             </div>
+            </section>
         </div>
         <div class="col-md-6 col-xs-12">
-            {% component 'jumbotron' %}
+            <section aria-label="Project introduction">
+                {% component 'jumbotron' %}
+            </section>
         </div>
     </div>
     <div class="row top-xs">
-        <div class="col-md-6 col-xs-12 about_goals_page">
+        <section class="col-md-6 col-xs-12 about_goals_page" aria-label="Project goals">
             {% component 'goals' %}
-        </div>
+        </section>
         <div class="col-md-6 col-xs-12">
-            <div class="container-fluid work_packages " style="background-color:unset;">
-    	        <div class="container">
+            <section class="container-fluid work_packages" style="background-color:unset;" aria-label="Work packages">
+                <div class="container">
                     {% component 'accordion' %}
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 </div>

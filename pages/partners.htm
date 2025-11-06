@@ -21,35 +21,36 @@ function onStart(){
 }
 ?>
 ==
-<div class="container-fluid partners_background">
-	<div class="svg_map">
-		{% partial 'components/svg' %}
-	</div>
-	<div class="container">
-	<h1 class="page_heading ml-1">Partners</h1>
-	<span class="tooltiptext" id="tooltip">Bulgaria</span>
-	{% if countries.count() %}
-	<div class="row">
-		<div class="col-md-6 col-xs-12">
-			<div class="row countries_list">
-				{% for country in countries %}
-				<div class="col-lg-3 col-xs-6 country-item">
-					<a class="country_map" href="javascript:void(0);" onclick="onCustomPartners('{{ country.code }}')">
-						<img alt="{{ country.name }}" src="{{'countries/'|media}}/{{country.name|lower|replace({' ': '_'})}}.svg">
-					</a>
-					<div class="country_label">
-						{{ country.name }}
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
+<section class="container-fluid partners_background" aria-label="Partners">
+    <div class="svg_map" role="img" aria-label="Interactive map of partner countries">
+        {% partial 'components/svg' %}
+    </div>
+    <div class="container">
+        <h1 class="page_heading ml-1">Partners</h1>
+        <span class="tooltiptext" id="tooltip" role="tooltip" aria-live="polite">Bulgaria</span>
+        {% if countries.count() %}
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <nav class="row countries_list" aria-label="Countries with partners">
+                    {% for country in countries %}
+                    <div class="col-lg-3 col-xs-6 country-item">
+                        <a class="country_map" href="javascript:void(0);" onclick="onCustomPartners('{{ country.code }}')" role="button" aria-label="View partners in {{ country.name }}" tabindex="0" onkeypress="if(event.key==='Enter'||event.key===' '){onCustomPartners('{{ country.code }}'); event.preventDefault();}">
+                            <img alt="" src="{{'countries/'|media}}/{{country.name|lower|replace({' ': '_'})}}.svg" role="presentation">
+                        </a>
+                        <div class="country_label">
+                            {{ country.name }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
 
-	{% endif %}
+        {% endif %}
 
-	{% component 'PartnersPage' %}
+        <section aria-label="Partner organizations list">
+            {% component 'PartnersPage' %}
+        </section>
 
-
-	</div>
-</div>
+    </div>
+</section>

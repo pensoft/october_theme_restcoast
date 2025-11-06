@@ -28,13 +28,13 @@ function onStart()
 {
 	$this['article'] = Pensoft\Articles\Models\Article::where('slug', $this->param('id'))->first();
     $this['categories'] = Category::orderBy('sort_order')->orderBy('created_at', 'desc')->get();
-	
+
     $categoryId = input('categoryId', 'all');
 
     if ($categoryId !== 'all' && !is_numeric($categoryId)) {
         return redirect('news');
     }
-	
+
     $this['categoryId'] = $categoryId;
 
     if ($categoryId === 'all') {
@@ -133,70 +133,70 @@ $this['related'] = $related;
 ==
 <div class="container">
 
-	{% if is_detail_page %}
-	<div class="row single-news-item">
-		<div class="col-xs-12 col-md-5">
-			{% if article.cover %}
-			<img class="content left" src="{{ article.cover|crop_image|resize(673, auto, { mode: 'crop' }) }}" />
-			{% endif %}
-			{% if article.caption %}
-                {{article.caption|raw}}
-                {% endif %}
-			{% if article.allow_share == 'yes' %}
-				<div class="btn btn-primary share-btn" id="share-{{article.slug}}">Share</div>
-			{% endif %}
+    {% if is_detail_page %}
+    <article class="row single-news-item">
+        <div class="col-xs-12 col-md-5">
+            {% if article.cover %}
+            <img class="content left" src="{{ article.cover|crop_image|resize(673, auto, { mode: 'crop' }) }}" alt="{{ article.title }}" />
+            {% endif %}
+            {% if article.caption %}
+            <figure>
+                <figcaption>{{article.caption|raw}}</figcaption>
+            </figure>
+            {% endif %}
+            {% if article.allow_share == 'yes' %}
+            <button class="btn btn-primary share-btn" id="share-{{article.slug}}" aria-label="Share this article">Share</button>
+            {% endif %}
 
-		</div>
+        </div>
 
-		<div class="col-xs-12 col-md-7">
+        <div class="col-xs-12 col-md-7">
+            <header class="news-title">
+                <h1 class="single-new-title">{{article.title}}</h1>
+            </header>
 
+            <time class="text-published" datetime="{{article.published_at}}">{{article.pretty_published_at}}</time>
+            <section class="content" aria-label="Article content">
+                {{article.content|raw}}
+            </section>
+        </div>
+    </article>
 
-			<div class="news-title">
-				<h1 class="single-new-title">{{article.title}}</h1>
-
-			</div>
-
-			<div class="text-published">{{article.pretty_published_at}}</div>
-			<div class="content">
-				{{article.content|raw}}
-			</div>
-
-
-
-		</div>
-	</div>
     {% if related.count > 0 %}
-    <div class="row" style="margin-top: 100px;">
-        <div class="col-xs-12"><h1 class="single-new-title">Related articles</h1></div>
+    <section class="row" style="margin-top: 100px;" aria-label="Related articles">
+        <div class="col-xs-12"><h2 class="single-new-title">Related articles</h2></div>
         <div class="col-xs-12">
             {% component 'related_articles' %}
         </div>
-    </div>
+    </section>
     {% endif %}
-	<script>
-        createCustomTippy('#share-{{article.slug}}', {content: '<div class="icons">{% if this.theme.facebook %}<a class="fb-xfbml-parse-ignore pr p-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" ></a>{% endif %}{% if this.theme.twitter %}<a class="pr p-twitter small" href="http://twitter.com/share?text={{article.title}}&url={{page_url}}" target="_blank"></a>{% endif %}{% if this.theme.linkedin %}<a class="pr p-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank"></a>{% endif %}</div>'})
-	</script>
-	
-	{% else %}
-	<h1 class="page_heading mb-2" style="margin-left: 5px;">News</h1>
+    <script>
+        createCustomTippy('#share-{{article.slug}}', {content: '<div class="icons" role="group" aria-label="Share on social media">{% if this.theme.facebook %}<a class="fb-xfbml-parse-ignore pr p-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" rel="noopener" aria-label="Share on Facebook"></a>{% endif %}{% if this.theme.twitter %}<a class="pr p-twitter small" href="http://twitter.com/share?text={{article.title}}&url={{page_url}}" target="_blank" rel="noopener" aria-label="Share on Twitter"></a>{% endif %}{% if this.theme.linkedin %}<a class="pr p-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank" rel="noopener" aria-label="Share on LinkedIn"></a>{% endif %}</div>'})
+    </script>
 
-	<div class="category-tabs-container mb-2">
-		{% if categories.count > 0 %}
-		<div class="row category-tabs" id="category-tabs">
-			<a href="{{ 'news'|page }}" class="{{ 'all' == categoryId ? 'active' : '' }}">All News</a>
-			{% for category in categories %}
-			<a href="{{ 'news'|page }}?categoryId={{ category.id }}" class="{{ category.id == categoryId ? 'active' : '' }}">{{ category.name }}</a>
-			{% endfor %}
-		</div>
-		{% endif %}
-	</div>
-	<div class="newslist-records" id="newslist-records">
-		{% partial 'components/newslist-records' %}
-	</div>
-	            
-	<div class="row container">
-		{{ records.render|raw }}
-	</div>
+    {% else %}
+    <section aria-label="News articles">
+        <h1 class="page_heading mb-2" style="margin-left: 5px;">News</h1>
 
-	{% endif %}
+        <div class="category-tabs-container mb-2">
+            {% if categories.count > 0 %}
+            <nav class="row category-tabs" id="category-tabs" aria-label="News categories">
+                <a href="{{ 'news'|page }}" class="{{ 'all' == categoryId ? 'active' : '' }}" {% if 'all' == categoryId %}aria-current="page"{% endif %}>All News</a>
+                {% for category in categories %}
+                <a href="{{ 'news'|page }}?categoryId={{ category.id }}" class="{{ category.id == categoryId ? 'active' : '' }}" {% if category.id == categoryId %}aria-current="page"{% endif %}>{{ category.name }}</a>
+                {% endfor %}
+            </nav>
+            {% endif %}
+        </div>
+
+        <div class="newslist-records" id="newslist-records">
+            {% partial 'components/newslist-records' %}
+        </div>
+
+        <nav class="row container" aria-label="Pagination">
+            {{ records.render|raw }}
+        </nav>
+    </section>
+
+    {% endif %}
 </div>

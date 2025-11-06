@@ -71,9 +71,6 @@ return Redirect::to('/media-center/newsletters');
             <div class="card-container text-center">
                 <div class="card_image_container" style="background: url({{record.newsletter_image.thumb(220,220,{'mode':'crop'})}}) center center no-repeat;" role="img" aria-label="{{record.name}} cover image"></div>
                 <h2 class="card_title" style="min-height: 100px;">{{record.name}}, <time datetime="{{record.date|date('Y-m')}}">{{record.date |date('F Y')}}</time></h2>
-                {# <a class="link btn btn-primary mb-1" href="{{record.url}}" target="_blank">Read the newsletter</a> #}
-                {# <br><br><a href="{{ record.file.path }}#{{record.file.file_name}}" target="_blank" title="{{record.name}}" class="btn btn-primary">Download</a> #}
-                <br><br>
                 <a href="{{ record.url}}" target="_blank" class="btn btn-primary" rel="noopener" aria-label="Read {{record.name}} newsletter (opens in new tab)">Read the newsletter</a>
             </div>
         </article>

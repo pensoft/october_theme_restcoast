@@ -64,7 +64,6 @@ return Redirect::to('/media-center/logo');
             <div class="card-container text-center">
                 <h2 class="sr-only">{{record.name}}</h2>
                 <div class="card_image_container" style="background: url({{record.logo_image.path}}) center center no-repeat;" role="img" aria-label="{{record.name}} logo preview"></div>
-                <br>
                 <a href="{{record.file_zip.path}}" target="_blank" class="btn btn-primary" rel="noopener" download aria-label="Download {{record.name}} ZIP file">Download {{record.name}}</a>
             </div>
         </article>

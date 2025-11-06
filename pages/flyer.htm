@@ -72,7 +72,6 @@ return Redirect::to('/media-center/flyer');
             <div class="flyer-card">
                 <h2 class="sr-only">{{record.name}}</h2>
                 <div class="card_image_container" style="background: url({{record.flyer_image.path}}) center center no-repeat;" role="img" aria-label="{{record.name}} preview image"></div>
-                <br>
                 {% if record.file_lang_versions %}
                 <div class="row lang-row between-xs">
                     {% for language_item in record.file_lang_versions %}

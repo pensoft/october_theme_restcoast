@@ -69,9 +69,7 @@ return Redirect::to('/media-center/fact-sheets');
         <article class="col-md-2 col-xs-12">
             <div class="card-container text-center">
                 <h2 class="card_title">{{record.name}}</h2>
-                <br>
                 <div class="card_image_container" style="background: url({{record.presentation_image.thumb(220, 220,{'mode':'crop'})}}) center center no-repeat;" role="img" aria-label="{{record.name}} preview image"></div>
-
                 {% if record.file_lang_versions %}
                 <div class="row lang-row center-xs">
                     {% for language_item in record.file_lang_versions %}

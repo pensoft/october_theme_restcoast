@@ -989,3 +989,70 @@ footer .align-items-center{
     white-space: nowrap !important;
     border: 0 !important;
 }
+
+.mobile_app_download {
+    width: calc(~'100% - 174px');
+    min-height: 141px;
+    background: linear-gradient(110deg, #476899 0%, #24344D 100%);
+    border-radius: 20px;
+    padding: 55px 87px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    align-items: flex-start;
+    position: relative;
+    margin-top: 300px;
+    margin-bottom: 300px;
+    .breakpoint-large-down({
+        width: calc(~'100% - 40px');
+        padding: 192px 10px 40px 10px;
+        margin-bottom: 100px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    });
+
+
+
+    &:after{
+        position: absolute;
+        width: 50%;
+        height: 600px;
+        content: '';
+        background: url("../../assets/images/app-mockup.png") center no-repeat;
+        background-size: contain;
+        right: 0;
+        .breakpoint-large-down({
+            right: 25%;
+            top: -74%;
+        });
+    }
+
+    img{
+        width: auto;
+        .breakpoint-large-down({
+            display: flex;
+            margin: 10px;
+        });
+    }
+
+    h3{
+        font-size: 38px;
+        line-height: 60px;
+        font-weight: 600;
+        text-align: left;
+        font-family: Muli;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        text-transform: unset;
+        width: 100%;
+        .breakpoint-large-down({
+            text-align: center;
+            font-size: 36px;
+            line-height: 50px;
+            margin-bottom: 20px;
+        });
+    }
+
+}

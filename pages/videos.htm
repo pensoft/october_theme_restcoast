@@ -1,10 +1,9 @@
-title = "Videos"
 url = "/media-center/videos"
 layout = "default"
+title = "Videos"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
-
 ==
 <?php
 use Pensoft\Media\Models\Videos;
@@ -61,7 +60,6 @@ return Redirect::to('/media-center/videos');
 }
 ?>
 ==
-
 <div class="container media-videos">
     <nav aria-label="Breadcrumb">
         <a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
@@ -114,6 +112,9 @@ return Redirect::to('/media-center/videos');
                 </article>
                 {% endfor  %}
             </div>
+            <nav class="row container" aria-label="Pagination">
+                {{ records.render|raw }}
+            </nav>
         </section>
     </div>
 </div>

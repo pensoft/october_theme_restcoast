@@ -37,7 +37,7 @@
     width: 100px;
     border-radius: 50%;
     margin-bottom: 20px;
-    
+
     &:before{
       display: flex;
       justify-self: center;
@@ -59,7 +59,7 @@
 
     h1{
       padding: 0 !important;
-      margin: 0 !important;    
+      margin: 0 !important;
     }
 
     &:after{
@@ -118,7 +118,7 @@
     // z-index: 1;
 
     .numbers{
-      position: relative; 
+      position: relative;
       opacity: 1;
       z-index: 20;
     }
@@ -129,7 +129,7 @@
       font-size: 63px;
       line-height: 1.3em;
     }
-    
+
     .numbers_label{
       color: @white-color;
       font-weight: 400;
@@ -208,4 +208,102 @@
       float: none;
     });
   }
+}
+
+.intro-game{
+    background: url("../../assets/images/background-game.jpg") center no-repeat;
+    background-size: cover;
+
+    img{
+        width: 100%;
+        //margin: 50px auto;
+        display: block;
+        transition: filter 0.3s ease;
+        .breakpoint-large-down({
+            display: flex;
+            margin: 10px;
+        });
+    }
+
+    a {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        width: 80%;
+        margin: 50px auto;
+        border-radius: 35px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #476899;
+            mix-blend-mode: color;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        &:hover{
+            &:after{
+                opacity: 1;
+            }
+
+            img {
+                //filter: saturate(0.3) brightness(0.85);
+            }
+        }
+    }
+
+    h3{
+        font-size: 38px;
+        line-height: 60px;
+        font-weight: 600;
+        text-align: center;
+        font-family: Muli;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        text-transform: unset;
+        width: 100%;
+        .breakpoint-large-down({
+            text-align: center;
+            font-size: 36px;
+            line-height: 50px;
+            margin-bottom: 20px;
+        });
+    }
+}
+
+.interactive-tools{
+    .interactive-tool-app{
+        .container{
+            img{
+                width: auto;
+            }
+            .col-xs{
+                padding: 0;
+            }
+        }
+    }
+
+    .interactive-tool-game{
+        margin-top: 80px;
+        .container{
+            padding: 0;
+            //margin-top: 50px;
+        }
+
+        img{
+            padding-right: 80px;
+            width: calc(~'100% - 80px');
+            height: auto;
+            .breakpoint-large-down({
+                padding-right: 0;
+            });
+        }
+
+        a{
+            font-family: Oswald;
+        }
+    }
 }

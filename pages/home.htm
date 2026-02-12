@@ -50,6 +50,25 @@ background = "#ffffff"
 templates = "template1"
 description_limit = 0
 ==
+
+<section class="container-fluid" aria-label="Mobile app download">
+    <div class="container mobile_app_download">
+        <h3>Download My REST-COAST App!</h3>
+        <div>
+            <a href="https://play.google.com/store/apps/details?id=com.pensoft.restcoast" target="_blank" aria-label="Download mobile app My REST-COAST from Google Play Store"><img src="{{'g_play.png'|media}}"></a>
+            <a href="https://apps.apple.com/us/app/my-rest-coast/id6615070189" target="_blank" aria-label="Download mobile app My REST-COAST from App Store"><img src="{{'app_store.png'|media}}"></a>
+        </div>
+    </div>
+</section>
+
+
+<section class="container-fluid intro-game mb-4" aria-label="COASTAL CHALLANGE game overview">
+    <div class="container">
+        <h3>Check out the COASTAL CHALLANGE game</h3>
+        <a href="https://game.rest-coast.eu/" target="_blank" alt="COASTAL CHALLANGE game overview opens in new tab"><img src="{{'assets/images/game-homepage.png'|theme}}" alt="COASTAL CHALLANGE game"></a>
+    </div>
+</section>
+
 <!-- 3 blocks -->
 <section class="container-fluid intro-blocks" aria-label="Project overview">
     <div class="container">
@@ -137,30 +156,22 @@ description_limit = 0
 
 
 <!-- latest from news -->
-<section class="container-fluid bg-secondary" aria-label="Article highlights">
+<section class="container-fluid" aria-label="Article highlights">
     {% component 'article_highlights' %}
 </section>
 
 
 
-<section class="container-fluid" aria-label="Mobile app download">
-    <div class="container mobile_app_download">
-        <h3>Download My REST-COAST App!</h3>
-        <div>
-            <a href="https://play.google.com/store/apps/details?id=com.pensoft.restcoast" target="_blank" aria-label="Download mobile app My REST-COAST from Google Play Store"><img src="{{'g_play.png'|media}}"></a>
-            <a href="https://apps.apple.com/us/app/my-rest-coast/id6615070189" target="_blank" aria-label="Download mobile app My REST-COAST from App Store"><img src="{{'app_store.png'|media}}"></a>
-        </div>
-    </div>
-</section>
 
 
 
-<section class="container-fluid" aria-label="Events">
-    <div class="container">
-        <h2 class="base_heading">EVENTS</h2>
-        {% component 'Timeline' %}
-    </div>
-</section>
+
+<!--<section class="container-fluid" aria-label="Events">-->
+<!--    <div class="container">-->
+<!--        <h2 class="base_heading">EVENTS</h2>-->
+<!--        {% component 'Timeline' %}-->
+<!--    </div>-->
+<!--</section>-->
 
 <section class="container-fluid bg-secondary socials-and-subscribe" aria-label="Social media and updates">
     <div class="container">

@@ -1,0 +1,41 @@
+url = "/interactive-tools"
+layout = "default"
+title = "Interactive tools"
+
+[siteSearchInclude]
+
+[jumbotron app]
+jumbotron = "my-rest-coast-app"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron game]
+jumbotron = "coastal-challenge-game"
+title = 1
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+{% component 'siteSearchInclude' %}
+
+<div class="container">
+    <h1 class="page_heading ml-1">Interactive tools</h1>
+    <div class="row interactive-tool-app middle-xs">
+        <div class="col-md-6 col-xs-12">
+        {% component 'app' %}
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <img src="{{'assets/images/app.png'|theme}}">
+        </div>
+    </div>
+    <div class="row interactive-tool-game">
+        <div class="col-md-6 col-xs-12">
+            <img src="{{'assets/images/game.jpg'|theme}}">
+        </div>
+        <div class="col-md-6 col-xs-12">
+            {% component 'game' %}
+        </div>
+    </div>
+</div>

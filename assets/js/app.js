@@ -4,17 +4,31 @@ var viewed = false;
 var documentHasScroll = function() {
     return window.innerHeight <= document.body.offsetHeight;
 };
-// var keepFooter = function(documentHasScroll){
-//     if (!document.getElementById("layout-footer")){
-//         return;
-//     }
-//
-//     if(documentHasScroll){
-//         document.getElementById("layout-footer").classList.remove('fixed-bottom');
-//     }else{
-//         document.getElementById("layout-footer").classList.add('fixed-bottom');
-//     }
-// }
+
+
+function getScreenSize() {
+    var myHeight = 0;
+    var myWidth = 0;
+    if (window.innerWidth && window.innerHeight) {
+        // Netscape & Mozilla
+        myHeight = window.innerHeight;
+        myWidth = window.innerWidth;
+    } else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+        // IE > 6
+        myHeight = document.documentElement.clientHeight;
+        myWidth = document.documentElement.clientWidth;
+    } else if (document.body.offsetWidth && document.body.offsetHeight) {
+        // IE = 6
+        myHeight = document.body.offsetHeight;
+        myWidth = document.body.offsetWidth;
+    } else if (document.body.clientWidth && document.body.clientHeight) {
+        // IE < 6
+        myHeight = document.body.clientHeight;
+        myWidth = document.body.clientWidth;
+    }
+
+    return {'width': myWidth, 'height': myHeight};
+}
 
 
 
@@ -33,6 +47,29 @@ $(document).ready(function() {
 	var innerWidth = $('body').innerWidth();
 	headerNavbar.width(innerWidth);
 	width100.width(innerWidth);
+
+
+
+
+    var screenSize = getScreenSize();
+    if (screenSize.width > 800) {
+        // Split .work_packages items into two vertical columns so expanding one item doesn't push its row-neighbor
+        var $wpItems = $('.work_packages .key_1');
+        if ($wpItems.length > 1) {
+            var $wpParent = $wpItems.first().parent();
+            var $wpColLeft = $('<div class="wp-column"></div>');
+            var $wpColRight = $('<div class="wp-column"></div>');
+            $wpItems.each(function (i) {
+                if (i % 2 === 0) {
+                    $wpColLeft.append(this);
+                } else {
+                    $wpColRight.append(this);
+                }
+            });
+            $wpParent.append($wpColLeft).append($wpColRight);
+        }
+    }
+
 
 
 	$('body').on('click', '.work_packages .accordion-toggle, .pilots .accordion-toggle, .messages .accordion-toggle', function () {
@@ -270,30 +307,7 @@ function createTippy(element, options) {
 		resolve();
 	});
 }
-//
-// function getScreenSize() {
-// 	var myHeight = 0;
-// 	var myWidth = 0;
-// 	if (window.innerWidth && window.innerHeight) {
-// 		// Netscape & Mozilla
-// 		myHeight = window.innerHeight;
-// 		myWidth = window.innerWidth;
-// 	} else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
-// 		// IE > 6
-// 		myHeight = document.documentElement.clientHeight;
-// 		myWidth = document.documentElement.clientWidth;
-// 	} else if (document.body.offsetWidth && document.body.offsetHeight) {
-// 		// IE = 6
-// 		myHeight = document.body.offsetHeight;
-// 		myWidth = document.body.offsetWidth;
-// 	} else if (document.body.clientWidth && document.body.clientHeight) {
-// 		// IE < 6
-// 		myHeight = document.body.clientHeight;
-// 		myWidth = document.body.clientWidth;
-// 	}
-//
-// 	return {'width': myWidth, 'height': myHeight};
-// }
+
 
 
 
